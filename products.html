@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Products | Sahjanand Group</title>
-<meta name="description" content="Industrial and construction materials manufactured by Sahjanand Group across four production facilities.">
+<title>Products | Sahjanand®</title>
+<meta name="description" content="Explore Sahjanand®'s complete industrial product range: concrete blocks & pavers, structural steel components, precast drainage, and pipe fittings.">
 <link rel="icon" type="image/png" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,22 +16,27 @@
 <header class="site-header">
   <div class="nav-row">
     <a href="index.html" class="brand">
-      <img src="images/logo-icon.png" alt="Sahjanand Group mark">
-      <span class="brand-text">Sahjanand<span> Group</span></span>
+      <img src="images/logo-icon.png" alt="Sahjanand® registered mark">
+      <span class="brand-text">Sahjanand<sup class="reg-mark">®</sup></span>
     </a>
     <nav class="main-nav" aria-label="Primary">
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li>
+          <a href="index.html" class="nav-home-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Home</span>
+          </a>
+        </li>
         <li><a href="infrastructure.html">Infrastructure</a></li>
         <li><a href="products.html">Products</a></li>
         <li><a href="milestones.html">Milestones</a></li>
         <li><a href="management.html">Management</a></li>
         <li><a href="investors.html">Investors</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
     <div class="nav-actions">
-      <a href="contact.html" class="btn btn-primary">Get in touch</a>
+      <a href="contact.html" class="btn btn-primary">Get in Touch</a>
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -41,98 +48,183 @@
 
   <div class="page-header">
     <div class="container">
-      <div class="breadcrumb"><a href="index.html">Home</a> / Products</div>
-      <h1>Products</h1>
-      <p>Precision-manufactured materials and components, produced to tested specifications across four facilities.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="sep">/</span>
+        <span>Products</span>
+      </div>
+      <h1>Manufactured Product Range</h1>
+      <p class="header-desc">Engineered construction materials and precision industrial components produced to tested IS specifications across our four Gujarat production facilities.</p>
     </div>
   </div>
 
-  <section>
+  <!-- PRODUCTS CATALOG -->
+  <section class="bg-light">
     <div class="container">
-      <div class="section-head">
-        <span class="tag">Product range</span>
-        <h2>What we manufacture</h2>
-        <p>Every product line is batch-tested before dispatch, with specification sheets available on request.</p>
+      <div class="section-head center">
+        <span class="pill-badge pill-badge-blue">Certified Range</span>
+        <h2>Precision-Engineered Industrial Products</h2>
+        <p>Every product line is batch-tested in our central laboratories before dispatch. Full metallurgical and concrete test reports accompany every commercial consignment.</p>
       </div>
-      <div class="grid grid-4">
-        <div class="sector-card">
-          <div class="body">
-            <div class="icon-wrap">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C21E1E" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-            </div>
-            <h4>Concrete blocks &amp; pavers</h4>
-            <p>Interlocking pavers and load-bearing blocks in standard and custom sizes.</p>
+
+      <div class="grid grid-2">
+        
+        <!-- Product 1 -->
+        <div class="product-card" id="concrete-pavers">
+          <div class="product-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </div>
+          <h3>Concrete Blocks &amp; Interlocking Pavers</h3>
+          <p>Manufactured using high-density hydraulic vibro-presses with controlled steam curing. Available in Uni-paver, Zigzag, I-shape, and heavy-duty load-bearing masonry blocks designed for industrial yards, ports, and commercial pavements.</p>
+          <div class="product-badge-group">
+            <span class="product-badge">IS 15658:2006</span>
+            <span class="product-badge">M30 to M50 Grade</span>
+            <span class="product-badge">60mm / 80mm / 100mm</span>
+            <span class="product-badge">High Abrasion Resistance</span>
+          </div>
+          <ul class="spec-list">
+            <li><span>Compressive Strength:</span> <strong>30 N/mm² to 55 N/mm²</strong></li>
+            <li><span>Water Absorption:</span> <strong>Less than 6% by mass</strong></li>
+            <li><span>Applications:</span> <strong>Container yards, industrial roads, logistics parks</strong></li>
+          </ul>
+          <div class="product-action">
+            <a href="contact.html?product=Concrete+Blocks+and+Pavers" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+              <span>Request Quote</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Unit 01 Production</span>
           </div>
         </div>
-        <div class="sector-card">
-          <div class="body">
-            <div class="icon-wrap">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C21E1E" stroke-width="1.8"><path d="M4 4h16v4H4zM4 10h16v4H4zM4 16h16v4H4z"/></svg>
-            </div>
-            <h4>Structural steel components</h4>
-            <p>Fabricated beams, brackets and reinforcement cages for construction contractors.</p>
+
+        <!-- Product 2 -->
+        <div class="product-card" id="structural-steel">
+          <div class="product-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v4H4zM4 10h16v4H4zM4 16h16v4H4z"/></svg>
+          </div>
+          <h3>Structural Steel Components</h3>
+          <p>Custom-fabricated built-up columns, heavy crane girders, industrial trusses, and connection brackets. Processed with automatic submerged arc welding, plate bevelling, and primer shot-blasting for industrial factory construction.</p>
+          <div class="product-badge-group">
+            <span class="product-badge">IS 2062 Grade E250 / E350</span>
+            <span class="product-badge">Ultrasonic NDT Tested</span>
+            <span class="product-badge">CNC Plasma Cut</span>
+            <span class="product-badge">Custom Spans</span>
+          </div>
+          <ul class="spec-list">
+            <li><span>Material Standard:</span> <strong>Tested Structural Steel IS 2062</strong></li>
+            <li><span>Welding Quality:</span> <strong>100% Visual &amp; Ultrasonic NDT on Welds</strong></li>
+            <li><span>Surface Finish:</span> <strong>SA 2.5 Shot-Blasted &amp; Epoxy Primed</strong></li>
+          </ul>
+          <div class="product-action">
+            <a href="contact.html?product=Structural+Steel+Components" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+              <span>Request Quote</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Unit 02 Production</span>
           </div>
         </div>
-        <div class="sector-card">
-          <div class="body">
-            <div class="icon-wrap">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C21E1E" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
-            </div>
-            <h4>Precast drainage units</h4>
-            <p>Culverts, manhole rings and channel sections cast to municipal specification.</p>
+
+        <!-- Product 3 -->
+        <div class="product-card" id="precast-drainage">
+          <div class="product-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+          </div>
+          <h3>Precast Drainage Units &amp; Culverts</h3>
+          <p>High-capacity precast concrete box culverts, heavy-duty manhole riser chambers, U-type stormwater drainage channels, and reinforced covers engineered to withstand IRC Class AA and 70R vehicle axle loadings.</p>
+          <div class="product-badge-group">
+            <span class="product-badge">IS 458:2003 Compliant</span>
+            <span class="product-badge">IRC Class 70R Loading</span>
+            <span class="product-badge">Fe500D TMT Rebar</span>
+            <span class="product-badge">Modular Installation</span>
+          </div>
+          <ul class="spec-list">
+            <li><span>Concrete Grade:</span> <strong>Design Mix M35 / M40 Concrete</strong></li>
+            <li><span>Curing Standard:</span> <strong>Accelerated Steam &amp; Water Immersion</strong></li>
+            <li><span>Joint Design:</span> <strong>Interlocking Spigot &amp; Socket Jointing</strong></li>
+          </ul>
+          <div class="product-action">
+            <a href="contact.html?product=Precast+Drainage+Units" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+              <span>Request Quote</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Unit 03 Production</span>
           </div>
         </div>
-        <div class="sector-card">
-          <div class="body">
-            <div class="icon-wrap">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C21E1E" stroke-width="1.8"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-            </div>
-            <h4>Industrial pipe fittings</h4>
-            <p>HDPE and GI fittings for water and utility networks, tested to pressure rating.</p>
+
+        <!-- Product 4 -->
+        <div class="product-card" id="pipe-fittings">
+          <div class="product-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </div>
+          <h3>Industrial Utility &amp; Pipe Fittings</h3>
+          <p>High-performance HDPE molded butt-fusion fittings, electrofusion couplers, flange adapters, and heavy-duty galvanized iron (GI) utility network fittings designed for high-pressure industrial fluid conveyance and municipal networks.</p>
+          <div class="product-badge-group">
+            <span class="product-badge">IS 4984 / ISO 4427</span>
+            <span class="product-badge">PE 100 Virgin Resin</span>
+            <span class="product-badge">Pressure Rated up to 25 Bar</span>
+            <span class="product-badge">Zero Leakage</span>
+          </div>
+          <ul class="spec-list">
+            <li><span>Hydrostatic Test:</span> <strong>Sustained 25 Bar Pressure Tested</strong></li>
+            <li><span>Resin Quality:</span> <strong>Virgin High-Density PE 100 Polymer</strong></li>
+            <li><span>Fittings Range:</span> <strong>Bends, Tees, Reducers, Stubs &amp; Flanges</strong></li>
+          </ul>
+          <div class="product-action">
+            <a href="contact.html?product=Industrial+Pipe+Fittings" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+              <span>Request Quote</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Unit 04 Production</span>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <section class="bg-stone-dim">
+  <!-- QUALITY & CERTIFICATION BANNER -->
+  <section class="bg-navy">
     <div class="container">
-      <div class="grid grid-2" style="align-items:center; gap:60px;">
+      <div class="grid grid-2" style="align-items: center; gap: 50px;">
         <div>
-          <span class="tag">Quality</span>
-          <h2>Tested before it leaves the plant.</h2>
-          <p>Each production run is sampled and tested against IS specifications relevant to the product line. Test certificates accompany every bulk order, and our quality team is available to walk contractors through results.</p>
-          <a href="contact.html" class="btn btn-ghost">Request a quotation</a>
+          <div class="pill-badge pill-badge-glow">Quality Assurance</div>
+          <h2 style="color: #FFFFFF;">Batch-Tested and Certified with Every Consignment</h2>
+          <p>We believe that trust is earned through repeatable precision. Before any load departs our plant gates, samples are tested against applicable Indian Standards (IS), and physical test certificates are dispatched directly with the commercial invoice.</p>
+          <div style="margin-top: 24px;">
+            <a href="contact.html" class="btn btn-primary">Request a Sample or Datasheet</a>
+          </div>
         </div>
-        <div class="grid" style="grid-template-columns:1fr 1fr; gap:20px;">
-          <div class="panel stat-block">
-            <span class="num">4</span>
-            <span class="label">Manufacturing units</span>
+
+        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="stat-card stat-card-dark">
+            <span class="stat-number" style="color: var(--cyan-neon);">100%</span>
+            <span class="stat-label">Batch Testing Output</span>
           </div>
-          <div class="panel stat-block">
-            <span class="num">40+</span>
-            <span class="label">Product lines</span>
+          <div class="stat-card stat-card-dark">
+            <span class="stat-number" style="color: var(--cyan-neon);">40+</span>
+            <span class="stat-label">Standard Product Lines</span>
           </div>
-          <div class="panel stat-block">
-            <span class="num">100%</span>
-            <span class="label">Batch-tested output</span>
+          <div class="stat-card stat-card-dark">
+            <span class="stat-number" style="color: var(--cyan-neon);">24<span style="font-size:0.5em;">hr</span></span>
+            <span class="stat-label">Price &amp; Spec Response</span>
           </div>
-          <div class="panel stat-block">
-            <span class="num">24 hr</span>
-            <span class="label">Quotation turnaround</span>
+          <div class="stat-card stat-card-dark">
+            <span class="stat-number" style="color: var(--cyan-neon);">IS</span>
+            <span class="stat-label">Full Compliance</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="cta-band">
+  <!-- CTA -->
+  <div class="cta-banner">
     <div class="container">
-      <h2>Need a bulk quotation?</h2>
-      <p>Send us your specification and quantity — our sales team replies within one working day.</p>
-      <div style="margin-top:26px;">
-        <a href="contact.html" class="btn btn-light">Request a quote</a>
-      </div>
+      <h2>Need a Technical Specification Sheet or Bulk Quote?</h2>
+      <p>Send our sales engineers your required sizes, material grade, and estimated quantities for immediate pricing.</p>
+      <a href="contact.html" class="btn btn-primary" style="font-size: 1.05rem; padding: 14px 34px;">
+        <span>Request Bulk Quotation</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </div>
 
@@ -140,40 +232,74 @@
 
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-grid">
+    <div class="footer-top-grid">
       <div class="footer-brand">
-        <img src="images/logo-full.png" alt="Sahjanand Group">
-        <p style="color:#C9B79E; max-width:34ch;">Infrastructure and industrial development across Gujarat, built on trust.</p>
+        <img src="images/logo-full.png" alt="Sahjanand®">
+        <p>Precision industrial products and construction materials manufactured across four facilities in Gujarat, built on trust.</p>
+        <span class="footer-motto">सहजानन्द : विश्वासानन्द</span>
       </div>
+
       <div>
-        <h4>Company</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="milestones.html">Milestones</a></li>
-          <li><a href="management.html">Management</a></li>
-          <li><a href="investors.html">Investors</a></li>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">&rarr; Home</a></li>
+          <li><a href="infrastructure.html">&rarr; Infrastructure</a></li>
+          <li><a href="products.html">&rarr; Products</a></li>
+          <li><a href="milestones.html">&rarr; Milestones</a></li>
+          <li><a href="management.html">&rarr; Management</a></li>
+          <li><a href="investors.html">&rarr; Investors</a></li>
+          <li><a href="contact.html">&rarr; Contact Us</a></li>
         </ul>
       </div>
+
       <div>
-        <h4>Business</h4>
-        <ul>
-          <li><a href="infrastructure.html">Infrastructure</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="contact.html">Get a quote</a></li>
+        <h4 class="footer-heading">Our Products</h4>
+        <ul class="footer-links">
+          <li><a href="products.html?product=Concrete+Blocks">&rarr; Concrete Blocks &amp; Pavers</a></li>
+          <li><a href="products.html?product=Structural+Steel">&rarr; Structural Steel Beams</a></li>
+          <li><a href="products.html?product=Precast+Drainage">&rarr; Precast Drainage Culverts</a></li>
+          <li><a href="products.html?product=Precast+Drainage">&rarr; Manhole Rings &amp; U-Drains</a></li>
+          <li><a href="products.html?product=Pipe+Fittings">&rarr; HDPE Pressure Fittings</a></li>
+          <li><a href="products.html?product=Pipe+Fittings">&rarr; GI Utility Fittings</a></li>
         </ul>
       </div>
+
       <div>
-        <h4>Head Office</h4>
-        <ul>
-          <li>Ring Road, Surat, Gujarat, India</li>
-          <li><a href="mailto:info@sahjanandgroup.com">info@sahjanandgroup.com</a></li>
-          <li><a href="tel:+910000000000">+91 00000 00000</a></li>
+        <h4 class="footer-heading">Manufacturing Plants</h4>
+        <ul class="footer-links">
+          <li><a href="infrastructure.html">&rarr; Unit 1: Surat Concrete Works</a></li>
+          <li><a href="infrastructure.html">&rarr; Unit 2: Hazira Steel Plant</a></li>
+          <li><a href="infrastructure.html">&rarr; Unit 3: Ankleshwar Precast Bay</a></li>
+          <li><a href="infrastructure.html">&rarr; Unit 4: Sachin GIDC Fittings</a></li>
+          <li><a href="infrastructure.html#testing">&rarr; Central Testing Laboratories</a></li>
         </ul>
       </div>
     </div>
+
+    <div class="footer-connect-strip">
+      <div class="footer-strip-brand">
+        <img src="images/logo-icon.png" alt="Sahjanand®" style="height: 36px;">
+        <span>Sahjanand<sup class="reg-mark">®</sup></span>
+      </div>
+      <div class="footer-strip-contact">
+        <div class="footer-strip-item">
+          <strong>Direct Telephone</strong>
+          <a href="tel:+910000000000">+91 00000 00000</a>
+        </div>
+        <div class="footer-strip-item">
+          <strong>Email Enquiry</strong>
+          <a href="mailto:info@sahjanandgroup.com">info@sahjanandgroup.com</a>
+        </div>
+        <div class="footer-strip-item">
+          <strong>Product Sales</strong>
+          <a href="mailto:sales@sahjanandgroup.com">sales@sahjanandgroup.com</a>
+        </div>
+      </div>
+    </div>
+
     <div class="footer-bottom">
-      <span>&copy; <span class="js-year"></span> Sahjanand Group. All rights reserved.</span>
-      <span>सहजानन्द : विश्वासानन्द</span>
+      <span>&copy; <span class="js-year"></span> Sahjanand®. All rights reserved.</span>
+      <span>Head Office: Ring Road, Surat, Gujarat, India – 395002</span>
     </div>
   </div>
 </footer>
