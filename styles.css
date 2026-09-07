@@ -1,13 +1,13 @@
 /* ==========================================================================
    SAHJANAND — Modern Corporate Design System
-   Inspired by Eagle Group Reference Architecture
+   Modern Corporate Architecture
    Fully Responsive for Mobile, Tablet, Laptop, and 4K Displays
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Core Corporate Palette (Eagle Group inspired) */
+  /* Core Corporate Architecture */
   --navy-dark: #071322;
   --navy-deep: #0A192F;
   --navy-surface: #0E243F;
@@ -425,7 +425,7 @@ nav.main-nav a.active::after {
 .mobile-cta { display: none; }
 
 /* ==========================================================================
-   EAGLE GROUP STYLE HERO SECTION (index.html)
+   MODERN CORPORATE HERO SECTION
    ========================================================================== */
 .hero-eagle {
   background: radial-gradient(circle at 75% 35%, #103258 0%, #071527 55%, #040D18 100%);
@@ -976,7 +976,7 @@ nav.main-nav a.active::after {
 .product-card h3 { font-size: 1.28rem; margin-bottom: 10px; }
 .product-card p { font-size: 0.94rem; margin-bottom: 18px; }
 
-.product-badge-group {
+.product-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -1267,7 +1267,7 @@ nav.main-nav a.active::after {
 }
 
 /* ==========================================================================
-   MEGA FOOTER (Eagle Group Inspired)
+   MODERN CORPORATE MEGA FOOTER
    ========================================================================== */
 footer.site-footer {
   background: #06111D;
