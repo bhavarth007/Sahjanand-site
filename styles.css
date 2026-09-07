@@ -1335,29 +1335,23 @@ footer.site-footer {
   width: 100%;
 }
 
-.footer-logo-card {
-  background: #FFFFFF;
-  padding: 8px 16px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 200px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-}
-
-.footer-logo-card img {
-  height: 40px;
+.footer-logo {
+  height: 68px;
   width: auto;
-  object-fit: contain;
   display: block;
+  margin-bottom: 16px;
+  background: transparent;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
 }
 
 @media (max-width: 992px) {
   .footer-top-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
 }
 @media (max-width: 600px) {
+  .footer-logo {
+    height: 56px;
+    margin-bottom: 12px;
+  }
   .footer-top-grid {
     grid-template-columns: 1fr 1fr;
     gap: 24px 16px;
