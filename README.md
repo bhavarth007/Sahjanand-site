@@ -4,7 +4,7 @@ A 7-page static website for Sahjanand:
 `index.html`, `infrastructure.html`, `products.html`, `milestones.html`, `management.html`, `investors.html`, `contact.html`.
 
 ## Structure
-- `styles.css` — modern corporate design tokens (deep navy palette, typography, layout, components) inspired by the Eagle Group reference
+- `styles.css` — modern corporate design tokens (deep navy palette, typography, layout, components)
 - `main.js` — mobile menu drawer, active-link highlighting, dynamic year, modal viewer, contact form handling with product query pre-selection
 - `images/` — logo files with the registered trademark (``) symbol and favicons
 
