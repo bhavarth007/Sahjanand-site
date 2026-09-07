@@ -23,10 +23,14 @@ document.addEventListener('DOMContentLoaded', function () {
  }
 
  // 2. Highlight active navigation page
- var currentPath = window.location.pathname.split('/').pop() || 'index.html';
+ var rawPath = window.location.pathname.split('/').pop() || '';
+ var currentPath = rawPath.replace(/\.html$/, '') || './';
+ if (currentPath === 'index') currentPath = './';
+
  document.querySelectorAll('.main-nav a').forEach(function (link) {
-  var href = link.getAttribute('href');
-  if (href === currentPath) {
+  var href = (link.getAttribute('href') || '').split('?')[0].split('#')[0];
+  var cleanHref = href.replace(/\.html$/, '');
+  if (cleanHref === currentPath || (currentPath === './' && (cleanHref === './' || cleanHref === '.' || cleanHref === ''))) {
    link.classList.add('active');
   }
  });
