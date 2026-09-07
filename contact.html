@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Sahjanand Group</title>
+<meta name="description" content="Get in touch with Sahjanand Group for infrastructure projects, product quotations or general enquiries.">
+<link rel="icon" type="image/png" href="images/favicon-32.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-row">
+    <a href="index.html" class="brand">
+      <img src="images/logo-icon.png" alt="Sahjanand Group mark">
+      <span class="brand-text">Sahjanand<span> Group</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="infrastructure.html">Infrastructure</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="milestones.html">Milestones</a></li>
+        <li><a href="management.html">Management</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <a href="contact.html" class="btn btn-primary">Get in touch</a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a> / Contact</div>
+      <h1>Contact</h1>
+      <p>For project enquiries, product quotations or general questions — our team responds within one working day.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="grid grid-2" style="gap:60px; align-items:flex-start;">
+        <div>
+          <h3>Send a message</h3>
+          <form id="contact-form" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Full name *</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="field">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone">
+              </div>
+              <div class="field">
+                <label for="subject">Enquiry type *</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Select one</option>
+                  <option>Infrastructure project</option>
+                  <option>Product quotation</option>
+                  <option>Investor relations</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Send message</button>
+            <p class="form-status" role="status"></p>
+          </form>
+        </div>
+        <div>
+          <h3>Head office</h3>
+          <div class="info-row"><div class="k">Address</div><div class="v">Ring Road, Surat, Gujarat, India – 395002</div></div>
+          <div class="info-row"><div class="k">Phone</div><div class="v"><a href="tel:+910000000000">+91 00000 00000</a></div></div>
+          <div class="info-row"><div class="k">General enquiries</div><div class="v"><a href="mailto:info@sahjanandgroup.com">info@sahjanandgroup.com</a></div></div>
+          <div class="info-row"><div class="k">Product quotations</div><div class="v"><a href="mailto:sales@sahjanandgroup.com">sales@sahjanandgroup.com</a></div></div>
+          <div class="info-row"><div class="k">Investor relations</div><div class="v"><a href="mailto:investors@sahjanandgroup.com">investors@sahjanandgroup.com</a></div></div>
+          <div class="info-row"><div class="k">Working hours</div><div class="v">Mon–Sat, 9:30 AM – 6:30 PM IST</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/logo-full.png" alt="Sahjanand Group">
+        <p style="color:#C9B79E; max-width:34ch;">Infrastructure and industrial development across Gujarat, built on trust.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="milestones.html">Milestones</a></li>
+          <li><a href="management.html">Management</a></li>
+          <li><a href="investors.html">Investors</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Business</h4>
+        <ul>
+          <li><a href="infrastructure.html">Infrastructure</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="contact.html">Get a quote</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Head Office</h4>
+        <ul>
+          <li>Ring Road, Surat, Gujarat, India</li>
+          <li><a href="mailto:info@sahjanandgroup.com">info@sahjanandgroup.com</a></li>
+          <li><a href="tel:+910000000000">+91 00000 00000</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span class="js-year"></span> Sahjanand Group. All rights reserved.</span>
+      <span>सहजानन्द : विश्वासानन्द</span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
