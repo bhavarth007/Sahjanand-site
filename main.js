@@ -3,37 +3,29 @@
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', function () {
- // 1. Mobile navigation drawer & body scroll lock
- var toggle = document.querySelector('.menu-toggle');
- var nav = document.querySelector('.main-nav');
- if (toggle && nav) {
-  toggle.addEventListener('click', function () {
-   var isOpen = nav.classList.toggle('open');
-   toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-   document.body.classList.toggle('no-scroll', isOpen);
-  });
-
-  nav.querySelectorAll('a').forEach(function (link) {
-   link.addEventListener('click', function () {
-    nav.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('no-scroll');
-   });
-  });
- }
-
- // 2. Highlight active navigation page
+ // 1. Highlight active navigation page
  var rawPath = window.location.pathname.split('/').pop() || '';
  var currentPath = rawPath.replace(/\.html$/, '') || './';
  if (currentPath === 'index') currentPath = './';
 
+ var activeLink = null;
  document.querySelectorAll('.main-nav a').forEach(function (link) {
   var href = (link.getAttribute('href') || '').split('?')[0].split('#')[0];
   var cleanHref = href.replace(/\.html$/, '');
   if (cleanHref === currentPath || (currentPath === './' && (cleanHref === './' || cleanHref === '.' || cleanHref === ''))) {
    link.classList.add('active');
+   activeLink = link;
   }
  });
+
+ // 2. Center active mobile tab in horizontal scroll view
+ var navContainer = document.querySelector('.main-nav');
+ if (activeLink && navContainer && navContainer.scrollWidth > navContainer.clientWidth) {
+  setTimeout(function () {
+   var scrollOffset = activeLink.offsetLeft - (navContainer.clientWidth / 2) + (activeLink.clientWidth / 2);
+   navContainer.scrollTo({ left: Math.max(0, scrollOffset), behavior: 'smooth' });
+  }, 100);
+ }
 
  // 3. Dynamic current year in footer
  document.querySelectorAll('.js-year').forEach(function (el) {
