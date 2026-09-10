@@ -985,6 +985,11 @@ nav.main-nav a.active::after {
 .stat-card-dark .stat-number { color: #FFFFFF; }
 .stat-card-dark .stat-label { color: #CBD5E1; }
 
+.stats-2col-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
 /* ==========================================================================
    PRODUCT CARDS (products.html)
    ========================================================================== */
@@ -1733,35 +1738,37 @@ footer.site-footer {
 /* Page Panels Container */
 .textile-panels-container {
   position: relative;
-  min-height: 480px;
+  width: 100%;
 }
 
 .textile-page-panel {
   display: none;
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  width: 100%;
 }
 
 .textile-page-panel.active {
-  display: block;
+  display: block !important;
   opacity: 1;
   transform: translateY(0);
-  animation: fadeInPanel 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeInPanel 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .facilities-page-panel {
   display: none;
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  width: 100%;
 }
 
 .facilities-page-panel.active {
-  display: block;
+  display: block !important;
   opacity: 1;
   transform: translateY(0);
-  animation: fadeInPanel 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeInPanel 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fadeInPanel {
@@ -2074,6 +2081,7 @@ footer.site-footer {
 @media (max-width: 992px) {
   .textile-panel-grid {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
   .textile-panel-header {
     flex-direction: column;
@@ -2081,63 +2089,101 @@ footer.site-footer {
     padding: 24px 20px;
     gap: 18px;
   }
-  .panel-cta-btn {
+  .panel-actions-row {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .panel-actions-row .btn-ghost-cyan,
+  .panel-actions-row .panel-cta-btn {
+    flex: 1 1 auto;
     justify-content: center;
+    text-align: center;
   }
   .textile-confidentiality-bar {
     flex-direction: column;
     align-items: stretch;
     padding: 24px 20px;
-    gap: 22px;
+    gap: 20px;
   }
   .confidentiality-cta {
-    text-align: center;
+    text-align: left;
+    width: 100%;
   }
   .confidentiality-cta .btn {
     width: 100%;
     justify-content: center;
+    text-align: center;
   }
   .textile-highlights-row {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .textile-showcase-section {
+    padding: 56px 0;
+  }
+  /* Mobile & tablet touch-scrollable horizontal tab ribbon */
+  .textile-tab-bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0 24px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 6px 4px 14px 4px;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 transparent;
+  }
+  .textile-tab-bar::-webkit-scrollbar {
+    height: 5px;
+  }
+  .textile-tab-bar::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+  }
+  .textile-tab-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 9px 16px;
+    font-size: 0.86rem;
+  }
+  .panel-actions-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .panel-actions-row .btn-ghost-cyan,
+  .panel-actions-row .panel-cta-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .facility-card-footer {
+    gap: 12px;
   }
 }
 
 @media (max-width: 600px) {
-  .textile-showcase-section {
-    padding: 56px 0;
-  }
-  .textile-tab-bar {
-    gap: 8px;
-  }
-  .textile-tab-btn {
-    padding: 8px 14px;
-    font-size: 0.82rem;
-  }
   .textile-panel-title-area h3 {
-    font-size: 1.22rem;
+    font-size: 1.25rem;
   }
   .panel-card {
-    padding: 20px 16px;
+    padding: 22px 18px;
   }
   .panel-detail-list li {
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
   }
-  .dept-quick-switcher {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 14px 16px;
-    gap: 12px;
-  }
-  .dept-quick-buttons {
-    width: 100%;
-  }
-  .btn-dept-link {
-    width: 100%;
-    justify-content: center;
-    padding: 8px 12px;
+  .panel-detail-list strong {
+    text-align: left;
   }
   .confidentiality-shield-col {
     flex-direction: column;
@@ -2152,6 +2198,109 @@ footer.site-footer {
   }
   .textile-highlights-row .highlight-item {
     padding: 16px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .textile-showcase-section {
+    padding: 44px 0;
+  }
+  .textile-tab-bar {
+    gap: 8px;
+    padding-bottom: 10px;
+  }
+  .textile-tab-btn {
+    padding: 8px 13px;
+    font-size: 0.82rem;
+  }
+  .textile-panel-header {
+    padding: 18px 14px;
+    border-radius: var(--radius-md);
+    gap: 14px;
+  }
+  .textile-panel-title-area h3 {
+    font-size: 1.15rem;
+  }
+  .textile-panel-title-area p {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+  .panel-card {
+    padding: 18px 14px;
+    border-radius: var(--radius-md);
+  }
+  .facility-card-header {
+    padding: 16px 14px;
+  }
+  .facility-card-body {
+    padding: 16px 14px;
+  }
+  .facility-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .facility-card-footer .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .facility-card-footer a:last-child {
+    text-align: center;
+    padding: 4px 0;
+  }
+  .spec-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .spec-list li strong {
+    text-align: left;
+  }
+  .textile-confidentiality-bar {
+    padding: 20px 14px;
+    border-radius: var(--radius-md);
+  }
+  .confidentiality-shield-col {
+    gap: 12px;
+  }
+  .confidentiality-shield-col h4 {
+    font-size: 1.05rem;
+  }
+  .confidentiality-shield-col p {
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+  .textile-highlights-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .textile-highlights-row .highlight-item {
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .about-actions-row {
+    flex-direction: column;
+    width: 100%;
+  }
+  .about-actions-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .stats-2col-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+  .stat-card {
+    padding: 18px 16px;
   }
 }
 

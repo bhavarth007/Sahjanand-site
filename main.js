@@ -168,6 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
       panels.forEach(function (panel) {
         var isMatch = panel.getAttribute('data-page') === targetStr;
         panel.classList.toggle('active', isMatch);
+        panel.style.display = isMatch ? 'block' : 'none';
       });
 
       // Update facilities panels (Four Specialized Facilities)
