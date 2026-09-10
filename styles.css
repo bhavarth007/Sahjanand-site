@@ -569,38 +569,36 @@ nav.main-nav a.active::after {
 }
 
 .constellation-center {
-  width: 160px;
-  height: 160px;
+  width: 170px;
+  height: 170px;
   background: #FFFFFF;
   border-radius: 50%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 5;
   box-shadow: 0 0 50px rgba(56, 189, 248, 0.45), 0 0 90px rgba(14, 165, 233, 0.25);
-  padding: 14px;
+  padding: 16px;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
 .constellation-center:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
+  box-shadow: 0 0 60px rgba(56, 189, 248, 0.65), 0 0 110px rgba(14, 165, 233, 0.35);
 }
 
+.constellation-center img.constellation-logo,
 .constellation-center img {
-  width: 76px;
+  width: 136px;
+  max-width: 82%;
   height: auto;
-  margin-bottom: 4px;
-}
-
-.constellation-center .center-label {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 0.95rem;
-  color: var(--navy-dark);
-  letter-spacing: -0.01em;
+  display: block;
+  object-fit: contain;
+  margin: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.04));
 }
 
 /* Orbiting Nodes */
@@ -679,10 +677,12 @@ nav.main-nav a.active::after {
     height: 320px;
   }
   .constellation-center {
-    width: 140px;
-    height: 140px;
+    width: 152px;
+    height: 152px;
+    padding: 14px;
   }
-  .constellation-center img { width: 68px; }
+  .constellation-center img.constellation-logo,
+  .constellation-center img { width: 120px; }
   .orbit-node {
     width: 96px;
     height: 96px;
@@ -701,12 +701,12 @@ nav.main-nav a.active::after {
     height: 270px;
   }
   .constellation-center {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     padding: 10px;
   }
-  .constellation-center img { width: 54px; }
-  .constellation-center .center-label { font-size: 0.84rem; }
+  .constellation-center img.constellation-logo,
+  .constellation-center img { width: 102px; }
   .orbit-node {
     width: 82px;
     height: 82px;
@@ -730,12 +730,12 @@ nav.main-nav a.active::after {
     height: 226px;
   }
   .constellation-center {
-    width: 102px;
-    height: 102px;
+    width: 112px;
+    height: 112px;
     padding: 8px;
   }
-  .constellation-center img { width: 44px; }
-  .constellation-center .center-label { font-size: 0.74rem; }
+  .constellation-center img.constellation-logo,
+  .constellation-center img { width: 88px; }
   .orbit-node {
     width: 70px;
     height: 70px;
