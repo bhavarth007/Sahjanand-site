@@ -164,10 +164,18 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
       });
 
-      // Update panels
+      // Update department panels
       panels.forEach(function (panel) {
         var isMatch = panel.getAttribute('data-page') === targetStr;
         panel.classList.toggle('active', isMatch);
+      });
+
+      // Update facilities panels (Four Specialized Facilities)
+      var facilitiesPanels = document.querySelectorAll('.facilities-page-panel');
+      facilitiesPanels.forEach(function (fPanel) {
+        var isMatch = fPanel.getAttribute('data-facilities-page') === targetStr;
+        fPanel.classList.toggle('active', isMatch);
+        fPanel.style.display = isMatch ? 'block' : 'none';
       });
 
       if (shouldScroll) {

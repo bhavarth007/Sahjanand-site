@@ -1750,6 +1750,20 @@ footer.site-footer {
   animation: fadeInPanel 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+.facilities-page-panel {
+  display: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.facilities-page-panel.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInPanel 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 @keyframes fadeInPanel {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
