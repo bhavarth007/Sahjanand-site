@@ -209,6 +209,103 @@ document.addEventListener('DOMContentLoaded', function () {
 
   initTextilePageSwitcher();
 
+  // 6. Interactive Product Division Filter (products.html)
+  function initProductDivisionFilter() {
+    var filterBtns = document.querySelectorAll('.product-filter-btn');
+    var productCards = document.querySelectorAll('.product-card[data-division]');
+    var divisionHeaders = document.querySelectorAll('.division-group-header[data-division]');
+    var catalogSection = document.querySelector('#catalog');
+
+    if (!filterBtns.length || !productCards.length) return;
+
+    function applyDivisionFilter(filterKey, shouldScroll) {
+      var activeKey = (filterKey || 'all').toLowerCase().trim();
+
+      // Update button active state
+      filterBtns.forEach(function (btn) {
+        var btnFilter = (btn.getAttribute('data-filter') || '').toLowerCase().trim();
+        var isMatch = btnFilter === activeKey;
+        btn.classList.toggle('active', isMatch);
+        btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      });
+
+      // Show/hide product cards
+      productCards.forEach(function (card) {
+        var cardDiv = (card.getAttribute('data-division') || '').toLowerCase().trim();
+        var isVisible = (activeKey === 'all' || cardDiv === activeKey);
+        card.classList.toggle('hidden', !isVisible);
+      });
+
+      // Show/hide division group headers
+      divisionHeaders.forEach(function (header) {
+        var headerDiv = (header.getAttribute('data-division') || '').toLowerCase().trim();
+        var isVisible = (activeKey === 'all' || headerDiv === activeKey);
+        header.classList.toggle('hidden', !isVisible);
+      });
+
+      if (shouldScroll && catalogSection) {
+        var navHeader = document.querySelector('.site-header');
+        var navHeight = navHeader ? navHeader.offsetHeight : 70;
+        var elementPosition = catalogSection.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: Math.max(0, elementPosition - navHeight - 10),
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Attach click listeners to filter buttons
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = this.getAttribute('data-filter') || 'all';
+        applyDivisionFilter(filter, false);
+      });
+    });
+
+    // Check URL parameters and hash routing on page load
+    function checkUrlForDivision() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var divisionParam = urlParams.get('division');
+      var productParam = urlParams.get('product');
+      var hash = (window.location.hash || '').replace('#', '').toLowerCase();
+
+      var targetFilter = null;
+
+      if (divisionParam) {
+        targetFilter = divisionParam.toLowerCase();
+      } else if (hash) {
+        if (hash.indexOf('yarn') !== -1) targetFilter = 'yarn';
+        else if (hash.indexOf('rapier') !== -1 || hash.indexOf('vapiar') !== -1) targetFilter = 'rapier';
+        else if (hash.indexOf('weaving') !== -1 || hash.indexOf('viving') !== -1) targetFilter = 'weaving';
+        else if (hash.indexOf('purchase') !== -1) targetFilter = 'purchase';
+        else if (hash.indexOf('concrete') !== -1 || hash.indexOf('paver') !== -1) targetFilter = 'concrete';
+        else if (hash.indexOf('steel') !== -1) targetFilter = 'steel';
+        else if (hash.indexOf('drainage') !== -1 || hash.indexOf('culvert') !== -1) targetFilter = 'drainage';
+        else if (hash.indexOf('fitting') !== -1 || hash.indexOf('pipe') !== -1) targetFilter = 'fittings';
+      } else if (productParam) {
+        var pLower = productParam.toLowerCase();
+        if (pLower.indexOf('yarn') !== -1 || pLower.indexOf('beam') !== -1) targetFilter = 'yarn';
+        else if (pLower.indexOf('rapier') !== -1 || pLower.indexOf('suiting') !== -1 || pLower.indexOf('dobby') !== -1) targetFilter = 'rapier';
+        else if (pLower.indexOf('weaving') !== -1 || pLower.indexOf('grey') !== -1 || pLower.indexOf('chiffon') !== -1) targetFilter = 'weaving';
+        else if (pLower.indexOf('purchase') !== -1 || pLower.indexOf('polymer') !== -1) targetFilter = 'purchase';
+        else if (pLower.indexOf('concrete') !== -1 || pLower.indexOf('paver') !== -1) targetFilter = 'concrete';
+        else if (pLower.indexOf('steel') !== -1) targetFilter = 'steel';
+        else if (pLower.indexOf('drainage') !== -1) targetFilter = 'drainage';
+        else if (pLower.indexOf('pipe') !== -1 || pLower.indexOf('fitting') !== -1) targetFilter = 'fittings';
+      }
+
+      if (targetFilter) {
+        applyDivisionFilter(targetFilter, true);
+      }
+    }
+
+    checkUrlForDivision();
+    window.addEventListener('hashchange', checkUrlForDivision);
+  }
+
+  initProductDivisionFilter();
+
+
   // 6. Document Preview Modal (if modal elements exist on page)
   var modal = document.querySelector('#doc-modal');
   if (modal) {
