@@ -35,10 +35,26 @@ document.addEventListener('DOMContentLoaded', function () {
  // 4. Contact form with email, phone validation & friendly states
  var form = document.querySelector('#contact-form');
  if (form) {
-  // Check if query params have a pre-selected product
+  // Check if query params have a pre-selected product or inquiry
   var urlParams = new URLSearchParams(window.location.search);
+  var inquiryParam = urlParams.get('inquiry');
   var productParam = urlParams.get('product');
-  if (productParam) {
+
+  if (inquiryParam && inquiryParam.toLowerCase() === 'textile') {
+   var subjectSelect = form.querySelector('#subject');
+   if (subjectSelect) {
+    for (var i = 0; i < subjectSelect.options.length; i++) {
+     if (subjectSelect.options[i].value.toLowerCase().indexOf('textile') !== -1) {
+      subjectSelect.selectedIndex = i;
+      break;
+     }
+    }
+   }
+   var msgField = form.querySelector('#message');
+   if (msgField && !msgField.value) {
+    msgField.value = 'Inquiry regarding Textile Manufacturing & Fabric Supply. Please provide technical fabric specifications, minimum order quantity, and production scheduling.';
+   }
+  } else if (productParam) {
    var subjectSelect = form.querySelector('#subject');
    if (subjectSelect) {
     // Try to match option text or select product quotation
