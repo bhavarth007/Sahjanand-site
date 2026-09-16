@@ -27,6 +27,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!toggleBtn || !navDrawer) return;
 
+    // Placeholders to hoist drawer and backdrop directly to <body> on mobile screens
+    // This completely removes them from the sticky header's stacking context and layout bounds,
+    // ensuring the drawer is statically 100% pinned from viewport top (0) to bottom (0).
+    var navPlaceholder = document.createComment('nav-placeholder');
+    var isMobileDrawerDetached = false;
+
+    function handleNavResponsive() {
+      if (window.innerWidth <= 992) {
+        if (!isMobileDrawerDetached && navDrawer.parentElement) {
+          navDrawer.parentElement.insertBefore(navPlaceholder, navDrawer);
+          document.body.appendChild(navDrawer);
+          if (backdrop) {
+            document.body.appendChild(backdrop);
+          }
+          isMobileDrawerDetached = true;
+        }
+      } else {
+        if (isMobileDrawerDetached && navPlaceholder.parentElement) {
+          navPlaceholder.parentElement.insertBefore(navDrawer, navPlaceholder);
+          isMobileDrawerDetached = false;
+          closeDrawer();
+        }
+      }
+    }
+
+    handleNavResponsive();
+    window.addEventListener('resize', handleNavResponsive);
+
     function openDrawer() {
       navDrawer.classList.add('active');
       if (backdrop) backdrop.classList.add('active');

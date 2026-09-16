@@ -377,8 +377,11 @@ nav.main-nav a.active::after {
    3-Line Hamburger Menu with Clean Slide-In Drawer from Right
    ========================================================================== */
 body.mobile-nav-open {
-  overflow: hidden;
+  overflow: hidden !important;
+  touch-action: none !important;
+  -webkit-overflow-scrolling: auto !important;
 }
+
 
 @media (max-width: 992px) {
   header.site-header {
