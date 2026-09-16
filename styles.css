@@ -384,7 +384,7 @@ body.mobile-nav-open {
   header.site-header {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 2500 !important;
     background: #FFFFFF;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -438,7 +438,7 @@ body.mobile-nav-open {
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.25s ease;
-    z-index: 2200; /* Stays accessible above backdrop to toggle back */
+    z-index: 2503 !important; /* Above backdrop & drawer so tapping 3 lines closes it */
     position: relative;
   }
 
@@ -469,12 +469,13 @@ body.mobile-nav-open {
     transform: translateY(-7.5px) rotate(-45deg);
   }
 
-  /* Right-Side Slide-in Drawer (100% Full Height Top-to-Bottom) */
+  /* Right-Side Slide-in Drawer (100% Full Height Top-to-Bottom, Crystal Clear, NO BLUR) */
   nav.main-nav {
     position: fixed !important;
     top: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
+    left: auto !important;
     width: 320px !important;
     max-width: 86vw !important;
     height: 100vh !important;
@@ -483,7 +484,7 @@ body.mobile-nav-open {
     box-shadow: -10px 0 40px rgba(0, 0, 0, 0.32) !important;
     transform: translateX(105%) !important;
     transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    z-index: 2100 !important;
+    z-index: 2502 !important; /* STRICTLY ABOVE BACKDROP */
     display: flex !important;
     flex-direction: column !important;
     padding: 0 !important;
@@ -637,7 +638,7 @@ body.mobile-nav-open {
     margin: 2px 0;
   }
 
-  /* Frosted Blur Dark Backdrop Overlay (Full Viewport) */
+  /* Clean Dark Backdrop Overlay (BEHIND DRAWER, NO BLUR) */
   .mobile-nav-backdrop {
     display: block !important;
     position: fixed !important;
@@ -648,13 +649,13 @@ body.mobile-nav-open {
     width: 100vw !important;
     height: 100vh !important;
     height: 100dvh !important;
-    background: rgba(10, 25, 47, 0.65) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    z-index: 2050 !important;
+    background: rgba(10, 25, 47, 0.5) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    z-index: 2501 !important; /* STRICTLY BEHIND nav.main-nav (2502) */
     opacity: 0 !important;
     pointer-events: none !important;
-    transition: opacity 0.32s ease !important;
+    transition: opacity 0.3s ease !important;
   }
 
   .mobile-nav-backdrop.active {

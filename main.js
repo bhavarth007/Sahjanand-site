@@ -27,11 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!toggleBtn || !navDrawer) return;
 
-    // Ensure backdrop is direct child of body so it can never be trapped by header containing block
-    if (backdrop && backdrop.parentElement !== document.body) {
-      document.body.appendChild(backdrop);
-    }
-
     function openDrawer() {
       navDrawer.classList.add('active');
       if (backdrop) backdrop.classList.add('active');
