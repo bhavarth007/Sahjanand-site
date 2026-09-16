@@ -187,19 +187,45 @@ document.addEventListener('DOMContentLoaded', function () {
       var originalBtnText = submitBtn ? submitBtn.innerHTML : '';
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Submitting...';
+        submitBtn.textContent = 'Redirecting to Email...';
       }
 
-      status.textContent = 'Thank you. Your inquiry has been received. Our sales team will get back to you within 24 hours.';
+      // Prepare mailto URI directed to official company inbox
+      var mailtoSubject = encodeURIComponent('Product Enquiry: ' + subject + ' - ' + name);
+      var mailtoBody = encodeURIComponent(
+        'Dear Sahjanand Polyweaves Team,\n\n' +
+        'I am submitting an enquiry via your official website:\n\n' +
+        '-----------------------------------------\n' +
+        'Full Name: ' + name + '\n' +
+        'Email Address: ' + email + '\n' +
+        'Phone / Mobile: ' + (phone || 'Not provided') + '\n' +
+        'Enquiry Subject: ' + subject + '\n' +
+        '-----------------------------------------\n\n' +
+        'Detailed Message:\n' + message + '\n\n' +
+        'Best regards,\n' + name
+      );
+
+      var mailtoUrl = 'mailto:sahjanandpolyweavespvtltd18@gmail.com?subject=' + mailtoSubject + '&body=' + mailtoBody;
+
+      status.innerHTML = 'Thank you, <strong>' + name + '</strong>! Redirecting your enquiry to <strong>sahjanandpolyweavespvtltd18@gmail.com</strong>...<br>' +
+        '<span style="font-size:0.9rem; display:inline-block; margin-top:8px;">' +
+        'If your email client does not launch automatically, <a href="' + mailtoUrl + '" style="color:#0284C7; font-weight:700; text-decoration:underline;">click here to open and send your enquiry email</a>.' +
+        '</span>';
       status.className = 'form-status success';
-      form.reset();
+
+      // Launch email client
+      try {
+        window.location.href = mailtoUrl;
+      } catch (err) {
+        console.error('Mailto launch error:', err);
+      }
 
       setTimeout(function () {
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalBtnText;
         }
-      }, 2500);
+      }, 3000);
     });
   }
 
