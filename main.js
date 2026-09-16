@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!toggleBtn || !navDrawer) return;
 
+    // Ensure backdrop is direct child of body so it can never be trapped by header containing block
+    if (backdrop && backdrop.parentElement !== document.body) {
+      document.body.appendChild(backdrop);
+    }
+
     function openDrawer() {
       navDrawer.classList.add('active');
       if (backdrop) backdrop.classList.add('active');
@@ -60,9 +65,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (backdrop) {
-      backdrop.addEventListener('click', function () {
+      backdrop.addEventListener('click', function (e) {
+        e.stopPropagation();
         closeDrawer();
       });
+      backdrop.addEventListener('touchstart', function (e) {
+        e.stopPropagation();
+        closeDrawer();
+      }, { passive: true });
     }
 
     // Close drawer when clicking any link
