@@ -768,58 +768,81 @@ body.mobile-nav-open {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.04));
 }
 
-/* Orbiting Nodes */
+/* Orbiting Nodes (4 Core Sectors: Crisp White Card with Neon Halo & Bold Black Text) */
 .orbit-node {
   position: absolute;
-  width: 108px;
-  height: 108px;
-  border-radius: 50%;
-  background: rgba(14, 36, 63, 0.9);
-  border: 1px solid rgba(56, 189, 248, 0.4);
-  backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 8px;
-  color: #FFFFFF;
-  text-decoration: none;
+  width: 114px;
+  height: 114px;
+  border-radius: 50% !important;
+  background: #FFFFFF !important;
+  border: 2px solid #38BDF8 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 8px 6px !important;
+  color: #0A192F !important;
+  text-decoration: none !important;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.55), 0 0 45px rgba(14, 165, 233, 0.3), 0 6px 18px rgba(0, 0, 0, 0.2);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 6;
 }
 
 .orbit-node:hover,
 .orbit-node:focus {
-  text-decoration: none;
+  text-decoration: none !important;
+  border-color: #00F0FF !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 0 35px rgba(56, 189, 248, 0.9), 0 0 70px rgba(14, 165, 233, 0.55), 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
 .orbit-node:focus-visible {
-  outline: 2px solid var(--cyan-neon);
+  outline: 2px solid #00F0FF;
   outline-offset: 3px;
 }
 
-.orbit-node:hover {
-  transform: scale(1.12);
-  border-color: var(--cyan-neon);
-  box-shadow: 0 0 28px rgba(56, 189, 248, 0.6);
-  background: rgba(19, 45, 78, 0.98);
+.orbit-node svg {
+  width: 26px;
+  height: 26px;
+  margin-bottom: 4px;
+  color: #0284C7;
+  stroke: #0284C7;
+  filter: drop-shadow(0 0 5px rgba(2, 132, 199, 0.55));
+  transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
-.orbit-node svg {
-  width: 24px;
-  height: 24px;
-  margin-bottom: 5px;
-  color: var(--cyan-neon);
+.orbit-node:hover svg {
+  color: #0099FF;
+  stroke: #0099FF;
+  filter: drop-shadow(0 0 9px rgba(0, 153, 255, 0.85));
+  transform: scale(1.08);
 }
 
 .orbit-node span {
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.74rem;
+  font-weight: 800;
   line-height: 1.15;
-  color: #E2E8F0;
+  color: #0A192F !important; /* Bold Black for high contrast & clarity */
+  text-decoration: none !important;
+  letter-spacing: -0.01em;
+  font-family: var(--font-body);
+  display: block;
+  text-align: center;
+}
+
+.orbit-node span span {
+  display: inline;
+  color: #1E293B !important;
+  font-weight: 700;
+  font-size: 0.85em;
+}
+
+.orbit-node:hover span {
+  color: #000000 !important;
+  font-weight: 900;
 }
 
 /* 4 Positions */
@@ -828,10 +851,10 @@ body.mobile-nav-open {
 .orbit-node.node-3 { bottom: 8px; left: 50%; transform: translateX(-50%); }
 .orbit-node.node-4 { left: 8px; top: 50%; transform: translateY(-50%); }
 
-.orbit-node.node-1:hover { transform: translateX(-50%) scale(1.12); }
-.orbit-node.node-2:hover { transform: translateY(-50%) scale(1.12); }
-.orbit-node.node-3:hover { transform: translateX(-50%) scale(1.12); }
-.orbit-node.node-4:hover { transform: translateY(-50%) scale(1.12); }
+.orbit-node.node-1:hover { transform: translateX(-50%) scale(1.12) !important; }
+.orbit-node.node-2:hover { transform: translateY(-50%) scale(1.12) !important; }
+.orbit-node.node-3:hover { transform: translateX(-50%) scale(1.12) !important; }
+.orbit-node.node-4:hover { transform: translateY(-50%) scale(1.12) !important; }
 
 /* Tablet & Mobile Hero Scaling */
 @media (max-width: 992px) {
@@ -2149,7 +2172,7 @@ footer.site-footer {
   flex-wrap: wrap;
 }
 
-.btn-dept-link {
+.btn-dept-link:not(.orbit-node) {
   background: #F8FAFC;
   border: 1px solid #CBD5E1;
   border-radius: var(--radius-full);
@@ -2164,7 +2187,7 @@ footer.site-footer {
   align-items: center;
 }
 
-.btn-dept-link:hover {
+.btn-dept-link:not(.orbit-node):hover {
   background: #0284C7;
   border-color: #0284C7;
   color: #FFFFFF;
