@@ -1436,7 +1436,42 @@ body.mobile-nav-open {
   margin-top: 8px;
 }
 
-.timeline-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.timeline-card h3 { font-size: 1.22rem; margin-bottom: 8px; color: var(--navy-dark); font-weight: 700; }
+.timeline-card p { font-size: 0.96rem; line-height: 1.65; color: var(--text-body); margin-bottom: 0; }
+
+.timeline-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: #E0F2FE;
+  color: #0284C7;
+  margin-bottom: 10px;
+}
+
+.timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed #E2E8F0;
+}
+
+.milestone-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #475569;
+  background: #F8FAFC;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #E2E8F0;
+}
 
 @media (max-width: 600px) {
   .timeline-modern { padding-left: 24px; }
