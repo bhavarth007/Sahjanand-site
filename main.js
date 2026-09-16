@@ -18,14 +18,69 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // 2. Center active mobile tab in horizontal scroll view
-  var navContainer = document.querySelector('.main-nav');
-  if (activeLink && navContainer && navContainer.scrollWidth > navContainer.clientWidth) {
-    setTimeout(function () {
-      var scrollOffset = activeLink.offsetLeft - (navContainer.clientWidth / 2) + (activeLink.clientWidth / 2);
-      navContainer.scrollTo({ left: Math.max(0, scrollOffset), behavior: 'smooth' });
-    }, 100);
+  // 2. Mobile Right-Side Navigation Drawer
+  function initMobileNavigation() {
+    var toggleBtn = document.querySelector('.mobile-nav-toggle');
+    var navDrawer = document.querySelector('.main-nav');
+    var closeBtn = document.querySelector('.mobile-drawer-close');
+    var backdrop = document.querySelector('.mobile-nav-backdrop');
+
+    if (!toggleBtn || !navDrawer) return;
+
+    function openDrawer() {
+      navDrawer.classList.add('active');
+      if (backdrop) backdrop.classList.add('active');
+      toggleBtn.classList.add('active');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('mobile-nav-open');
+    }
+
+    function closeDrawer() {
+      navDrawer.classList.remove('active');
+      if (backdrop) backdrop.classList.remove('active');
+      toggleBtn.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('mobile-nav-open');
+    }
+
+    toggleBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (navDrawer.classList.contains('active')) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeDrawer();
+      });
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', function () {
+        closeDrawer();
+      });
+    }
+
+    // Close drawer when clicking any link
+    navDrawer.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeDrawer();
+      });
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && navDrawer.classList.contains('active')) {
+        closeDrawer();
+      }
+    });
   }
+
+  initMobileNavigation();
 
   // 3. Dynamic current year in footer
   document.querySelectorAll('.js-year').forEach(function (el) {
@@ -197,10 +252,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     switcherBtns.forEach(function (linkBtn) {
-      linkBtn.addEventListener('click', function () {
+      linkBtn.addEventListener('click', function (e) {
         var targetPage = this.getAttribute('data-switch');
         if (targetPage) {
+          e.preventDefault();
           switchTextilePage(targetPage, true);
+          var hashMap = { '1': '#weaving', '2': '#yarn', '3': '#chemical', '4': '#trade' };
+          if (history.pushState && hashMap[targetPage]) {
+            history.pushState(null, null, hashMap[targetPage]);
+          }
         }
       });
     });

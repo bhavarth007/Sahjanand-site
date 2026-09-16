@@ -12,7 +12,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<link rel="stylesheet" href="styles.css?v=15">
+<link rel="stylesheet" href="styles.css?v=16">
 </head>
 <body>
 
@@ -22,7 +22,14 @@
    <img src="images/logo-icon.png" alt="Sahjanand registered mark">
    <span class="brand-text">Sahjanand</span>
   </a>
-  <nav class="main-nav" aria-label="Primary">
+  <nav class="main-nav" id="primary-navigation" aria-label="Primary">
+   <div class="mobile-drawer-header">
+    <div class="drawer-brand">
+     <img src="images/logo-icon.png" alt="Sahjanand logo">
+     <span class="brand-text">Sahjanand</span>
+    </div>
+    <button type="button" class="mobile-drawer-close" aria-label="Close navigation menu">&times;</button>
+   </div>
    <ul>
     <li>
      <a href="./" class="nav-home-icon">
@@ -36,11 +43,24 @@
     <li><a href="management">Management</a></li>
     <li><a href="contact">Contact Us</a></li>
    </ul>
+   <div class="mobile-drawer-footer">
+    <a href="contact" class="btn btn-primary btn-drawer-cta">Get in Touch</a>
+    <div class="drawer-info">
+     <p><strong>Sahjanand Enterprise</strong></p>
+     <p>Surat, Gujarat, India</p>
+    </div>
+   </div>
   </nav>
   <div class="nav-actions">
    <a href="contact" class="btn btn-primary nav-cta-btn">Get in Touch</a>
+   <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+   </button>
   </div>
  </div>
+ <div class="mobile-nav-backdrop" aria-hidden="true"></div>
 </header>
 
 <main>
@@ -303,6 +323,6 @@
  </div>
 </footer>
 
-<script src="main.js?v=15"></script>
+<script src="main.js?v=16"></script>
 </body>
 </html>
