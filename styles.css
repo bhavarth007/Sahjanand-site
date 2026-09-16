@@ -3185,15 +3185,19 @@ footer.site-footer {
   color: #FFFFFF !important;
 }
 
-/* White font for phone / WhatsApp numbers */
+/* White font for phone numbers with blue hover matching email */
 .contact-phone-link,
+.footer-phone-link,
 .contact-row-content a[href^="tel:"],
 .footer-strip-item a[href^="tel:"] {
   color: #FFFFFF !important;
   font-weight: 700 !important;
+  transition: color 0.2s ease !important;
 }
 
+.contact-phone-link:hover,
+.footer-phone-link:hover,
 .contact-row-content a[href^="tel:"]:hover,
 .footer-strip-item a[href^="tel:"]:hover {
-  color: #25D366 !important;
+  color: var(--cyan-neon, #38BDF8) !important;
 }
