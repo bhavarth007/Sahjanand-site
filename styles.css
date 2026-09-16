@@ -768,24 +768,24 @@ body.mobile-nav-open {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.04));
 }
 
-/* Orbiting Nodes (4 Core Sectors: Crisp White Card with Neon Halo & Bold Black Text) */
+/* Orbiting Nodes (4 Core Sectors: Compact Refined Satellite Nodes with Blue Icon Emblem & Bold Black Text) */
 .orbit-node {
   position: absolute;
-  width: 114px;
-  height: 114px;
+  width: 92px;
+  height: 92px;
   border-radius: 50% !important;
-  background: #FFFFFF !important;
+  background: linear-gradient(180deg, #E0F2FE 0%, #FFFFFF 48%) !important;
   border: 2px solid #38BDF8 !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
   text-align: center !important;
-  padding: 8px 6px !important;
+  padding: 6px 4px !important;
   color: #0A192F !important;
   text-decoration: none !important;
   cursor: pointer;
-  box-shadow: 0 0 24px rgba(56, 189, 248, 0.55), 0 0 45px rgba(14, 165, 233, 0.3), 0 6px 18px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.45), 0 0 35px rgba(14, 165, 233, 0.25), 0 6px 16px rgba(0, 0, 0, 0.22);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 6;
 }
@@ -794,8 +794,8 @@ body.mobile-nav-open {
 .orbit-node:focus {
   text-decoration: none !important;
   border-color: #00F0FF !important;
-  background: #FFFFFF !important;
-  box-shadow: 0 0 35px rgba(56, 189, 248, 0.9), 0 0 70px rgba(14, 165, 233, 0.55), 0 10px 25px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(180deg, #BAE6FD 0%, #FFFFFF 52%) !important;
+  box-shadow: 0 0 28px rgba(56, 189, 248, 0.85), 0 0 55px rgba(14, 165, 233, 0.5), 0 8px 22px rgba(0, 0, 0, 0.28);
 }
 
 .orbit-node:focus-visible {
@@ -803,29 +803,42 @@ body.mobile-nav-open {
   outline-offset: 3px;
 }
 
-.orbit-node svg {
-  width: 26px;
-  height: 26px;
-  margin-bottom: 4px;
-  color: #0284C7;
-  stroke: #0284C7;
-  filter: drop-shadow(0 0 5px rgba(2, 132, 199, 0.55));
+/* Blue Circular Icon Pod to break up white and add color */
+.orbit-icon-wrap {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF !important;
+  margin-bottom: 3px;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.45);
   transition: all 0.3s ease;
   flex-shrink: 0;
 }
 
-.orbit-node:hover svg {
-  color: #0099FF;
-  stroke: #0099FF;
-  filter: drop-shadow(0 0 9px rgba(0, 153, 255, 0.85));
+.orbit-icon-wrap svg {
+  width: 16px;
+  height: 16px;
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+  filter: none !important;
+  display: block;
+}
+
+.orbit-node:hover .orbit-icon-wrap {
+  background: linear-gradient(135deg, #00A6FF 0%, #0284C7 100%);
   transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(0, 166, 255, 0.7);
 }
 
 .orbit-node span {
-  font-size: 0.74rem;
+  font-size: 0.68rem;
   font-weight: 800;
   line-height: 1.15;
-  color: #0A192F !important; /* Bold Black for high contrast & clarity */
+  color: #0A192F !important; /* Bold Black */
   text-decoration: none !important;
   letter-spacing: -0.01em;
   font-family: var(--font-body);
@@ -837,7 +850,7 @@ body.mobile-nav-open {
   display: inline;
   color: #1E293B !important;
   font-weight: 700;
-  font-size: 0.85em;
+  font-size: 0.82em;
 }
 
 .orbit-node:hover span {
@@ -846,10 +859,10 @@ body.mobile-nav-open {
 }
 
 /* 4 Positions */
-.orbit-node.node-1 { top: 8px; left: 50%; transform: translateX(-50%); }
-.orbit-node.node-2 { right: 8px; top: 50%; transform: translateY(-50%); }
-.orbit-node.node-3 { bottom: 8px; left: 50%; transform: translateX(-50%); }
-.orbit-node.node-4 { left: 8px; top: 50%; transform: translateY(-50%); }
+.orbit-node.node-1 { top: 12px; left: 50%; transform: translateX(-50%); }
+.orbit-node.node-2 { right: 12px; top: 50%; transform: translateY(-50%); }
+.orbit-node.node-3 { bottom: 12px; left: 50%; transform: translateX(-50%); }
+.orbit-node.node-4 { left: 12px; top: 50%; transform: translateY(-50%); }
 
 .orbit-node.node-1:hover { transform: translateX(-50%) scale(1.12) !important; }
 .orbit-node.node-2:hover { transform: translateY(-50%) scale(1.12) !important; }
@@ -871,12 +884,13 @@ body.mobile-nav-open {
     justify-content: center;
   }
   .constellation-wrapper {
-    min-height: 400px;
-    max-width: 400px;
+    margin: 0 auto;
+    min-height: 380px;
+    max-width: 370px;
   }
   .constellation-ring {
-    width: 320px;
-    height: 320px;
+    width: 310px;
+    height: 310px;
   }
   .constellation-center {
     width: 152px;
@@ -886,10 +900,20 @@ body.mobile-nav-open {
   .constellation-center img.constellation-logo,
   .constellation-center img { width: 120px; }
   .orbit-node {
-    width: 96px;
-    height: 96px;
+    width: 82px;
+    height: 82px;
+    padding: 5px 3px !important;
   }
-  .orbit-node span { font-size: 0.65rem; }
+  .orbit-icon-wrap {
+    width: 26px;
+    height: 26px;
+    margin-bottom: 2px;
+  }
+  .orbit-icon-wrap svg {
+    width: 14px;
+    height: 14px;
+  }
+  .orbit-node span { font-size: 0.62rem; }
 }
 
 @media (max-width: 576px) {
@@ -910,12 +934,20 @@ body.mobile-nav-open {
   .constellation-center img.constellation-logo,
   .constellation-center img { width: 102px; }
   .orbit-node {
-    width: 82px;
-    height: 82px;
-    padding: 6px;
+    width: 72px;
+    height: 72px;
+    padding: 4px 2px !important;
   }
-  .orbit-node svg { width: 20px; height: 20px; margin-bottom: 3px; }
-  .orbit-node span { font-size: 0.58rem; }
+  .orbit-icon-wrap {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 2px;
+  }
+  .orbit-icon-wrap svg {
+    width: 12px;
+    height: 12px;
+  }
+  .orbit-node span { font-size: 0.54rem; }
   .orbit-node.node-1 { top: 0px; }
   .orbit-node.node-2 { right: 0px; }
   .orbit-node.node-3 { bottom: 0px; }
@@ -939,12 +971,20 @@ body.mobile-nav-open {
   .constellation-center img.constellation-logo,
   .constellation-center img { width: 88px; }
   .orbit-node {
-    width: 70px;
-    height: 70px;
-    padding: 4px;
+    width: 64px;
+    height: 64px;
+    padding: 3px 2px !important;
   }
-  .orbit-node svg { width: 17px; height: 17px; margin-bottom: 2px; }
-  .orbit-node span { font-size: 0.52rem; }
+  .orbit-icon-wrap {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 1px;
+  }
+  .orbit-icon-wrap svg {
+    width: 10px;
+    height: 10px;
+  }
+  .orbit-node span { font-size: 0.48rem; }
 }
 
 /* ==========================================================================
