@@ -1794,11 +1794,19 @@ footer.site-footer {
   width: 100%;
 }
 
+.footer-logo-wrap {
+  width: 100%;
+  max-width: 32ch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
 .footer-logo {
   height: 68px;
   width: auto;
   display: block;
-  margin-bottom: 16px;
   background: transparent;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
 }
@@ -1809,6 +1817,10 @@ footer.site-footer {
 @media (max-width: 600px) {
   .footer-logo {
     height: 56px;
+  }
+  .footer-logo-wrap {
+    max-width: 100%;
+    justify-content: center;
     margin-bottom: 12px;
   }
   .footer-top-grid {
