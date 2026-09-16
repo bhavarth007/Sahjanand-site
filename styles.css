@@ -376,10 +376,12 @@ nav.main-nav a.active::after {
    MOBILE RIGHT-SIDE NAVIGATION DRAWER (< 992px)
    3-Line Hamburger Menu with Clean Slide-In Drawer from Right
    ========================================================================== */
+html.mobile-nav-open,
 body.mobile-nav-open {
   overflow: hidden !important;
   touch-action: none !important;
   -webkit-overflow-scrolling: auto !important;
+  overscroll-behavior: none !important;
 }
 
 
@@ -481,8 +483,10 @@ body.mobile-nav-open {
     left: auto !important;
     width: 320px !important;
     max-width: 86vw !important;
+    height: 100% !important;
     height: 100vh !important;
     height: 100dvh !important;
+    height: -webkit-fill-available !important;
     background: #FFFFFF !important;
     box-shadow: -10px 0 40px rgba(0, 0, 0, 0.32) !important;
     transform: translateX(105%) !important;
@@ -494,6 +498,8 @@ body.mobile-nav-open {
     margin: 0 !important;
     border: none !important;
     overflow: hidden !important;
+    overscroll-behavior: contain !important;
+    touch-action: pan-y !important;
   }
 
   nav.main-nav.active {
@@ -562,6 +568,7 @@ body.mobile-nav-open {
     flex: 1 1 auto !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior: contain !important;
     width: 100% !important;
   }
 
@@ -612,7 +619,8 @@ body.mobile-nav-open {
   /* Drawer Bottom Footer & CTA */
   .mobile-drawer-footer {
     display: block !important;
-    padding: 18px 20px 24px !important;
+    margin-top: auto !important;
+    padding: 18px 20px calc(24px + env(safe-area-inset-bottom, 0px)) !important;
     border-top: 1px solid #E2E8F0 !important;
     background: #F8FAFC !important;
     flex-shrink: 0 !important;
@@ -649,7 +657,9 @@ body.mobile-nav-open {
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
+    width: 100% !important;
     width: 100vw !important;
+    height: 100% !important;
     height: 100vh !important;
     height: 100dvh !important;
     background: rgba(10, 25, 47, 0.5) !important;
@@ -659,6 +669,8 @@ body.mobile-nav-open {
     opacity: 0 !important;
     pointer-events: none !important;
     transition: opacity 0.3s ease !important;
+    touch-action: none !important;
+    overscroll-behavior: none !important;
   }
 
   .mobile-nav-backdrop.active {
@@ -1803,15 +1815,17 @@ footer.site-footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .footer-logo {
-  height: 68px;
+  height: 102px;
+  max-height: 102px;
   width: auto;
   display: block;
+  margin: 0 auto;
   background: transparent;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45));
 }
 
 @media (max-width: 992px) {
@@ -1819,12 +1833,13 @@ footer.site-footer {
 }
 @media (max-width: 600px) {
   .footer-logo {
-    height: 56px;
+    height: 84px;
+    max-height: 84px;
   }
   .footer-logo-wrap {
     max-width: 100%;
     justify-content: center;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
   .footer-top-grid {
     grid-template-columns: 1fr 1fr;
@@ -1958,6 +1973,11 @@ footer.site-footer {
   color: #E2E8F0;
   letter-spacing: 0.05em;
   font-weight: 600;
+  display: block;
+  width: 100%;
+  max-width: 32ch;
+  text-align: center;
+  margin-top: 10px;
 }
 
 /* ==========================================================================

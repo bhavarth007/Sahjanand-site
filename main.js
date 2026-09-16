@@ -55,21 +55,48 @@ document.addEventListener('DOMContentLoaded', function () {
     handleNavResponsive();
     window.addEventListener('resize', handleNavResponsive);
 
+    var savedScrollY = 0;
+
     function openDrawer() {
+      savedScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
       navDrawer.classList.add('active');
       if (backdrop) backdrop.classList.add('active');
       toggleBtn.classList.add('active');
       toggleBtn.setAttribute('aria-expanded', 'true');
       document.body.classList.add('mobile-nav-open');
+      document.documentElement.classList.add('mobile-nav-open');
+      document.body.style.position = 'fixed';
+      document.body.style.top = '-' + savedScrollY + 'px';
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
     }
 
     function closeDrawer() {
+      if (!navDrawer.classList.contains('active')) return;
       navDrawer.classList.remove('active');
       if (backdrop) backdrop.classList.remove('active');
       toggleBtn.classList.remove('active');
       toggleBtn.setAttribute('aria-expanded', 'false');
       document.body.classList.remove('mobile-nav-open');
+      document.documentElement.classList.remove('mobile-nav-open');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      window.scrollTo(0, savedScrollY);
     }
+
+    // Prevent background touch scrolling while drawer is active
+    function preventTouchScroll(e) {
+      if (navDrawer.classList.contains('active')) {
+        if (!e.target.closest('nav.main-nav ul')) {
+          e.preventDefault();
+        }
+      }
+    }
+    window.addEventListener('touchmove', preventTouchScroll, { passive: false });
 
     toggleBtn.addEventListener('click', function (e) {
       e.stopPropagation();
