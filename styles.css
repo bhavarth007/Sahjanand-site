@@ -3103,3 +3103,26 @@ footer.site-footer {
     height: 28px;
   }
 }
+
+.wa-inline-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #25D366;
+  border-radius: 50%;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+}
+
+.wa-inline-badge:hover {
+  background: #20BA5A;
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.55);
+}
+
+.wa-inline-badge svg {
+  fill: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
