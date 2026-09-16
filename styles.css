@@ -1809,9 +1809,13 @@ footer.site-footer {
   width: 100%;
 }
 
+.footer-brand {
+  max-width: 32ch;
+  width: 100%;
+}
+
 .footer-logo-wrap {
   width: 100%;
-  max-width: 32ch;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1837,8 +1841,6 @@ footer.site-footer {
     max-height: 84px;
   }
   .footer-logo-wrap {
-    max-width: 100%;
-    justify-content: center;
     margin-bottom: 14px;
   }
   .footer-top-grid {
@@ -1850,7 +1852,6 @@ footer.site-footer {
     margin-bottom: 4px;
   }
   .footer-brand p {
-    max-width: 100%;
     font-size: 0.88rem;
   }
 }
@@ -1859,7 +1860,7 @@ footer.site-footer {
   color: #94A3B8;
   font-size: 0.92rem;
   line-height: 1.6;
-  max-width: 32ch;
+  width: 100%;
   margin-bottom: 18px;
 }
 
@@ -1975,9 +1976,8 @@ footer.site-footer {
   font-weight: 600;
   display: block;
   width: 100%;
-  max-width: 32ch;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 /* ==========================================================================
