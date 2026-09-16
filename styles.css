@@ -2559,12 +2559,12 @@ footer.site-footer {
 }
 
 .cert-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
+  background: #0B1D35;
+  border: 1px solid rgba(245, 158, 11, 0.35);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 30px rgba(10, 25, 47, 0.12);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -2572,34 +2572,43 @@ footer.site-footer {
 }
 
 .cert-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-7px);
   border-color: #F59E0B;
-  box-shadow: 0 16px 36px rgba(245, 158, 11, 0.18);
+  box-shadow: 0 18px 45px rgba(245, 158, 11, 0.25), 0 0 25px rgba(245, 158, 11, 0.15);
 }
 
+/* Badge placed at top-left to avoid obscuring certificate's own ZED emblem */
 .cert-badge {
   position: absolute;
   top: 14px;
-  right: 14px;
+  left: 14px;
   z-index: 3;
   background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
   color: #FFFFFF;
   font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   padding: 5px 12px;
   border-radius: var(--radius-full);
-  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.4);
+  box-shadow: 0 3px 10px rgba(217, 119, 6, 0.5);
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.cert-badge svg {
+  color: #FFFFFF;
 }
 
 .cert-preview-frame {
   position: relative;
   width: 100%;
-  height: 340px;
+  height: 330px;
   background: #F8FAFC;
   overflow: hidden;
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 2px solid #F59E0B;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -2611,86 +2620,151 @@ footer.site-footer {
   object-fit: cover;
   object-position: top center;
   transition: transform 0.4s ease;
+  display: block;
 }
 
 .cert-card:hover .cert-preview-frame img {
   transform: scale(1.04);
 }
 
-.cert-overlay-hover {
+/* Sleek full-frame zoom overlay on hover: completely hidden when not hovered */
+.cert-zoom-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 25, 47, 0.6);
+  background: rgba(10, 25, 47, 0.75);
+  backdrop-filter: blur(3px);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.25s ease;
-  backdrop-filter: blur(2px);
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 4;
 }
 
-.cert-card:hover .cert-overlay-hover {
+.cert-card:hover .cert-zoom-overlay {
   opacity: 1;
 }
 
-.btn-expand-cert {
-  background: #FFFFFF;
-  color: #0284C7;
+.zoom-btn-pill {
+  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+  color: #FFFFFF;
+  font-size: 0.86rem;
   font-weight: 700;
-  font-size: 0.88rem;
-  padding: 10px 18px;
+  padding: 10px 20px;
   border-radius: var(--radius-full);
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  transform: translateY(8px);
-  transition: transform 0.25s ease;
+  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.5);
+  border: 1px solid rgba(56, 189, 248, 0.6);
+  transform: translateY(10px);
+  transition: transform 0.3s ease;
 }
 
-.cert-card:hover .btn-expand-cert {
+.cert-card:hover .zoom-btn-pill {
   transform: translateY(0);
 }
 
-.cert-card-details {
-  padding: 22px 24px;
+/* Re-designed Accreditation Card Body (Executive Plaque Style) */
+.cert-card-body {
+  background: linear-gradient(180deg, #0D223F 0%, #071527 100%);
+  padding: 22px 22px 18px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-.cert-unit-tag {
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #D97706;
-  letter-spacing: 0.05em;
-  margin-bottom: 6px;
-  display: block;
-}
-
-.cert-card-details h4 {
+.cert-card-body h4 {
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--navy-dark);
-  margin: 0 0 8px 0;
+  color: #FFFFFF;
+  margin: 0 0 14px 0;
   line-height: 1.35;
+  font-family: var(--font-display);
 }
 
-.cert-meta {
-  font-size: 0.84rem;
-  color: #475569;
-  margin: 0 0 4px 0;
+.cert-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
-.cert-meta strong {
-  color: var(--navy-dark);
+.cert-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.cert-location {
-  font-size: 0.8rem;
+.cert-info-row:last-child {
+  border-bottom: none;
+}
+
+.cert-info-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: #94A3B8;
-  margin: 0;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.cert-info-label svg {
+  color: #38BDF8;
+}
+
+.cert-info-val {
+  color: #E2E8F0;
+  font-weight: 500;
+  text-align: right;
+  word-break: break-word;
+}
+
+.cert-info-code {
+  font-family: monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #38BDF8;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.cert-highlight-gold {
+  color: #FCD34D !important;
+  font-weight: 700 !important;
+}
+
+.cert-card-footer-action {
+  margin-top: auto;
+  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #38BDF8;
+  transition: all 0.25s ease;
+}
+
+.cert-card:hover .cert-card-footer-action {
+  color: #F59E0B;
+}
+
+.cert-card-footer-action svg {
+  transition: transform 0.25s ease;
+}
+
+.cert-card:hover .cert-card-footer-action svg {
+  transform: translateX(4px);
 }
 
 /* Lightbox Modal */
