@@ -12,7 +12,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<link rel="stylesheet" href="styles.css?v=14">
+<link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
 
@@ -71,40 +71,19 @@
    <div class="product-filter-container">
     <div class="product-filter-bar" role="tablist" aria-label="Filter by Division">
      <button type="button" class="product-filter-btn active" data-filter="all">
-      <span>All Divisions</span>
-      <span class="filter-count">16</span>
-     </button>
-     <button type="button" class="product-filter-btn" data-filter="yarn">
-      <span>1. Yarn Section</span>
-      <span class="filter-count">3</span>
-     </button>
-     <button type="button" class="product-filter-btn" data-filter="rapier">
-      <span>2. Rapier Section</span>
-      <span class="filter-count">3</span>
+      <span>All</span>
      </button>
      <button type="button" class="product-filter-btn" data-filter="weaving">
-      <span>3. Weaving Sector</span>
-      <span class="filter-count">3</span>
+      <span>Weaving</span>
      </button>
-     <button type="button" class="product-filter-btn" data-filter="purchase">
-      <span>4. Purchase Section</span>
-      <span class="filter-count">3</span>
+     <button type="button" class="product-filter-btn" data-filter="yarn">
+      <span>Yarn</span>
      </button>
-     <button type="button" class="product-filter-btn" data-filter="concrete">
-      <span>Concrete Products</span>
-      <span class="filter-count">1</span>
+     <button type="button" class="product-filter-btn" data-filter="chemical">
+      <span>Chemical</span>
      </button>
-     <button type="button" class="product-filter-btn" data-filter="steel">
-      <span>Structural Steel</span>
-      <span class="filter-count">1</span>
-     </button>
-     <button type="button" class="product-filter-btn" data-filter="drainage">
-      <span>Precast Drainage</span>
-      <span class="filter-count">1</span>
-     </button>
-     <button type="button" class="product-filter-btn" data-filter="fittings">
-      <span>Pipe Fittings</span>
-      <span class="filter-count">1</span>
+     <button type="button" class="product-filter-btn" data-filter="trade">
+      <span>Trade</span>
      </button>
     </div>
    </div>
@@ -113,15 +92,192 @@
    <div class="grid grid-2" id="product-grid">
 
     <!-- =================================================================== -->
-    <!-- DIVISION 01: YARN SECTION -->
+    <!-- DIVISION: WEAVING -->
     <!-- =================================================================== -->
-    <div class="division-group-header" data-division="yarn">
-     <span class="product-division-badge">Textile Division 01</span>
-     <h3>1. Yarn Section &amp; Warp Preparation</h3>
-     <p>Raw material sourcing, computer-controlled sectional warping, eco-friendly sizing, and ready-to-loom beam preparation engineered for zero warp breakage.</p>
+    <div class="division-group-header" data-division="weaving">
+     <span class="product-division-badge">Enterprise Division 01</span>
+     <h3>Weaving</h3>
+     <p>High-speed waterjet, airjet, and rapier weaving output including continuous loom-state grey fabric rolls, micro-polyester apparel textiles, structured suiting, and dobby textures.</p>
     </div>
 
     <!-- Product 1.1 -->
+    <div class="product-card" data-division="weaving" id="grey-rolls">
+     <span class="product-division-badge">Weaving Division</span>
+     <div class="product-icon-wrap">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+     </div>
+     <h3>High-Speed Grey Fabric Rolls (Direct Loom State)</h3>
+     <p>Continuous loom-state grey cloth rolls produced at 800 to 1,000+ picks per minute with computerized electronic let-off and take-up. 100% illuminated rolling inspection guaranteed free from start-marks and weaving defects.</p>
+     <div class="product-badges">
+      <span class="product-badge">800 - 1000+ RPM</span>
+      <span class="product-badge">44" to 72" Widths</span>
+      <span class="product-badge">Zero Start-Marks</span>
+      <span class="product-badge">Poly-Woven Rolls</span>
+     </div>
+     <ul class="spec-list">
+      <li><span>Production Speed:</span> <strong>800 to 1,000+ Picks Per Minute</strong></li>
+      <li><span>Roll Length:</span> <strong>Continuous 500m to 1,000m Poly-Wrapped</strong></li>
+      <li><span>Target Clients:</span> <strong>Textile dyeing mills, printing &amp; processing houses</strong></li>
+     </ul>
+     <div class="product-action">
+      <a href="contact?inquiry=textile-weaving&amp;product=Grey+Fabric+Rolls" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+       <span>Request Quote</span>
+       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Weaving Division</span>
+     </div>
+    </div>
+
+    <!-- Product 1.2 -->
+    <div class="product-card" data-division="weaving" id="fashion-textiles">
+     <span class="product-division-badge">Weaving Division</span>
+     <div class="product-icon-wrap">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+     </div>
+     <h3>Micro-Polyester Fashion Textiles (Chiffon, Georgette, Satin)</h3>
+     <p>Featherweight and medium-weight synthetic fashion textiles woven from micro-filament yarns. Renowned for fluid handfeel, excellent drape, high tensile endurance, and rapid, vibrant dye uptake in processing.</p>
+     <div class="product-badges">
+      <span class="product-badge">40 to 120 GSM</span>
+      <span class="product-badge">Fluid Handfeel</span>
+      <span class="product-badge">Vibrant Dye Uptake</span>
+      <span class="product-badge">Micro-Filament</span>
+     </div>
+     <ul class="spec-list">
+      <li><span>Fabric Portfolio:</span> <strong>Poly Chiffon, Heavy Georgette, Satin, Crepe</strong></li>
+      <li><span>GSM Accuracy:</span> <strong>&plusmn;2% Batch-to-Batch Consistency</strong></li>
+      <li><span>Applications:</span> <strong>Apparel fashion, sarees, scarves, evening wear</strong></li>
+     </ul>
+     <div class="product-action">
+      <a href="contact?inquiry=textile-weaving&amp;product=Micro-Polyester+Fashion+Textiles" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+       <span>Request Quote</span>
+       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Weaving Division</span>
+     </div>
+    </div>
+
+    <!-- Product 1.3 -->
+    <div class="product-card" data-division="weaving" id="structured-suiting">
+     <span class="product-division-badge">Weaving Division</span>
+     <div class="product-icon-wrap">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+     </div>
+     <h3>Structured Suiting, Twill &amp; Uniform Fabrics</h3>
+     <p>Heavy-duty structured suiting fabrics engineered for institutional uniform contractors and apparel brands. Woven on precision electronic rapier heads with dense pick counts, superior crease recovery, and long-lasting durability.</p>
+     <div class="product-badges">
+      <span class="product-badge">Heavy Twill &amp; Matty</span>
+      <span class="product-badge">180 to 350 GSM</span>
+      <span class="product-badge">58"-60" Reed Width</span>
+      <span class="product-badge">High Abrasion Resistance</span>
+     </div>
+     <ul class="spec-list">
+      <li><span>Composition:</span> <strong>Polyester/Viscose &amp; Micro-Twill Blends</strong></li>
+      <li><span>Finish Durability:</span> <strong>Tested against pilling &amp; heavy wash cycles</strong></li>
+      <li><span>Applications:</span> <strong>Corporate uniforms, security wear, school suiting</strong></li>
+     </ul>
+     <div class="product-action">
+      <a href="contact?inquiry=textile-weaving&amp;product=Structured+Suiting+and+Uniform+Fabrics" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+       <span>Request Quote</span>
+       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Weaving Division</span>
+     </div>
+    </div>
+
+    <!-- Product 1.4 -->
+    <div class="product-card" data-division="weaving" id="dobby-fabrics">
+     <span class="product-division-badge">Weaving Division</span>
+     <div class="product-icon-wrap">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+     </div>
+     <h3>Dobby Textures &amp; Designer Apparel Cloth</h3>
+     <p>Intricate dobby weave patterns, mini-checks, micro-textures, and self-design synthetic fabrics. Controlled by high-speed electronic dobby shedding mechanisms capable of multi-color weft selections.</p>
+     <div class="product-badges">
+      <span class="product-badge">Electronic Weft Insertion</span>
+      <span class="product-badge">8-Color Selector</span>
+      <span class="product-badge">Dobby Textures</span>
+      <span class="product-badge">Soft Drape</span>
+     </div>
+     <ul class="spec-list">
+      <li><span>Pattern Varieties:</span> <strong>Self-stripes, micro-checks, dobby dots</strong></li>
+      <li><span>Width Range:</span> <strong>112 cm to 160 cm Standard Widths</strong></li>
+      <li><span>Applications:</span> <strong>Designer shirts, blazers, ethnic wear, jackets</strong></li>
+     </ul>
+     <div class="product-action">
+      <a href="contact?inquiry=textile-weaving&amp;product=Dobby+Textured+Fabrics" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+       <span>Request Quote</span>
+       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Weaving Division</span>
+     </div>
+    </div>
+
+    <!-- Product 1.5 -->
+    <div class="product-card" data-division="weaving" id="taffeta-linings">
+     <span class="product-division-badge">Weaving Division</span>
+     <div class="product-icon-wrap">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+     </div>
+     <h3>High-Density Taffeta &amp; Twill Linings</h3>
+     <p>Dense warp/weft commercial lining cloth designed for garment manufacturers, coat makers, and luggage producers. Tested for anti-static properties, smooth slippage, and high seam strength.</p>
+     <div class="product-badges">
+      <span class="product-badge">190T to 290T Density</span>
+      <span class="product-badge">High Seam Strength</span>
+      <span class="product-badge">Anti-Static Option</span>
+      <span class="product-badge">Abrasion Tested</span>
+     </div>
+     <ul class="spec-list">
+      <li><span>Thread Counts:</span> <strong>190T, 210T, 230T, 290T Precision Weaves</strong></li>
+      <li><span>Performance:</span> <strong>Low yarn slippage, high tear resistance</strong></li>
+      <li><span>Applications:</span> <strong>Suit jackets, winter wear, bags, technical covers</strong></li>
+     </ul>
+     <div class="product-action">
+      <a href="contact?inquiry=textile-weaving&amp;product=Taffeta+and+Twill+Linings" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+       <span>Request Quote</span>
+       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Weaving Division</span>
+     </div>
+    </div>
+
+    <!-- Product 1.6 -->
+    <div class="product-card" data-division="weaving" id="broad-furnishing">
+     <span class="product-division-badge">Weaving Division</span>
+     <div class="product-icon-wrap">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+     </div>
+     <h3>Heavy Base Furnishing &amp; Broad-Width Jacquards</h3>
+     <p>Broad-width decorative textiles, curtain bases, and upholstery fabrics woven on extra-wide rapier looms. Engineered with high pick density and dimensionally stable selvedges for commercial interiors.</p>
+     <div class="product-badges">
+      <span class="product-badge">180 cm to 360 cm Broad</span>
+      <span class="product-badge">Up to 120 PPI</span>
+      <span class="product-badge">Tear Resistant</span>
+      <span class="product-badge">Dimensional Stability</span>
+     </div>
+     <ul class="spec-list">
+      <li><span>Loom Widths:</span> <strong>Broad width looms up to 360 cm</strong></li>
+      <li><span>Pick Density:</span> <strong>Up to 120 Picks Per Inch (PPI)</strong></li>
+      <li><span>Applications:</span> <strong>Curtains, upholstery bases, hotel drapery</strong></li>
+     </ul>
+     <div class="product-action">
+      <a href="contact?inquiry=textile-weaving&amp;product=Furnishing+and+Broad+Jacquard+Fabrics" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+       <span>Request Quote</span>
+       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Weaving Division</span>
+     </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- DIVISION: YARN -->
+    <!-- =================================================================== -->
+    <div class="division-group-header" data-division="yarn">
+     <span class="product-division-badge">Enterprise Division 02</span>
+     <h3>Yarn</h3>
+     <p>Synthetic filament sourcing, precision drawing, high-speed texturing, computerized sectional warping, and eco-friendly sized beam preparation.</p>
+    </div>
+
+    <!-- Product 2.1 -->
     <div class="product-card" data-division="yarn" id="fdy-poy-yarn">
      <span class="product-division-badge">Yarn Division</span>
      <div class="product-icon-wrap">
@@ -145,11 +301,11 @@
        <span>Request Quote</span>
        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Yarn Section</span>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Yarn Division</span>
      </div>
     </div>
 
-    <!-- Product 1.2 -->
+    <!-- Product 2.2 -->
     <div class="product-card" data-division="yarn" id="dty-yarn">
      <span class="product-division-badge">Yarn Division</span>
      <div class="product-icon-wrap">
@@ -173,11 +329,11 @@
        <span>Request Quote</span>
        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Yarn Section</span>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Yarn Division</span>
      </div>
     </div>
 
-    <!-- Product 1.3 -->
+    <!-- Product 2.3 -->
     <div class="product-card" data-division="yarn" id="sized-beams">
      <span class="product-division-badge">Yarn Division</span>
      <div class="product-icon-wrap">
@@ -201,217 +357,124 @@
        <span>Request Quote</span>
        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Yarn Section</span>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Yarn Division</span>
      </div>
     </div>
 
     <!-- =================================================================== -->
-    <!-- DIVISION 02: RAPIER SECTION -->
+    <!-- DIVISION: CHEMICAL -->
     <!-- =================================================================== -->
-    <div class="division-group-header" data-division="rapier">
-     <span class="product-division-badge">Textile Division 02</span>
-     <h3>2. Rapier Section (Rapier Loom Division)</h3>
-     <p>Advanced computerized rapier loom floor specializing in structured weaves, dobby patterns, institutional suiting, and broad-width furnishing materials.</p>
-    </div>
-
-    <!-- Product 2.1 -->
-    <div class="product-card" data-division="rapier" id="structured-suiting">
-     <span class="product-division-badge">Rapier Division</span>
-     <div class="product-icon-wrap">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
-     </div>
-     <h3>Structured Suiting, Twill &amp; Uniform Fabrics</h3>
-     <p>Heavy-duty structured suiting fabrics engineered for institutional uniform contractors and apparel brands. Woven on precision electronic rapier heads with dense pick counts, superior crease recovery, and long-lasting durability.</p>
-     <div class="product-badges">
-      <span class="product-badge">Heavy Twill &amp; Matty</span>
-      <span class="product-badge">180 to 350 GSM</span>
-      <span class="product-badge">58"-60" Reed Width</span>
-      <span class="product-badge">High Abrasion Resistance</span>
-     </div>
-     <ul class="spec-list">
-      <li><span>Composition:</span> <strong>Polyester/Viscose &amp; Micro-Twill Blends</strong></li>
-      <li><span>Finish Durability:</span> <strong>Tested against pilling &amp; heavy wash cycles</strong></li>
-      <li><span>Applications:</span> <strong>Corporate uniforms, security wear, school suiting</strong></li>
-     </ul>
-     <div class="product-action">
-      <a href="contact?inquiry=textile-rapier&amp;product=Structured+Suiting+and+Uniform+Fabrics" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
-       <span>Request Quote</span>
-       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Rapier Section</span>
-     </div>
-    </div>
-
-    <!-- Product 2.2 -->
-    <div class="product-card" data-division="rapier" id="dobby-fabrics">
-     <span class="product-division-badge">Rapier Division</span>
-     <div class="product-icon-wrap">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-     </div>
-     <h3>Dobby Textures &amp; Designer Apparel Cloth</h3>
-     <p>Intricate dobby weave patterns, mini-checks, micro-textures, and self-design synthetic fabrics. Controlled by high-speed electronic dobby shedding mechanisms capable of multi-color weft selections.</p>
-     <div class="product-badges">
-      <span class="product-badge">Electronic Weft Insertion</span>
-      <span class="product-badge">8-Color Selector</span>
-      <span class="product-badge">Dobby Textures</span>
-      <span class="product-badge">Soft Drape</span>
-     </div>
-     <ul class="spec-list">
-      <li><span>Pattern Varieties:</span> <strong>Self-stripes, micro-checks, dobby dots</strong></li>
-      <li><span>Width Range:</span> <strong>112 cm to 160 cm Standard Widths</strong></li>
-      <li><span>Applications:</span> <strong>Designer shirts, blazers, ethnic wear, jackets</strong></li>
-     </ul>
-     <div class="product-action">
-      <a href="contact?inquiry=textile-rapier&amp;product=Dobby+Textured+Fabrics" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
-       <span>Request Quote</span>
-       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Rapier Section</span>
-     </div>
-    </div>
-
-    <!-- Product 2.3 -->
-    <div class="product-card" data-division="rapier" id="broad-furnishing">
-     <span class="product-division-badge">Rapier Division</span>
-     <div class="product-icon-wrap">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-     </div>
-     <h3>Heavy Base Furnishing &amp; Broad-Width Jacquards</h3>
-     <p>Broad-width decorative textiles, curtain bases, and upholstery fabrics woven on extra-wide rapier looms. Engineered with high pick density and dimensionally stable selvedges for commercial interiors.</p>
-     <div class="product-badges">
-      <span class="product-badge">180 cm to 360 cm Broad</span>
-      <span class="product-badge">Up to 120 PPI</span>
-      <span class="product-badge">Tear Resistant</span>
-      <span class="product-badge">Dimensional Stability</span>
-     </div>
-     <ul class="spec-list">
-      <li><span>Loom Widths:</span> <strong>Broad width looms up to 360 cm</strong></li>
-      <li><span>Pick Density:</span> <strong>Up to 120 Picks Per Inch (PPI)</strong></li>
-      <li><span>Applications:</span> <strong>Curtains, upholstery bases, hotel drapery</strong></li>
-     </ul>
-     <div class="product-action">
-      <a href="contact?inquiry=textile-rapier&amp;product=Furnishing+and+Broad+Jacquard+Fabrics" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
-       <span>Request Quote</span>
-       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Rapier Section</span>
-     </div>
-    </div>
-
-    <!-- =================================================================== -->
-    <!-- DIVISION 03: WEAVING SECTOR -->
-    <!-- =================================================================== -->
-    <div class="division-group-header" data-division="weaving">
-     <span class="product-division-badge">Textile Division 03</span>
-     <h3>3. Weaving Sector (High-Speed Weaving Division)</h3>
-     <p>High-volume 24/7 automated waterjet and airjet weaving floor manufacturing continuous grey fabric rolls, micro-polyester fashion fabrics, and garment linings.</p>
+    <div class="division-group-header" data-division="chemical">
+     <span class="product-division-badge">Enterprise Division 03</span>
+     <h3>Chemical</h3>
+     <p>Formulation and bulk supply of eco-friendly synthetic sizing chemicals, warp polymer binders, textile wet processing auxiliaries, spinning oils, and finishing softeners.</p>
     </div>
 
     <!-- Product 3.1 -->
-    <div class="product-card" data-division="weaving" id="grey-rolls">
-     <span class="product-division-badge">Weaving Sector</span>
+    <div class="product-card" data-division="chemical" id="sizing-chemicals">
+     <span class="product-division-badge">Chemical Division</span>
      <div class="product-icon-wrap">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.14 19.3A2 2 0 0 0 5.86 22h12.28a2 2 0 0 0 1.72-2.7L14 9.31V2"/></svg>
      </div>
-     <h3>High-Speed Grey Fabric Rolls (Direct Loom State)</h3>
-     <p>Continuous loom-state grey cloth rolls produced at 800 to 1,000+ picks per minute with computerized electronic let-off and take-up. 100% illuminated rolling inspection guaranteed free from start-marks and weaving defects.</p>
+     <h3>Eco-Friendly Synthetic Sizing Chemicals &amp; Binders</h3>
+     <p>Water-soluble high-cohesion synthetic acrylic and polyvinyl sizing polymers. Delivers a protective, flexible anti-abrasion film over warp filaments, ensuring zero loom shedding, smooth yarn glide, and rapid, residue-free desizing.</p>
      <div class="product-badges">
-      <span class="product-badge">800 - 1000+ RPM</span>
-      <span class="product-badge">44" to 72" Widths</span>
-      <span class="product-badge">Zero Start-Marks</span>
-      <span class="product-badge">Poly-Woven Rolls</span>
+      <span class="product-badge">Water-Soluble</span>
+      <span class="product-badge">Zero Shedding</span>
+      <span class="product-badge">High Adhesion Film</span>
+      <span class="product-badge">Eco-Certified</span>
      </div>
      <ul class="spec-list">
-      <li><span>Production Speed:</span> <strong>800 to 1,000+ Picks Per Minute</strong></li>
-      <li><span>Roll Length:</span> <strong>Continuous 500m to 1,000m Poly-Wrapped</strong></li>
-      <li><span>Target Clients:</span> <strong>Textile dyeing mills, printing &amp; processing houses</strong></li>
+      <li><span>Composition:</span> <strong>Synthetic Acrylic &amp; Polyvinyl Binders</strong></li>
+      <li><span>Desizing Method:</span> <strong>Rapid 100% Water-Soluble Washout</strong></li>
+      <li><span>Applications:</span> <strong>High-speed waterjet, rapier, and airjet beam sizing</strong></li>
      </ul>
      <div class="product-action">
-      <a href="contact?inquiry=textile-weaving&amp;product=Grey+Fabric+Rolls" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+      <a href="contact?inquiry=textile-chemical&amp;product=Synthetic+Sizing+Chemicals" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
        <span>Request Quote</span>
        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Weaving Sector</span>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Chemical Division</span>
      </div>
     </div>
 
     <!-- Product 3.2 -->
-    <div class="product-card" data-division="weaving" id="fashion-textiles">
-     <span class="product-division-badge">Weaving Sector</span>
+    <div class="product-card" data-division="chemical" id="auxiliaries">
+     <span class="product-division-badge">Chemical Division</span>
      <div class="product-icon-wrap">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
      </div>
-     <h3>Micro-Polyester Fashion Textiles (Chiffon, Georgette, Satin)</h3>
-     <p>Featherweight and medium-weight synthetic fashion textiles woven from micro-filament yarns. Renowned for fluid handfeel, excellent drape, high tensile endurance, and rapid, vibrant dye uptake in processing.</p>
+     <h3>Textile Wet Processing Auxiliaries &amp; Scouring Agents</h3>
+     <p>High-performance non-ionic wetting penetrants, scouring agents, defoamers, and dye leveling auxiliaries designed to optimize scouring, bleaching, and dyeing operations across Surat process houses.</p>
      <div class="product-badges">
-      <span class="product-badge">40 to 120 GSM</span>
-      <span class="product-badge">Fluid Handfeel</span>
-      <span class="product-badge">Vibrant Dye Uptake</span>
-      <span class="product-badge">Micro-Filament</span>
+      <span class="product-badge">Rapid Wetting</span>
+      <span class="product-badge">Non-Ionic Base</span>
+      <span class="product-badge">Low-Foam Emulsion</span>
+      <span class="product-badge">High Efficiency</span>
      </div>
      <ul class="spec-list">
-      <li><span>Fabric Portfolio:</span> <strong>Poly Chiffon, Heavy Georgette, Satin, Crepe</strong></li>
-      <li><span>GSM Accuracy:</span> <strong>&plusmn;2% Batch-to-Batch Consistency</strong></li>
-      <li><span>Applications:</span> <strong>Apparel fashion, sarees, scarves, evening wear</strong></li>
+      <li><span>Formulations:</span> <strong>Wetting Agents, Scouring Aids, Silicone Defoamers</strong></li>
+      <li><span>pH Stability:</span> <strong>Broad pH Tolerance (pH 4.0 to 11.0)</strong></li>
+      <li><span>Applications:</span> <strong>Pre-treatment, jigger/jet dyeing, fabric washing</strong></li>
      </ul>
      <div class="product-action">
-      <a href="contact?inquiry=textile-weaving&amp;product=Micro-Polyester+Fashion+Textiles" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+      <a href="contact?inquiry=textile-chemical&amp;product=Textile+Processing+Auxiliaries" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
        <span>Request Quote</span>
        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Weaving Sector</span>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Chemical Division</span>
      </div>
     </div>
 
     <!-- Product 3.3 -->
-    <div class="product-card" data-division="weaving" id="taffeta-linings">
-     <span class="product-division-badge">Weaving Sector</span>
+    <div class="product-card" data-division="chemical" id="softeners-lubricants">
+     <span class="product-division-badge">Chemical Division</span>
      <div class="product-icon-wrap">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
      </div>
-     <h3>High-Density Taffeta &amp; Twill Linings</h3>
-     <p>Dense warp/weft commercial lining cloth designed for garment manufacturers, coat makers, and luggage producers. Tested for anti-static properties, smooth slippage, and high seam strength.</p>
+     <h3>Yarn Spinning Lubricants &amp; Fabric Softeners</h3>
+     <p>Specialized coning oils, anti-static yarn lubricants, and cationic silicone finishing softeners formulated to impart a luxurious handfeel, reduce yarn friction, and prevent electrostatic cling during high-speed weaving.</p>
      <div class="product-badges">
-      <span class="product-badge">190T to 290T Density</span>
-      <span class="product-badge">High Seam Strength</span>
-      <span class="product-badge">Anti-Static Option</span>
-      <span class="product-badge">Abrasion Tested</span>
+      <span class="product-badge">Anti-Static</span>
+      <span class="product-badge">Luxurious Soft Drape</span>
+      <span class="product-badge">Coning Lubricant</span>
+      <span class="product-badge">Zero Yellowing</span>
      </div>
      <ul class="spec-list">
-      <li><span>Thread Counts:</span> <strong>190T, 210T, 230T, 290T Precision Weaves</strong></li>
-      <li><span>Performance:</span> <strong>Low yarn slippage, high tear resistance</strong></li>
-      <li><span>Applications:</span> <strong>Suit jackets, winter wear, bags, technical covers</strong></li>
+      <li><span>Lubricant Types:</span> <strong>Scourable Coning Oils &amp; Anti-Static Finish</strong></li>
+      <li><span>Softener Chemistry:</span> <strong>Micro-Emulsion Silicone &amp; Cationic Flakes</strong></li>
+      <li><span>Applications:</span> <strong>Texturizing, yarn winding, suiting &amp; apparel finishing</strong></li>
      </ul>
      <div class="product-action">
-      <a href="contact?inquiry=textile-weaving&amp;product=Taffeta+and+Twill+Linings" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+      <a href="contact?inquiry=textile-chemical&amp;product=Textile+Softeners+and+Lubricants" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
        <span>Request Quote</span>
        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Weaving Sector</span>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Chemical Division</span>
      </div>
     </div>
 
     <!-- =================================================================== -->
-    <!-- DIVISION 04: PURCHASE SECTION -->
+    <!-- DIVISION: TRADE -->
     <!-- =================================================================== -->
-    <div class="division-group-header" data-division="purchase">
-     <span class="product-division-badge">Textile Division 04</span>
-     <h3>4. Purchase Section (Raw Material &amp; Grey Trading Desk)</h3>
-     <p>Direct enterprise trading desk handling bulk raw polymer sourcing, verified grey cloth lot aggregation, and contractual wholesale trade with 100% client confidentiality.</p>
+    <div class="division-group-header" data-division="trade">
+     <span class="product-division-badge">Enterprise Division 04</span>
+     <h3>Trade</h3>
+     <p>Global enterprise procurement desk handling virgin synthetic polymers, Surat cluster grey fabric export aggregation, and confidential contract trade.</p>
     </div>
 
     <!-- Product 4.1 -->
-    <div class="product-card" data-division="purchase" id="grey-trading-lots">
-     <span class="product-division-badge">Purchase Desk</span>
+    <div class="product-card" data-division="trade" id="grey-trading-lots">
+     <span class="product-division-badge">Trade Division</span>
      <div class="product-icon-wrap">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
      </div>
      <h3>Commercial Grey Cloth Trading Lots (Surat Cluster)</h3>
-     <p>Bulk purchase and trading of verified grey fabric lots aggregated directly from verified weaving sheds across the Surat textile belt. Every lot is strictly pre-inspected under 4-Point International standards with full commercial confidentiality.</p>
+     <p>Bulk purchase and export aggregation of verified grey fabric lots aggregated directly from verified weaving sheds across the Surat textile belt. Every lot is strictly pre-inspected under 4-Point International standards with full commercial confidentiality.</p>
      <div class="product-badges">
       <span class="product-badge">Direct Mill Sourcing</span>
       <span class="product-badge">Pre-Inspected Lots</span>
-      <span class="product-badge">Rapid Settlement</span>
+      <span class="product-badge">FCL Export Ready</span>
       <span class="product-badge">Strict Non-Disclosure</span>
      </div>
      <ul class="spec-list">
@@ -420,24 +483,24 @@
       <li><span>Confidentiality:</span> <strong>Zero client disclosure; protected commercial sources</strong></li>
      </ul>
      <div class="product-action">
-      <a href="contact?inquiry=textile-purchase&amp;product=Grey+Cloth+Trading+Lots" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+      <a href="contact?inquiry=textile-trade&amp;product=Grey+Cloth+Trading+Lots" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
        <span>Request Quote</span>
        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Purchase Desk</span>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Trade Division</span>
      </div>
     </div>
 
     <!-- Product 4.2 -->
-    <div class="product-card" data-division="purchase" id="raw-polymers">
-     <span class="product-division-badge">Purchase Desk</span>
+    <div class="product-card" data-division="trade" id="raw-polymers">
+     <span class="product-division-badge">Trade Division</span>
      <div class="product-icon-wrap">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
      </div>
-     <h3>Virgin Synthetic Polymers &amp; Yarn Feedstock</h3>
-     <p>Direct wholesale procurement and commercial trading of prime virgin polyester chips, POY raw packages, and texturing feedstocks sourced directly from premier petrochemical complexes.</p>
+     <h3>Virgin Synthetic Polymers &amp; Filament Feedstock</h3>
+     <p>Direct wholesale import, procurement, and commercial trading of prime virgin polyester chips, POY raw packages, and texturing feedstocks sourced directly from premier global petrochemical complexes.</p>
      <div class="product-badges">
-      <span class="product-badge">Direct From Producers</span>
+      <span class="product-badge">Direct Global Sourcing</span>
       <span class="product-badge">Virgin Polyester Chips</span>
       <span class="product-badge">POY Raw Packages</span>
       <span class="product-badge">Wholesale Pricing</span>
@@ -448,26 +511,26 @@
       <li><span>Applications:</span> <strong>Extrusion spinning, yarn texturizing &amp; compounding</strong></li>
      </ul>
      <div class="product-action">
-      <a href="contact?inquiry=textile-purchase&amp;product=Virgin+Polymers+and+Yarn+Feedstock" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+      <a href="contact?inquiry=textile-trade&amp;product=Virgin+Polymers+and+Yarn+Feedstock" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
        <span>Request Quote</span>
        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Purchase Desk</span>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Trade Division</span>
      </div>
     </div>
 
     <!-- Product 4.3 -->
-    <div class="product-card" data-division="purchase" id="contract-procurement">
-     <span class="product-division-badge">Purchase Desk</span>
+    <div class="product-card" data-division="trade" id="contract-procurement">
+     <span class="product-division-badge">Trade Division</span>
      <div class="product-icon-wrap">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
      </div>
-     <h3>Custom Contract Procurement &amp; Grey Sourcing</h3>
+     <h3>Custom Contract Procurement &amp; Export Sourcing Desk</h3>
      <p>Dedicated commercial sourcing contracts tailored to institutional buyers, export houses, and garment exporters with non-disclosure guarantees protecting custom construction and customer privacy.</p>
      <div class="product-badges">
       <span class="product-badge">Tailored Specs</span>
       <span class="product-badge">Custom Reed / Pick</span>
-      <span class="product-badge">Guaranteed Capacity</span>
+      <span class="product-badge">FCL Export Supply</span>
       <span class="product-badge">Strict Non-Disclosure</span>
      </div>
      <ul class="spec-list">
@@ -476,159 +539,11 @@
       <li><span>Trade Protection:</span> <strong>Strict legal secrecy protecting buyer identity</strong></li>
      </ul>
      <div class="product-action">
-      <a href="contact?inquiry=textile-purchase&amp;product=Custom+Contract+Procurement" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
+      <a href="contact?inquiry=textile-trade&amp;product=Custom+Contract+Procurement" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
        <span>Request Quote</span>
        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Purchase Desk</span>
-     </div>
-    </div>
-
-    <!-- =================================================================== -->
-    <!-- DIVISION 05: CONCRETE PRODUCTS -->
-    <!-- =================================================================== -->
-    <div class="division-group-header" data-division="concrete">
-     <span class="product-division-badge">Manufacturing Unit 01</span>
-     <h3>Concrete Products &amp; Heavy-Duty Pavers</h3>
-     <p>High-density hydraulic vibro-press concrete blocks and heavy-duty pavers engineered for container terminals, industrial roads, and municipal infrastructure.</p>
-    </div>
-
-    <!-- Product 5.1 -->
-    <div class="product-card" data-division="concrete" id="concrete-pavers">
-     <span class="product-division-badge">Unit 01 Production</span>
-     <div class="product-icon-wrap">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-     </div>
-     <h3>Concrete Blocks &amp; Interlocking Pavers</h3>
-     <p>Manufactured using high-density hydraulic vibro-presses with controlled steam curing. Available in Uni-paver, Zigzag, I-shape, and heavy-duty load-bearing masonry blocks designed for industrial yards, ports, and commercial pavements.</p>
-     <div class="product-badges">
-      <span class="product-badge">IS 15658:2006</span>
-      <span class="product-badge">M30 to M50 Grade</span>
-      <span class="product-badge">60mm / 80mm / 100mm</span>
-      <span class="product-badge">High Abrasion Resistance</span>
-     </div>
-     <ul class="spec-list">
-      <li><span>Compressive Strength:</span> <strong>30 N/mm² to 55 N/mm²</strong></li>
-      <li><span>Water Absorption:</span> <strong>Less than 6% by mass</strong></li>
-      <li><span>Applications:</span> <strong>Container yards, industrial roads, logistics parks</strong></li>
-     </ul>
-     <div class="product-action">
-      <a href="contact?product=Concrete+Blocks+and+Pavers" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
-       <span>Request Quote</span>
-       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Unit 01 Production</span>
-     </div>
-    </div>
-
-    <!-- =================================================================== -->
-    <!-- DIVISION 06: STRUCTURAL STEEL -->
-    <!-- =================================================================== -->
-    <div class="division-group-header" data-division="steel">
-     <span class="product-division-badge">Manufacturing Unit 02</span>
-     <h3>Structural Steel Components &amp; Fabrication</h3>
-     <p>Precision CNC-cut, submerged-arc-welded structural columns, built-up crane girders, and heavy steel assemblies manufactured at our Hazira facility.</p>
-    </div>
-
-    <!-- Product 6.1 -->
-    <div class="product-card" data-division="steel" id="structural-steel">
-     <span class="product-division-badge">Unit 02 Production</span>
-     <div class="product-icon-wrap">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v4H4zM4 10h16v4H4zM4 16h16v4H4z"/></svg>
-     </div>
-     <h3>Structural Steel Components &amp; Built-Up Girders</h3>
-     <p>Custom-fabricated built-up columns, heavy crane girders, industrial trusses, and connection brackets. Processed with automatic submerged arc welding, plate bevelling, and primer shot-blasting for industrial factory construction.</p>
-     <div class="product-badges">
-      <span class="product-badge">IS 2062 Grade E250 / E350</span>
-      <span class="product-badge">Ultrasonic NDT Tested</span>
-      <span class="product-badge">CNC Plasma Cut</span>
-      <span class="product-badge">Custom Spans</span>
-     </div>
-     <ul class="spec-list">
-      <li><span>Material Standard:</span> <strong>Tested Structural Steel IS 2062</strong></li>
-      <li><span>Welding Quality:</span> <strong>100% Visual &amp; Ultrasonic NDT on Welds</strong></li>
-      <li><span>Surface Finish:</span> <strong>SA 2.5 Shot-Blasted &amp; Epoxy Primed</strong></li>
-     </ul>
-     <div class="product-action">
-      <a href="contact?product=Structural+Steel+Components" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
-       <span>Request Quote</span>
-       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Unit 02 Production</span>
-     </div>
-    </div>
-
-    <!-- =================================================================== -->
-    <!-- DIVISION 07: PRECAST DRAINAGE -->
-    <!-- =================================================================== -->
-    <div class="division-group-header" data-division="drainage">
-     <span class="product-division-badge">Manufacturing Unit 03</span>
-     <h3>Precast Drainage &amp; Municipal Casting</h3>
-     <p>Heavy reinforced precast concrete box culverts, modular manhole risers, and stormwater U-drains engineered to IRC Class 70R vehicle loadings.</p>
-    </div>
-
-    <!-- Product 7.1 -->
-    <div class="product-card" data-division="drainage" id="precast-drainage">
-     <span class="product-division-badge">Unit 03 Production</span>
-     <div class="product-icon-wrap">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
-     </div>
-     <h3>Precast Drainage Units &amp; Box Culverts</h3>
-     <p>High-capacity precast concrete box culverts, heavy-duty manhole riser chambers, U-type stormwater drainage channels, and reinforced covers engineered to withstand IRC Class AA and 70R vehicle axle loadings.</p>
-     <div class="product-badges">
-      <span class="product-badge">IS 458:2003 Compliant</span>
-      <span class="product-badge">IRC Class 70R Loading</span>
-      <span class="product-badge">Fe500D TMT Rebar</span>
-      <span class="product-badge">Modular Installation</span>
-     </div>
-     <ul class="spec-list">
-      <li><span>Concrete Grade:</span> <strong>Design Mix M35 / M40 Concrete</strong></li>
-      <li><span>Curing Standard:</span> <strong>Accelerated Steam &amp; Water Immersion</strong></li>
-      <li><span>Joint Design:</span> <strong>Interlocking Spigot &amp; Socket Jointing</strong></li>
-     </ul>
-     <div class="product-action">
-      <a href="contact?product=Precast+Drainage+Units" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
-       <span>Request Quote</span>
-       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Unit 03 Production</span>
-     </div>
-    </div>
-
-    <!-- =================================================================== -->
-    <!-- DIVISION 08: PIPE FITTINGS -->
-    <!-- =================================================================== -->
-    <div class="division-group-header" data-division="fittings">
-     <span class="product-division-badge">Manufacturing Unit 04</span>
-     <h3>Industrial Utility &amp; Pipe Fittings</h3>
-     <p>Molded and fabricated PE 100 HDPE fittings, high-pressure utility junctions, and heavy GI conduit adapters manufactured at Sachin GIDC.</p>
-    </div>
-
-    <!-- Product 8.1 -->
-    <div class="product-card" data-division="fittings" id="pipe-fittings">
-     <span class="product-division-badge">Unit 04 Production</span>
-     <div class="product-icon-wrap">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-     </div>
-     <h3>Industrial Utility &amp; Pipe Fittings</h3>
-     <p>High-performance HDPE molded butt-fusion fittings, electrofusion couplers, flange adapters, and heavy-duty galvanized iron (GI) utility network fittings designed for high-pressure industrial fluid conveyance and municipal networks.</p>
-     <div class="product-badges">
-      <span class="product-badge">IS 4984 / ISO 4427</span>
-      <span class="product-badge">PE 100 Virgin Resin</span>
-      <span class="product-badge">Pressure Rated up to 25 Bar</span>
-      <span class="product-badge">Zero Leakage</span>
-     </div>
-     <ul class="spec-list">
-      <li><span>Hydrostatic Test:</span> <strong>Sustained 25 Bar Pressure Tested</strong></li>
-      <li><span>Resin Quality:</span> <strong>Virgin High-Density PE 100 Polymer</strong></li>
-      <li><span>Fittings Range:</span> <strong>Bends, Tees, Reducers, Stubs &amp; Flanges</strong></li>
-     </ul>
-     <div class="product-action">
-      <a href="contact?product=Industrial+Pipe+Fittings" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">
-       <span>Request Quote</span>
-       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Unit 04 Production</span>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Trade Division</span>
      </div>
     </div>
 
@@ -758,6 +673,6 @@
  </div>
 </footer>
 
-<script src="main.js?v=14"></script>
+<script src="main.js?v=15"></script>
 </body>
 </html>

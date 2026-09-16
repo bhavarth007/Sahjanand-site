@@ -2305,6 +2305,325 @@ footer.site-footer {
 }
 
 /* ==========================================================================
+   ACCREDITATIONS & ZED GOLD CERTIFICATES
+   ========================================================================== */
+.cert-showcase-section {
+  background: #FFFFFF;
+  padding: 70px 0 65px;
+  border-bottom: 1px solid #E2E8F0;
+  position: relative;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  width: 100%;
+}
+
+.cert-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.cert-card:hover {
+  transform: translateY(-6px);
+  border-color: #F59E0B;
+  box-shadow: 0 16px 36px rgba(245, 158, 11, 0.18);
+}
+
+.cert-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.4);
+  text-transform: uppercase;
+}
+
+.cert-preview-frame {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  background: #F8FAFC;
+  overflow: hidden;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.cert-preview-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.4s ease;
+}
+
+.cert-card:hover .cert-preview-frame img {
+  transform: scale(1.04);
+}
+
+.cert-overlay-hover {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 25, 47, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  backdrop-filter: blur(2px);
+}
+
+.cert-card:hover .cert-overlay-hover {
+  opacity: 1;
+}
+
+.btn-expand-cert {
+  background: #FFFFFF;
+  color: #0284C7;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transform: translateY(8px);
+  transition: transform 0.25s ease;
+}
+
+.cert-card:hover .btn-expand-cert {
+  transform: translateY(0);
+}
+
+.cert-card-details {
+  padding: 22px 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cert-unit-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #D97706;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.cert-card-details h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy-dark);
+  margin: 0 0 8px 0;
+  line-height: 1.35;
+}
+
+.cert-meta {
+  font-size: 0.84rem;
+  color: #475569;
+  margin: 0 0 4px 0;
+}
+
+.cert-meta strong {
+  color: var(--navy-dark);
+}
+
+.cert-location {
+  font-size: 0.8rem;
+  color: #94A3B8;
+  margin: 0;
+}
+
+/* Lightbox Modal */
+.cert-lightbox-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.cert-lightbox-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.cert-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 19, 34, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.cert-lightbox-dialog {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  max-height: 94vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-lightbox-close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #0284C7;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: background 0.2s, transform 0.2s;
+  z-index: 10;
+}
+
+.cert-lightbox-close:hover {
+  background: #0369A1;
+  transform: scale(1.08);
+}
+
+.cert-lightbox-prev,
+.cert-lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.cert-lightbox-prev:hover,
+.cert-lightbox-next:hover {
+  background: #0284C7;
+  border-color: #0284C7;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.cert-lightbox-prev { left: -60px; }
+.cert-lightbox-next { right: -60px; }
+
+.cert-lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 90vh;
+}
+
+#cert-lightbox-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  background: #FFFFFF;
+}
+
+.cert-lightbox-caption {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 0.94rem;
+}
+
+.cert-lightbox-caption .caption-title {
+  font-weight: 700;
+  color: #F8FAFC;
+}
+
+.cert-lightbox-caption .caption-num {
+  color: #38BDF8;
+  font-weight: 600;
+  font-size: 0.86rem;
+}
+
+@media (max-width: 992px) {
+  .cert-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cert-lightbox-prev { left: 8px; }
+  .cert-lightbox-next { right: 8px; }
+}
+
+@media (max-width: 640px) {
+  .cert-showcase-section {
+    padding: 50px 0;
+  }
+  .cert-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .cert-preview-frame {
+    height: 280px;
+  }
+  .cert-lightbox-dialog {
+    padding: 10px;
+  }
+  .cert-lightbox-close {
+    top: 4px;
+    right: 4px;
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+  .cert-lightbox-prev,
+  .cert-lightbox-next {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+}
+
+/* ==========================================================================
    MODAL DIALOG
    ========================================================================== */
 .modal-overlay {

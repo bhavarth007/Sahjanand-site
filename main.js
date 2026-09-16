@@ -70,14 +70,16 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (msgField && !msgField.value) {
-        if (inqLower.indexOf('yarn') !== -1) {
-          msgField.value = 'Inquiry regarding Yarn Section & Warp Preparation. Please provide details on filament types, warping capacity, and supply timelines.';
-        } else if (inqLower.indexOf('rapier') !== -1 || inqLower.indexOf('vapiar') !== -1) {
-          msgField.value = 'Inquiry regarding Rapier Section (Rapier Loom Division). Please provide information on fabric specifications, reed widths, and minimum lot sizes.';
-        } else if (inqLower.indexOf('weaving') !== -1 || inqLower.indexOf('viving') !== -1) {
+        if (inqLower.indexOf('weaving') !== -1 || inqLower.indexOf('viving') !== -1) {
           msgField.value = 'Inquiry regarding Weaving Sector (High-Speed Weaving Division). Please provide quotation for grey cloth production, monthly meterage, and quality standards.';
-        } else if (inqLower.indexOf('purchase') !== -1) {
-          msgField.value = 'Inquiry regarding Purchase Section & Bulk Grey Trading. Please provide details on raw material procurement, lot inspection, and trade contracts.';
+        } else if (inqLower.indexOf('yarn') !== -1) {
+          msgField.value = 'Inquiry regarding Yarn Sector & Warp Preparation. Please provide details on filament types, warping capacity, and supply timelines.';
+        } else if (inqLower.indexOf('chemical') !== -1 || inqLower.indexOf('camical') !== -1) {
+          msgField.value = 'Inquiry regarding Chemical Sector. Please provide details on textile sizing chemicals, polymer binders, and processing auxiliaries.';
+        } else if (inqLower.indexOf('trade') !== -1 || inqLower.indexOf('trad') !== -1 || inqLower.indexOf('import') !== -1 || inqLower.indexOf('export') !== -1 || inqLower.indexOf('purchase') !== -1) {
+          msgField.value = 'Inquiry regarding Trade (Import & Export Division). Please provide details on raw polymer procurement, export grey cloth contracts, and commercial supply.';
+        } else if (inqLower.indexOf('rapier') !== -1) {
+          msgField.value = 'Inquiry regarding Rapier Weaving. Please provide information on fabric specifications, reed widths, and minimum lot sizes.';
         } else {
           msgField.value = 'Inquiry regarding Textile Manufacturing & Fabric Supply. Please provide technical fabric specifications, minimum order quantity, and production scheduling.';
         }
@@ -203,13 +205,13 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    // Support URL hash routing (#yarn, #rapier, #weaving, #purchase)
+    // Support URL hash routing (#weaving, #yarn, #chemical, #trade)
     function checkHash() {
       var hash = (window.location.hash || '').toLowerCase();
-      if (hash === '#yarn') switchTextilePage(1, false);
-      else if (hash === '#rapier' || hash === '#vapiar') switchTextilePage(2, false);
-      else if (hash === '#weaving' || hash === '#viving') switchTextilePage(3, false);
-      else if (hash === '#purchase') switchTextilePage(4, false);
+      if (hash === '#weaving' || hash === '#viving' || hash === '#rapier' || hash === '#vapiar') switchTextilePage(1, false);
+      else if (hash === '#yarn') switchTextilePage(2, false);
+      else if (hash === '#chemical' || hash === '#camical') switchTextilePage(3, false);
+      else if (hash === '#trade' || hash === '#trad' || hash === '#import' || hash === '#export' || hash === '#purchase') switchTextilePage(4, false);
     }
 
     checkHash();
@@ -283,24 +285,20 @@ document.addEventListener('DOMContentLoaded', function () {
       if (divisionParam) {
         targetFilter = divisionParam.toLowerCase();
       } else if (hash) {
-        if (hash.indexOf('yarn') !== -1) targetFilter = 'yarn';
-        else if (hash.indexOf('rapier') !== -1 || hash.indexOf('vapiar') !== -1) targetFilter = 'rapier';
-        else if (hash.indexOf('weaving') !== -1 || hash.indexOf('viving') !== -1) targetFilter = 'weaving';
-        else if (hash.indexOf('purchase') !== -1) targetFilter = 'purchase';
+        if (hash.indexOf('weaving') !== -1 || hash.indexOf('viving') !== -1 || hash.indexOf('rapier') !== -1 || hash.indexOf('vapiar') !== -1) targetFilter = 'weaving';
+        else if (hash.indexOf('yarn') !== -1) targetFilter = 'yarn';
+        else if (hash.indexOf('chem') !== -1 || hash.indexOf('cam') !== -1) targetFilter = 'chemical';
+        else if (hash.indexOf('trade') !== -1 || hash.indexOf('trad') !== -1 || hash.indexOf('import') !== -1 || hash.indexOf('export') !== -1 || hash.indexOf('purchase') !== -1) targetFilter = 'trade';
         else if (hash.indexOf('concrete') !== -1 || hash.indexOf('paver') !== -1) targetFilter = 'concrete';
         else if (hash.indexOf('steel') !== -1) targetFilter = 'steel';
         else if (hash.indexOf('drainage') !== -1 || hash.indexOf('culvert') !== -1) targetFilter = 'drainage';
         else if (hash.indexOf('fitting') !== -1 || hash.indexOf('pipe') !== -1) targetFilter = 'fittings';
       } else if (productParam) {
         var pLower = productParam.toLowerCase();
-        if (pLower.indexOf('yarn') !== -1 || pLower.indexOf('beam') !== -1) targetFilter = 'yarn';
-        else if (pLower.indexOf('rapier') !== -1 || pLower.indexOf('suiting') !== -1 || pLower.indexOf('dobby') !== -1) targetFilter = 'rapier';
-        else if (pLower.indexOf('weaving') !== -1 || pLower.indexOf('grey') !== -1 || pLower.indexOf('chiffon') !== -1) targetFilter = 'weaving';
-        else if (pLower.indexOf('purchase') !== -1 || pLower.indexOf('polymer') !== -1) targetFilter = 'purchase';
-        else if (pLower.indexOf('concrete') !== -1 || pLower.indexOf('paver') !== -1) targetFilter = 'concrete';
-        else if (pLower.indexOf('steel') !== -1) targetFilter = 'steel';
-        else if (pLower.indexOf('drainage') !== -1) targetFilter = 'drainage';
-        else if (pLower.indexOf('pipe') !== -1 || pLower.indexOf('fitting') !== -1) targetFilter = 'fittings';
+        if (pLower.indexOf('weaving') !== -1 || pLower.indexOf('grey') !== -1 || pLower.indexOf('chiffon') !== -1 || pLower.indexOf('suiting') !== -1 || pLower.indexOf('dobby') !== -1 || pLower.indexOf('rapier') !== -1) targetFilter = 'weaving';
+        else if (pLower.indexOf('yarn') !== -1 || pLower.indexOf('beam') !== -1 || pLower.indexOf('fdy') !== -1 || pLower.indexOf('dty') !== -1) targetFilter = 'yarn';
+        else if (pLower.indexOf('chem') !== -1 || pLower.indexOf('cam') !== -1 || pLower.indexOf('sizing') !== -1 || pLower.indexOf('auxiliary') !== -1) targetFilter = 'chemical';
+        else if (pLower.indexOf('trade') !== -1 || pLower.indexOf('trad') !== -1 || pLower.indexOf('polymer') !== -1 || pLower.indexOf('import') !== -1 || pLower.indexOf('export') !== -1 || pLower.indexOf('purchase') !== -1) targetFilter = 'trade';
       }
 
       if (targetFilter) {
@@ -315,7 +313,119 @@ document.addEventListener('DOMContentLoaded', function () {
   initProductDivisionFilter();
 
 
-  // 6. Document Preview Modal (if modal elements exist on page)
+  // 7. Interactive MSME ZED Gold Certificate Fullscreen Lightbox Modal
+  function initCertLightbox() {
+    var lightbox = document.querySelector('#cert-lightbox');
+    if (!lightbox) return;
+
+    var certData = [
+      {
+        src: 'images/cert-sahjanand-polyweaves.png',
+        title: 'Sahjanand Polyweaves Private Limited',
+        num: 'MSME ZED Gold Certified · Udyam: UDYAM-GJ-22-0080797'
+      },
+      {
+        src: 'images/cert-ghanshyam-synthetics.png',
+        title: 'Ghanshyam Synthetics',
+        num: 'MSME ZED Gold Certified · Udyam: UDYAM-GJ-22-0353781'
+      },
+      {
+        src: 'images/cert-silken-sonnets.png',
+        title: 'Silken Sonnets',
+        num: 'MSME ZED Gold Certified · Udyam: UDYAM-GJ-22-0035891'
+      }
+    ];
+
+    var currentIndex = 0;
+    var imgEl = lightbox.querySelector('#cert-lightbox-img');
+    var titleEl = lightbox.querySelector('#cert-lightbox-title');
+    var numEl = lightbox.querySelector('#cert-lightbox-num');
+    var closeBtn = lightbox.querySelector('.cert-lightbox-close');
+    var prevBtn = lightbox.querySelector('.cert-lightbox-prev');
+    var nextBtn = lightbox.querySelector('.cert-lightbox-next');
+    var backdrop = lightbox.querySelector('.cert-lightbox-backdrop');
+
+    function renderCert(index) {
+      if (index < 0) index = certData.length - 1;
+      if (index >= certData.length) index = 0;
+      currentIndex = index;
+
+      var data = certData[currentIndex];
+      if (imgEl) {
+        imgEl.src = data.src;
+        imgEl.alt = data.title + ' - MSME ZED Gold Certificate';
+      }
+      if (titleEl) titleEl.textContent = data.title;
+      if (numEl) numEl.textContent = data.num;
+    }
+
+    function openLightbox(index) {
+      renderCert(index);
+      lightbox.style.display = 'flex';
+      void lightbox.offsetWidth; // Trigger layout for smooth opacity transition
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(function () {
+        if (!lightbox.classList.contains('active')) {
+          lightbox.style.display = 'none';
+        }
+      }, 250);
+    }
+
+    // Attach click to cert cards
+    document.querySelectorAll('.cert-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var idx = parseInt(this.getAttribute('data-cert-index'), 10) || 0;
+        openLightbox(idx);
+      });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          var idx = parseInt(this.getAttribute('data-cert-index'), 10) || 0;
+          openLightbox(idx);
+        }
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    if (backdrop) backdrop.addEventListener('click', closeLightbox);
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        renderCert(currentIndex - 1);
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        renderCert(currentIndex + 1);
+      });
+    }
+
+    // Keyboard navigation: Escape to close, Left/Right arrows to flip
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        renderCert(currentIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        renderCert(currentIndex + 1);
+      }
+    });
+  }
+
+  initCertLightbox();
+
+
+  // 8. Document Preview Modal (if modal elements exist on page)
   var modal = document.querySelector('#doc-modal');
   if (modal) {
     var modalDocTitle = modal.querySelector('#modal-doc-title');
