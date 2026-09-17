@@ -1804,8 +1804,8 @@ footer.site-footer {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
   gap: 36px;
-  padding-bottom: 45px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 24px;
+  border-bottom: none;
   width: 100%;
 }
 
@@ -1953,19 +1953,18 @@ footer.site-footer {
 .footer-bottom {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
   gap: 14px;
-  padding-top: 10px;
+  padding-top: 14px;
   font-size: 0.88rem;
   width: 100%;
 }
 
 @media (max-width: 600px) {
   .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    justify-content: center;
+    text-align: center;
   }
 }
 
@@ -2005,11 +2004,15 @@ footer.site-footer {
    TEXTILE SHOWCASE SECTION (CORE ENTERPRISE)
    ========================================================================== */
 .textile-showcase-section {
-  background: #F8FAFC;
+  background: #FFFFFF;
   padding: 84px 0;
-  border-top: 1px solid #E2E8F0;
-  border-bottom: 1px solid #E2E8F0;
+  border-top: none;
+  border-bottom: none;
   position: relative;
+}
+
+#textile-facilities {
+  background: #FFFFFF;
 }
 
 /* Tab Bar */
@@ -2648,7 +2651,7 @@ footer.site-footer {
 .cert-showcase-section {
   background: #FFFFFF;
   padding: 70px 0 65px;
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: none;
   position: relative;
 }
 
