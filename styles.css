@@ -276,22 +276,25 @@ header.site-header {
   margin-right: auto;
 }
 
-.brand img {
-  height: 46px;
+.brand img,
+.brand-logo-img,
+.navbar-brand-logo {
+  height: 48px;
   width: auto;
+  max-width: 250px;
+  object-fit: contain;
+  display: block;
   transition: transform 0.25s ease;
 }
 
-.brand:hover img {
-  transform: scale(1.05);
+.brand:hover img,
+.brand:hover .navbar-brand-logo,
+.brand:hover .brand-logo-img {
+  transform: scale(1.03);
 }
 
 .brand-text {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.5rem;
-  color: var(--navy-dark);
-  letter-spacing: -0.02em;
+  display: none;
 }
 
 nav.main-nav ul {
@@ -409,12 +412,15 @@ body.mobile-nav-open {
     margin-right: 0;
   }
 
-  .brand img {
-    height: 38px;
+  .brand img,
+  .brand-logo-img,
+  .navbar-brand-logo {
+    height: 40px;
+    max-width: 195px;
   }
 
   .brand-text {
-    font-size: 1.35rem;
+    display: none;
   }
 
   .nav-actions {
@@ -521,19 +527,19 @@ body.mobile-nav-open {
   .mobile-drawer-header .drawer-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
   }
 
-  .mobile-drawer-header .drawer-brand img {
-    height: 32px;
+  .mobile-drawer-header .drawer-brand img,
+  .mobile-drawer-header .drawer-brand .drawer-brand-logo {
+    height: 36px;
     width: auto;
+    max-width: 185px;
+    object-fit: contain;
+    display: block;
   }
 
   .mobile-drawer-header .drawer-brand .brand-text {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--navy-dark, #0A192F);
-    font-family: var(--font-display, 'Cabinet Grotesk', sans-serif);
+    display: none;
   }
 
   .mobile-drawer-close {
