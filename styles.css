@@ -1112,7 +1112,7 @@ body.mobile-nav-open {
 .page-header {
   background: radial-gradient(circle at 80% 20%, #123358 0%, #071527 70%);
   color: #FFFFFF;
-  min-height: 275px;
+  min-height: 314px;
   display: flex;
   align-items: center;
   padding: 58px 0 52px;
@@ -1120,10 +1120,13 @@ body.mobile-nav-open {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   width: 100%;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .page-header .container {
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .page-header::before {
@@ -1134,6 +1137,39 @@ body.mobile-nav-open {
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--brand-red), var(--brand-orange), var(--blue-bright));
+  z-index: 3;
+}
+
+/* Ambient Aura Glow Animation */
+.page-header::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: 8%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(0, 194, 255, 0.16) 0%, rgba(26, 86, 219, 0.08) 42%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 1;
+  animation: headerAuraPulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes headerAuraPulse {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate(-35px, 20px) scale(1.18);
+    opacity: 0.9;
+    background: radial-gradient(circle, rgba(0, 220, 255, 0.22) 0%, rgba(37, 99, 235, 0.12) 48%, transparent 70%);
+  }
+  100% {
+    transform: translate(25px, -15px) scale(0.95);
+    opacity: 0.6;
+  }
 }
 
 .breadcrumb {
