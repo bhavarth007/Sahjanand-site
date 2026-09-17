@@ -776,6 +776,38 @@ body.mobile-nav-open {
   to { transform: rotate(360deg); }
 }
 
+.constellation-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.55) 0%, rgba(14, 165, 233, 0.3) 45%, rgba(56, 189, 248, 0) 72%);
+  pointer-events: none;
+  z-index: 4;
+  transform: translate(-50%, -50%) scale(1);
+  animation: auraRadiate 4.5s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+}
+
+.constellation-aura.wave-2 {
+  animation-delay: 2.25s;
+}
+
+@keyframes auraRadiate {
+  0% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.95;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.68);
+    opacity: 0;
+  }
+}
+
 .constellation-center {
   width: 170px;
   height: 170px;
@@ -791,11 +823,28 @@ body.mobile-nav-open {
   text-align: center;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
   overflow: hidden;
+  animation: centerAuraBreathe 4s ease-in-out infinite alternate;
+}
+
+@keyframes centerAuraBreathe {
+  0% {
+    box-shadow: 
+      0 0 35px rgba(56, 189, 248, 0.5),
+      0 0 70px rgba(14, 165, 233, 0.3),
+      0 0 100px rgba(56, 189, 248, 0.15);
+  }
+  100% {
+    box-shadow: 
+      0 0 58px rgba(56, 189, 248, 0.85),
+      0 0 105px rgba(14, 165, 233, 0.55),
+      0 0 150px rgba(56, 189, 248, 0.35),
+      0 0 195px rgba(2, 132, 199, 0.18);
+  }
 }
 
 .constellation-center:hover {
   transform: scale(1.06);
-  box-shadow: 0 0 60px rgba(56, 189, 248, 0.65), 0 0 110px rgba(14, 165, 233, 0.35);
+  box-shadow: 0 0 65px rgba(56, 189, 248, 0.9), 0 0 120px rgba(14, 165, 233, 0.6);
 }
 
 .constellation-center img.constellation-logo,
@@ -829,6 +878,23 @@ body.mobile-nav-open {
   box-shadow: 0 0 18px rgba(56, 189, 248, 0.45), 0 0 35px rgba(14, 165, 233, 0.25), 0 6px 16px rgba(0, 0, 0, 0.22);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 6;
+  animation: nodeAuraBreathe 3.6s ease-in-out infinite alternate;
+}
+
+.orbit-node.node-1 { animation-delay: 0s; }
+.orbit-node.node-2 { animation-delay: 0.9s; }
+.orbit-node.node-3 { animation-delay: 1.8s; }
+.orbit-node.node-4 { animation-delay: 2.7s; }
+
+@keyframes nodeAuraBreathe {
+  0% {
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.4), 0 0 28px rgba(14, 165, 233, 0.2), 0 6px 16px rgba(0, 0, 0, 0.22);
+    border-color: #38BDF8;
+  }
+  100% {
+    box-shadow: 0 0 28px rgba(56, 189, 248, 0.8), 0 0 45px rgba(14, 165, 233, 0.45), 0 6px 18px rgba(0, 0, 0, 0.26);
+    border-color: #7DD3FC;
+  }
 }
 
 .orbit-node:hover,
@@ -933,6 +999,10 @@ body.mobile-nav-open {
     width: 310px;
     height: 310px;
   }
+  .constellation-aura {
+    width: 152px;
+    height: 152px;
+  }
   .constellation-center {
     width: 152px;
     height: 152px;
@@ -966,6 +1036,10 @@ body.mobile-nav-open {
   .constellation-ring {
     width: 270px;
     height: 270px;
+  }
+  .constellation-aura {
+    width: 130px;
+    height: 130px;
   }
   .constellation-center {
     width: 130px;
@@ -1004,6 +1078,10 @@ body.mobile-nav-open {
     width: 226px;
     height: 226px;
   }
+  .constellation-aura {
+    width: 112px;
+    height: 112px;
+  }
   .constellation-center {
     width: 112px;
     height: 112px;
@@ -1034,9 +1112,17 @@ body.mobile-nav-open {
 .page-header {
   background: radial-gradient(circle at 80% 20%, #123358 0%, #071527 70%);
   color: #FFFFFF;
-  padding: 64px 0 54px;
+  min-height: 275px;
+  display: flex;
+  align-items: center;
+  padding: 58px 0 52px;
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.page-header .container {
   width: 100%;
 }
 
@@ -1068,7 +1154,11 @@ body.mobile-nav-open {
 .page-header p.header-desc { color: #CBD5E1; font-size: 1.1rem; max-width: 60ch; }
 
 @media (max-width: 768px) {
-  .page-header { padding: 46px 0 38px; }
+  .page-header {
+    min-height: auto;
+    padding: 46px 0 38px;
+    display: block;
+  }
 }
 
 /* ==========================================================================
