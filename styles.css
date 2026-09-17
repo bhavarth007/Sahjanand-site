@@ -690,6 +690,16 @@ body.mobile-nav-open {
   overflow: hidden;
 }
 
+.hero-top-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand-red), var(--brand-orange), var(--blue-bright));
+  z-index: 10;
+}
+
 .hero-eagle::before {
   content: '';
   position: absolute;
