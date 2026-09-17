@@ -776,35 +776,166 @@ body.mobile-nav-open {
   to { transform: rotate(360deg); }
 }
 
-.constellation-aura {
+/* ==========================================================================
+   SACRED OM (ॐ) CONTINUOUS RADIATION ANIMATION
+   ========================================================================== */
+.om-emission-field {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.55) 0%, rgba(14, 165, 233, 0.3) 45%, rgba(56, 189, 248, 0) 72%);
+  width: 0;
+  height: 0;
   pointer-events: none;
   z-index: 4;
-  transform: translate(-50%, -50%) scale(1);
-  animation: auraRadiate 4.5s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
 }
 
-.constellation-aura.wave-2 {
-  animation-delay: 2.25s;
+.om-stream {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
 }
 
-@keyframes auraRadiate {
+.om-glyph {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1.85rem;
+  font-weight: 700;
+  font-family: 'Cinzel', 'Noto Sans Devanagari', 'Segoe UI Symbol', 'Arial Unicode MS', sans-serif;
+  color: #E0F2FE;
+  text-shadow: 0 0 8px #38BDF8, 0 0 18px #0284C7, 0 0 32px #F59E0B, 0 0 45px rgba(56, 189, 248, 0.7);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  animation-duration: 4.2s;
+  animation-timing-function: cubic-bezier(0.25, 0.75, 0.5, 1);
+  animation-iteration-count: infinite;
+  opacity: 0;
+}
+
+/* Staggered Continuous Emission Waves */
+.om-stream.wave-1 .om-glyph { animation-delay: 0s; }
+.om-stream.wave-2 .om-glyph { animation-delay: 1.4s; }
+.om-stream.wave-3 .om-glyph { animation-delay: 2.8s; }
+
+/* 8 Directions for Glyphs radiating from center outward */
+.om-glyph.dir-0   { animation-name: omPull_0; }
+.om-glyph.dir-45  { animation-name: omPull_45; }
+.om-glyph.dir-90  { animation-name: omPull_90; }
+.om-glyph.dir-135 { animation-name: omPull_135; }
+.om-glyph.dir-180 { animation-name: omPull_180; }
+.om-glyph.dir-225 { animation-name: omPull_225; }
+.om-glyph.dir-270 { animation-name: omPull_270; }
+.om-glyph.dir-315 { animation-name: omPull_315; }
+
+@keyframes omPull_0 {
+  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
+  22% { opacity: 0.95; }
+  75% { opacity: 0.75; }
+  100% { transform: translate(-50%, -50%) translate(195px, 0px) scale(1.35); opacity: 0; }
+}
+@keyframes omPull_45 {
+  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
+  22% { opacity: 0.95; }
+  75% { opacity: 0.75; }
+  100% { transform: translate(-50%, -50%) translate(138px, 138px) scale(1.35); opacity: 0; }
+}
+@keyframes omPull_90 {
+  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
+  22% { opacity: 0.95; }
+  75% { opacity: 0.75; }
+  100% { transform: translate(-50%, -50%) translate(0px, 195px) scale(1.35); opacity: 0; }
+}
+@keyframes omPull_135 {
+  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
+  22% { opacity: 0.95; }
+  75% { opacity: 0.75; }
+  100% { transform: translate(-50%, -50%) translate(-138px, 138px) scale(1.35); opacity: 0; }
+}
+@keyframes omPull_180 {
+  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
+  22% { opacity: 0.95; }
+  75% { opacity: 0.75; }
+  100% { transform: translate(-50%, -50%) translate(-195px, 0px) scale(1.35); opacity: 0; }
+}
+@keyframes omPull_225 {
+  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
+  22% { opacity: 0.95; }
+  75% { opacity: 0.75; }
+  100% { transform: translate(-50%, -50%) translate(-138px, -138px) scale(1.35); opacity: 0; }
+}
+@keyframes omPull_270 {
+  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
+  22% { opacity: 0.95; }
+  75% { opacity: 0.75; }
+  100% { transform: translate(-50%, -50%) translate(0px, -195px) scale(1.35); opacity: 0; }
+}
+@keyframes omPull_315 {
+  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
+  22% { opacity: 0.95; }
+  75% { opacity: 0.75; }
+  100% { transform: translate(-50%, -50%) translate(138px, -138px) scale(1.35); opacity: 0; }
+}
+
+/* Central Expanding Om Pulse Ripple */
+.om-pulse-center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 6.8rem;
+  font-weight: 700;
+  font-family: 'Cinzel', 'Noto Sans Devanagari', 'Segoe UI Symbol', 'Arial Unicode MS', sans-serif;
+  color: rgba(56, 189, 248, 0.45);
+  text-shadow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 55px rgba(14, 165, 233, 0.45);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-50%, -50%) scale(0.65);
+  opacity: 0;
+  animation: omCenterPulse 4.2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+}
+
+.om-pulse-center.pulse-1 { animation-delay: 0s; }
+.om-pulse-center.pulse-2 { animation-delay: 2.1s; }
+
+@keyframes omCenterPulse {
   0% {
-    transform: translate(-50%, -50%) scale(0.95);
-    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(0.65);
+    opacity: 0;
   }
-  50% {
-    opacity: 0.45;
+  25% {
+    opacity: 0.7;
+  }
+  75% {
+    opacity: 0.25;
   }
   100% {
-    transform: translate(-50%, -50%) scale(1.68);
+    transform: translate(-50%, -50%) scale(2.25);
     opacity: 0;
+  }
+}
+
+/* Responsive scaling for the Om emission field across screen sizes */
+@media (max-width: 992px) {
+  .om-emission-field {
+    transform: scale(0.85);
+  }
+}
+
+@media (max-width: 576px) {
+  .om-emission-field {
+    transform: scale(0.72);
+  }
+  .om-glyph {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .om-emission-field {
+    transform: scale(0.6);
   }
 }
 
@@ -1120,13 +1251,10 @@ body.mobile-nav-open {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   width: 100%;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 .page-header .container {
   width: 100%;
-  position: relative;
-  z-index: 2;
 }
 
 .page-header::before {
@@ -1137,39 +1265,6 @@ body.mobile-nav-open {
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--brand-red), var(--brand-orange), var(--blue-bright));
-  z-index: 3;
-}
-
-/* Ambient Aura Glow Animation */
-.page-header::after {
-  content: '';
-  position: absolute;
-  top: -30%;
-  right: 8%;
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle, rgba(0, 194, 255, 0.16) 0%, rgba(26, 86, 219, 0.08) 42%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(50px);
-  pointer-events: none;
-  z-index: 1;
-  animation: headerAuraPulse 10s ease-in-out infinite alternate;
-}
-
-@keyframes headerAuraPulse {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.55;
-  }
-  50% {
-    transform: translate(-35px, 20px) scale(1.18);
-    opacity: 0.9;
-    background: radial-gradient(circle, rgba(0, 220, 255, 0.22) 0%, rgba(37, 99, 235, 0.12) 48%, transparent 70%);
-  }
-  100% {
-    transform: translate(25px, -15px) scale(0.95);
-    opacity: 0.6;
-  }
 }
 
 .breadcrumb {
