@@ -966,7 +966,7 @@ body.mobile-nav-open {
   position: relative;
   z-index: 5;
   box-shadow: 0 0 50px rgba(56, 189, 248, 0.45), 0 0 90px rgba(14, 165, 233, 0.25);
-  padding: 16px;
+  padding: 6px;
   text-align: center;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
   overflow: hidden;
@@ -996,8 +996,8 @@ body.mobile-nav-open {
 
 .constellation-center img.constellation-logo,
 .constellation-center img {
-  width: 136px;
-  max-width: 82%;
+  width: 140px;
+  max-width: 90%;
   height: auto;
   display: block;
   object-fit: contain;
@@ -1153,10 +1153,10 @@ body.mobile-nav-open {
   .constellation-center {
     width: 152px;
     height: 152px;
-    padding: 14px;
+    padding: 5px;
   }
   .constellation-center img.constellation-logo,
-  .constellation-center img { width: 120px; }
+  .constellation-center img { width: 125px; max-width: 90%; }
   .orbit-node {
     width: 82px;
     height: 82px;
@@ -1191,10 +1191,10 @@ body.mobile-nav-open {
   .constellation-center {
     width: 130px;
     height: 130px;
-    padding: 10px;
+    padding: 4px;
   }
   .constellation-center img.constellation-logo,
-  .constellation-center img { width: 102px; }
+  .constellation-center img { width: 107px; max-width: 90%; }
   .orbit-node {
     width: 72px;
     height: 72px;
@@ -1232,10 +1232,10 @@ body.mobile-nav-open {
   .constellation-center {
     width: 112px;
     height: 112px;
-    padding: 8px;
+    padding: 4px;
   }
   .constellation-center img.constellation-logo,
-  .constellation-center img { width: 88px; }
+  .constellation-center img { width: 92px; max-width: 90%; }
   .orbit-node {
     width: 64px;
     height: 64px;
