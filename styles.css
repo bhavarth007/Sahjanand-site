@@ -2178,7 +2178,12 @@ body.mobile-nav-open {
 }
 .field.full { grid-column: 1 / -1; }
 
-.field label { font-size: 0.88rem; font-weight: 600; color: var(--text-dark); }
+.field label {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #475569;
+  letter-spacing: 0.01em;
+}
 
 .field input, .field select, .field textarea {
   font-family: var(--font-body);
@@ -2190,6 +2195,47 @@ body.mobile-nav-open {
   color: var(--text-dark);
   transition: all 0.2s ease;
   width: 100%;
+}
+
+/* Reduced darkness / brightness for placeholder text */
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #94A3B8 !important;
+  opacity: 1 !important;
+  font-weight: 400 !important;
+  font-size: 0.93rem;
+}
+
+.field input::-webkit-input-placeholder,
+.field textarea::-webkit-input-placeholder {
+  color: #94A3B8 !important;
+  opacity: 1 !important;
+  font-weight: 400 !important;
+}
+
+.field input::-moz-placeholder,
+.field textarea::-moz-placeholder {
+  color: #94A3B8 !important;
+  opacity: 1 !important;
+  font-weight: 400 !important;
+}
+
+.field input:-ms-input-placeholder,
+.field textarea:-ms-input-placeholder {
+  color: #94A3B8 !important;
+  opacity: 1 !important;
+  font-weight: 400 !important;
+}
+
+/* Reduced darkness for unselected dropdown placeholder */
+.field select:invalid,
+.field select option[value=""] {
+  color: #94A3B8 !important;
+  font-weight: 400 !important;
+}
+
+.field select option:not([value=""]) {
+  color: var(--text-dark) !important;
 }
 
 .field input:focus, .field select:focus, .field textarea:focus {
