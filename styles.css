@@ -550,16 +550,18 @@ body.mobile-nav-open {
     transform: translateX(0) !important;
   }
 
-  /* Drawer Top Brand & Close Button */
+  /* Drawer Top Brand & Close Button - Matched 1:1 with Main Dashboard Header */
   .mobile-drawer-header {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 16px 20px !important;
+    padding: 5px 14px !important;
     border-bottom: 1px solid #E2E8F0 !important;
-    background: #F8FAFC !important;
+    background: #FFFFFF !important;
     flex-shrink: 0 !important;
-    min-height: 64px !important;
+    min-height: 42px !important;
+    height: 42px !important;
+    box-sizing: border-box !important;
   }
 
   .mobile-drawer-header .drawer-brand {
@@ -569,9 +571,9 @@ body.mobile-nav-open {
 
   .mobile-drawer-header .drawer-brand img,
   .mobile-drawer-header .drawer-brand .drawer-brand-logo {
-    height: 36px;
-    width: auto;
-    max-width: 185px;
+    height: 28px !important;
+    width: auto !important;
+    max-width: 145px !important;
     object-fit: contain;
     display: block;
   }
@@ -581,23 +583,26 @@ body.mobile-nav-open {
   }
 
   .mobile-drawer-close {
-    background: #F1F5F9;
-    border: 1px solid #CBD5E1;
-    font-size: 1.6rem;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    font-size: 1.25rem;
     line-height: 1;
     color: var(--navy-dark, #0A192F);
     cursor: pointer;
-    width: 38px;
-    height: 38px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 6px;
     transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(10, 25, 47, 0.05);
+    padding: 0;
   }
 
   .mobile-drawer-close:hover {
-    background: #E2E8F0;
+    background: #F1F5F9;
+    border-color: #CBD5E1;
     color: var(--navy-dark, #0A192F);
   }
 
