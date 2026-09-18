@@ -1196,6 +1196,7 @@ body.mobile-nav-open {
 .orbit-icon-wrap img,
 .orbit-icon-wrap img.orbit-machine-icon,
 .orbit-icon-wrap img.orbit-yarn-icon,
+.orbit-icon-wrap img.orbit-chemical-icon,
 .orbit-icon-wrap img.orbit-trade-icon {
   display: block;
   object-fit: contain;
@@ -1211,6 +1212,13 @@ body.mobile-nav-open {
   width: auto;
   height: 28px;
   max-width: 32px;
+  max-height: 28px;
+}
+
+.orbit-icon-wrap img.orbit-chemical-icon {
+  width: auto;
+  height: 28px;
+  max-width: 30px;
   max-height: 28px;
 }
 
