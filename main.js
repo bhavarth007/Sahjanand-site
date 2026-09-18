@@ -337,6 +337,99 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
+  // Celebration Confetti Cannon (Triggered ONLY when form is successfully submitted)
+  function launchCelebration() {
+    var canvas = document.createElement('canvas');
+    canvas.id = 'celebration-canvas';
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100vw';
+    canvas.style.height = '100vh';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '99999';
+    document.body.appendChild(canvas);
+
+    var ctx = canvas.getContext('2d');
+    var dpr = window.devicePixelRatio || 1;
+    var width = canvas.width = window.innerWidth * dpr;
+    var height = canvas.height = window.innerHeight * dpr;
+
+    var colors = ['#F59E0B', '#0284C7', '#10B981', '#C21E1E', '#38BDF8', '#E8620C', '#FCD34D'];
+    var particles = [];
+    var particleCount = window.innerWidth < 768 ? 85 : 150;
+
+    for (var i = 0; i < particleCount; i++) {
+      var angle = (Math.PI * 0.25) + Math.random() * (Math.PI * 0.5);
+      var speed = (Math.random() * 15 + 9) * dpr;
+      var fromLeft = i % 2 === 0;
+      particles.push({
+        x: fromLeft ? (width * 0.2 + (Math.random() * 0.15 * width)) : (width * 0.8 - (Math.random() * 0.15 * width)),
+        y: height * 0.82,
+        vx: (fromLeft ? 1 : -1) * Math.cos(angle) * speed + (Math.random() - 0.5) * 6 * dpr,
+        vy: -Math.sin(angle) * speed,
+        size: (Math.random() * 8 + 5) * dpr,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 10,
+        wobble: Math.random() * 10,
+        wobbleSpeed: Math.random() * 0.1 + 0.05,
+        shape: Math.random() > 0.35 ? 'rect' : 'circle'
+      });
+    }
+
+    var startTime = Date.now();
+    var duration = 3000;
+
+    function render() {
+      var elapsed = Date.now() - startTime;
+      if (elapsed > duration) {
+        if (canvas.parentNode) {
+          canvas.parentNode.removeChild(canvas);
+        }
+        return;
+      }
+
+      ctx.clearRect(0, 0, width, height);
+
+      var globalAlpha = 1;
+      if (elapsed > duration - 700) {
+        globalAlpha = Math.max(0, (duration - elapsed) / 700);
+      }
+
+      for (var p = 0; p < particles.length; p++) {
+        var pt = particles[p];
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+        pt.vy += 0.35 * dpr;
+        pt.vx *= 0.985;
+        pt.rotation += pt.rotationSpeed;
+        pt.wobble += pt.wobbleSpeed;
+
+        ctx.save();
+        ctx.translate(pt.x, pt.y);
+        ctx.rotate((pt.rotation * Math.PI) / 180);
+        ctx.scale(Math.cos(pt.wobble), 1);
+        ctx.globalAlpha = globalAlpha;
+        ctx.fillStyle = pt.color;
+
+        if (pt.shape === 'rect') {
+          ctx.fillRect(-pt.size / 2, -pt.size / 3, pt.size, pt.size * 0.6);
+        } else {
+          ctx.beginPath();
+          ctx.arc(0, 0, pt.size / 2.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        ctx.restore();
+      }
+
+      requestAnimationFrame(render);
+    }
+
+    requestAnimationFrame(render);
+  }
+
       var submitBtn = form.querySelector('button[type="submit"]');
       var originalBtnText = submitBtn ? submitBtn.innerHTML : '';
       if (submitBtn) {
@@ -344,8 +437,8 @@ document.addEventListener('DOMContentLoaded', function () {
         submitBtn.textContent = 'Sending Message...';
       }
 
-      status.innerHTML = 'Sending your enquiry to <strong>sahjanandpolyweavespvtltd18@gmail.com</strong>...';
-      status.className = 'form-status';
+      status.className = 'form-status sending';
+      status.innerHTML = '<span class="form-status-spinner"></span><span>Transmitting your enquiry securely to our corporate team...</span>';
 
       fetch('https://formsubmit.co/ajax/sahjanandpolyweavespvtltd18@gmail.com', {
         method: 'POST',
@@ -358,8 +451,6 @@ document.addEventListener('DOMContentLoaded', function () {
           _template: 'table',
           _captcha: 'false',
           _replyto: email,
-          name: name,
-          email: email,
           'Full Name': name,
           'Email Address': email,
           'Phone / Mobile': phone || 'Not provided',
@@ -372,17 +463,54 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .then(function (data) {
         if (data.success === 'true' || data.success === true) {
-          status.innerHTML = '✓ Thank you, <strong>' + name + '</strong>! Your enquiry has been delivered successfully to <strong>sahjanandpolyweavespvtltd18@gmail.com</strong>. Our team will get back to you shortly.<br>' +
-            '<span style="font-size:0.88rem; display:inline-block; margin-top:8px;">Need urgent support? You can also <a href="https://wa.me/919727564411?text=' + encodeURIComponent('Hello Sahjanand team, I submitted an enquiry regarding: ' + subject + ' (' + name + ')') + '" target="_blank" style="color:#0284C7; font-weight:700; text-decoration:underline;">Chat directly on WhatsApp (+91 97275 64411) &rarr;</a></span>';
-          status.className = 'form-status success';
+          // Launch celebratory confetti only on successful delivery
+          launchCelebration();
+
+          var waText = encodeURIComponent('Hello Sahjanand team, I submitted an enquiry regarding: ' + subject + ' (' + name + ', ' + (phone || email) + ')');
+          var waUrl = 'https://wa.me/919727564411?text=' + waText;
+
+          status.innerHTML = '<div class="status-success-box">' +
+            '<div class="status-header">' +
+              '<div class="status-icon-wrap">' +
+                '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
+              '</div>' +
+              '<div>' +
+                '<h4 class="status-title">Enquiry Sent Successfully!</h4>' +
+                '<p class="status-desc">Thank you, <strong>' + name + '</strong>! Your requirements have been submitted to our corporate team. We will review your inquiry and respond within one business day.</p>' +
+              '</div>' +
+            '</div>' +
+            '<div class="status-actions">' +
+              '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" class="status-whatsapp-link">' +
+                '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.311.045-.698.055-1.114-.081-.663-.217-1.523-.624-2.593-1.696-1.378-1.378-2.03-2.613-2.222-2.946-.192-.333-.021-.513.15-.684.154-.153.342-.396.513-.594.171-.198.228-.333.342-.558.114-.225.057-.423-.028-.594-.085-.171-.77-1.854-1.055-2.541-.277-.667-.559-.576-.77-.587-.198-.011-.423-.013-.655-.013-.232 0-.609.087-.928.435-.319.348-1.226 1.198-1.226 2.921 0 1.724 1.255 3.39 1.426 3.618.171.228 2.47 3.772 5.984 5.289 2.08.898 2.899.98 3.933.826.63-.094 1.913-.782 2.184-1.538.271-.756.271-1.404.19-1.538-.08-.134-.3-.214-.64-.384z"/></svg>' +
+                '<span>Need immediate assistance? Connect directly on WhatsApp (+91 97275 64411) &rarr;</span>' +
+              '</a>' +
+            '</div>' +
+          '</div>';
+          status.className = 'form-status';
           form.reset();
         } else if (data.message && data.message.indexOf('Activation') !== -1) {
-          status.innerHTML = '✓ Thank you, <strong>' + name + '</strong>! Your message was submitted.<br>' +
-            '<span style="display:inline-block; margin-top:6px; font-size:0.9rem;"><strong>Action Required:</strong> FormSubmit has sent a one-time activation email to <strong>sahjanandpolyweavespvtltd18@gmail.com</strong>. Please open that email and click <em>"Activate Form"</em> once to enable direct inbox delivery for all inquiries.</span>';
-          status.className = 'form-status success';
+          status.innerHTML = '<div class="status-success-box">' +
+            '<div class="status-header">' +
+              '<div class="status-icon-wrap">' +
+                '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
+              '</div>' +
+              '<div>' +
+                '<h4 class="status-title">Message Submitted!</h4>' +
+                '<p class="status-desc">Thank you, <strong>' + name + '</strong>! Your message has been received by our corporate team. We will review your inquiry shortly.</p>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+          status.className = 'form-status';
         } else {
-          status.innerHTML = 'Message submitted! You can also email us directly at <a href="mailto:sahjanandpolyweavespvtltd18@gmail.com" style="color:#0284C7; font-weight:700;">sahjanandpolyweavespvtltd18@gmail.com</a> or WhatsApp <a href="https://wa.me/919727564411" target="_blank" style="color:#0284C7; font-weight:700;">+91 97275 64411</a>.';
-          status.className = 'form-status success';
+          status.innerHTML = '<div class="status-success-box">' +
+            '<div class="status-header">' +
+              '<div>' +
+                '<h4 class="status-title">Enquiry Received!</h4>' +
+                '<p class="status-desc">Thank you, <strong>' + name + '</strong>! Your enquiry has been received. Our team will contact you soon.</p>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+          status.className = 'form-status';
         }
       })
       .catch(function (err) {
