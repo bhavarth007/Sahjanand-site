@@ -985,6 +985,53 @@ body.mobile-nav-open {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.04));
 }
 
+/* ==========================================================================
+   ORBIT TRACK & SATELLITE ROTATION (Slow Graceful Orbit with Counter-Rotation)
+   ========================================================================== */
+.orbit-track {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transform-origin: center center;
+  pointer-events: none; /* Empty space lets clicks pass through */
+  z-index: 6;
+  animation: orbitTrackRotate 45s linear infinite;
+}
+
+@keyframes orbitTrackRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes nodeCounterRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+/* Pause whole orbital motion when hovering any node or track */
+.orbit-track:hover,
+.orbit-track:has(.orbit-node:hover) {
+  animation-play-state: paused;
+}
+
+.orbit-track:hover .orbit-node,
+.orbit-track:has(.orbit-node:hover) .orbit-node,
+.orbit-node:hover {
+  animation-play-state: paused;
+}
+
 /* Orbiting Nodes (4 Core Sectors: Compact Refined Satellite Nodes with Blue Icon Emblem & Bold Black Text) */
 .orbit-node {
   position: absolute;
@@ -1003,16 +1050,19 @@ body.mobile-nav-open {
   text-decoration: none !important;
   cursor: pointer;
   box-shadow: 0 0 18px rgba(56, 189, 248, 0.45), 0 0 35px rgba(14, 165, 233, 0.25), 0 6px 16px rgba(0, 0, 0, 0.22);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: scale 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
   z-index: 6;
-  animation: nodeAuraBreathe 3.6s ease-in-out infinite alternate;
+  pointer-events: auto; /* Clickable */
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  animation: nodeCounterRotate 45s linear infinite, nodeAuraBreathe 3.6s ease-in-out infinite alternate;
   box-sizing: border-box;
 }
 
-.orbit-node.node-1 { animation-delay: 0s; }
-.orbit-node.node-2 { animation-delay: 0.9s; }
-.orbit-node.node-3 { animation-delay: 1.8s; }
-.orbit-node.node-4 { animation-delay: 2.7s; }
+.orbit-node.node-1 { top: 0; left: 50%; animation-delay: 0s, 0s; }
+.orbit-node.node-2 { top: 50%; left: 100%; animation-delay: 0s, 0.9s; }
+.orbit-node.node-3 { top: 100%; left: 50%; animation-delay: 0s, 1.8s; }
+.orbit-node.node-4 { top: 50%; left: 0; animation-delay: 0s, 2.7s; }
 
 @keyframes nodeAuraBreathe {
   0% {
@@ -1027,6 +1077,7 @@ body.mobile-nav-open {
 
 .orbit-node:hover,
 .orbit-node:focus {
+  scale: 1.12;
   text-decoration: none !important;
   border-color: #00F0FF !important;
   background: linear-gradient(180deg, #BAE6FD 0%, #FFFFFF 52%) !important;
@@ -1111,16 +1162,6 @@ body.mobile-nav-open {
   color: #000000 !important;
 }
 
-/* 4 Positions */
-.orbit-node.node-1 { top: 8px; left: 50%; transform: translateX(-50%); }
-.orbit-node.node-2 { right: 8px; top: 50%; transform: translateY(-50%); }
-.orbit-node.node-3 { bottom: 8px; left: 50%; transform: translateX(-50%); }
-.orbit-node.node-4 { left: 8px; top: 50%; transform: translateY(-50%); }
-
-.orbit-node.node-1:hover { transform: translateX(-50%) scale(1.1) !important; }
-.orbit-node.node-2:hover { transform: translateY(-50%) scale(1.1) !important; }
-.orbit-node.node-3:hover { transform: translateX(-50%) scale(1.1) !important; }
-.orbit-node.node-4:hover { transform: translateY(-50%) scale(1.1) !important; }
 
 
 /* Tablet & Mobile Hero Scaling */
@@ -1143,6 +1184,10 @@ body.mobile-nav-open {
     max-width: 370px;
   }
   .constellation-ring {
+    width: 310px;
+    height: 310px;
+  }
+  .orbit-track {
     width: 310px;
     height: 310px;
   }
@@ -1188,6 +1233,10 @@ body.mobile-nav-open {
     width: 270px;
     height: 270px;
   }
+  .orbit-track {
+    width: 270px;
+    height: 270px;
+  }
   .constellation-aura {
     width: 130px;
     height: 130px;
@@ -1218,10 +1267,6 @@ body.mobile-nav-open {
   .orbit-node strong { font-size: 0.52rem; }
   .orbit-node .node-sub,
   .orbit-node span span { font-size: 0.42rem; }
-  .orbit-node.node-1 { top: 0px; }
-  .orbit-node.node-2 { right: 0px; }
-  .orbit-node.node-3 { bottom: 0px; }
-  .orbit-node.node-4 { left: 0px; }
 }
 
 @media (max-width: 360px) {
@@ -1230,6 +1275,10 @@ body.mobile-nav-open {
     max-width: 280px;
   }
   .constellation-ring {
+    width: 226px;
+    height: 226px;
+  }
+  .orbit-track {
     width: 226px;
     height: 226px;
   }
@@ -1263,6 +1312,13 @@ body.mobile-nav-open {
   .orbit-node strong { font-size: 0.46rem; }
   .orbit-node .node-sub,
   .orbit-node span span { font-size: 0.38rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-track,
+  .orbit-node {
+    animation: none !important;
+  }
 }
 
 /* ==========================================================================
