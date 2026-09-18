@@ -1173,7 +1173,8 @@ body.mobile-nav-open {
 }
 
 /* ==========================================================================
-   HERO EXECUTIVE LEADERSHIP POD (Honoring Managing Director Ghanshyam Dobariya)
+   HERO PRESENTATION BYLINE (Managing Director Ghanshyam Dobariya)
+   Modern Minimalist Byline Pill - Simple, Clean Typography
    ========================================================================== */
 .hero-art {
   display: flex;
@@ -1183,73 +1184,23 @@ body.mobile-nav-open {
   width: 100%;
 }
 
-.hero-leadership-pod {
-  margin-top: 24px;
-  width: 100%;
-  max-width: 440px;
-  background: rgba(10, 25, 47, 0.82);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(56, 189, 248, 0.32);
-  border-radius: 16px;
-  padding: 12px 18px;
-  display: flex;
+.hero-presented-tag {
+  margin-top: 18px;
+  display: inline-flex;
   align-items: center;
-  gap: 14px;
-  text-decoration: none !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 24px rgba(14, 165, 233, 0.15);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  z-index: 5;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  background: rgba(10, 25, 47, 0.72);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
   box-sizing: border-box;
 }
 
-.hero-leadership-pod:hover,
-.hero-leadership-pod:focus {
-  transform: translateY(-2px);
-  border-color: #38BDF8;
-  background: rgba(14, 34, 61, 0.92);
-  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.55), 0 0 32px rgba(56, 189, 248, 0.32);
-  text-decoration: none !important;
-}
-
-.leadership-pod-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
-  border: 2px solid #38BDF8;
-  color: #FFFFFF;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 0.92rem;
-  letter-spacing: 0.02em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
-  transition: transform 0.3s ease;
-}
-
-.hero-leadership-pod:hover .leadership-pod-avatar {
-  transform: scale(1.06);
-}
-
-.leadership-pod-content {
-  flex: 1;
-  min-width: 0;
-  text-align: left;
-}
-
-.leadership-kicker-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 2px;
-}
-
-.leadership-kicker-dot {
+.hero-presented-tag .tag-pulse-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -1258,66 +1209,35 @@ body.mobile-nav-open {
   flex-shrink: 0;
 }
 
-.leadership-kicker-text {
-  font-size: 0.62rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #7DD3FC;
-  white-space: nowrap;
-}
-
-.leadership-title-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.leadership-name {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: #FFFFFF !important;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-}
-
-.leadership-role-badge {
-  font-size: 0.66rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 12px;
-  background: rgba(56, 189, 248, 0.16);
-  border: 1px solid rgba(56, 189, 248, 0.38);
-  color: #7DD3FC;
-  white-space: nowrap;
+.hero-presented-tag .tag-label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #94A3B8;
   letter-spacing: 0.02em;
 }
 
-.leadership-caption {
-  font-size: 0.70rem;
-  color: #94A3B8;
-  margin: 3px 0 0;
-  line-height: 1.35;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.hero-presented-tag .tag-name {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #FFFFFF !important;
+  letter-spacing: 0.01em;
 }
 
-.leadership-pod-arrow {
+.hero-presented-tag .tag-sep {
   color: #38BDF8;
-  opacity: 0.75;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  user-select: none;
 }
 
-.hero-leadership-pod:hover .leadership-pod-arrow {
-  opacity: 1;
-  transform: translateX(4px);
+.hero-presented-tag .tag-title {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #7DD3FC;
+  letter-spacing: 0.02em;
 }
 
 /* Tablet & Mobile Hero Scaling */
@@ -1381,9 +1301,8 @@ body.mobile-nav-open {
   .orbit-node strong { font-size: 0.60rem; }
   .orbit-node .node-sub,
   .orbit-node span span { font-size: 0.48rem; }
-  .hero-leadership-pod {
-    margin-top: 20px;
-    max-width: 370px;
+  .hero-presented-tag {
+    margin-top: 16px;
   }
 }
 
@@ -1435,27 +1354,19 @@ body.mobile-nav-open {
   .orbit-node strong { font-size: 0.52rem; }
   .orbit-node .node-sub,
   .orbit-node span span { font-size: 0.42rem; }
-  .hero-leadership-pod {
-    margin-top: 16px;
-    max-width: 320px;
-    padding: 10px 14px;
-    gap: 10px;
+  .hero-presented-tag {
+    margin-top: 14px;
+    padding: 5px 14px;
+    gap: 6px;
   }
-  .leadership-pod-avatar {
-    width: 38px;
-    height: 38px;
-    font-size: 0.82rem;
+  .hero-presented-tag .tag-label {
+    font-size: 0.70rem;
   }
-  .leadership-name {
-    font-size: 0.95rem;
+  .hero-presented-tag .tag-name {
+    font-size: 0.86rem;
   }
-  .leadership-role-badge {
-    font-size: 0.60rem;
-    padding: 1px 6px;
-  }
-  .leadership-caption {
-    font-size: 0.65rem;
-    white-space: normal;
+  .hero-presented-tag .tag-title {
+    font-size: 0.68rem;
   }
 }
 
@@ -1506,9 +1417,18 @@ body.mobile-nav-open {
   .orbit-node strong { font-size: 0.46rem; }
   .orbit-node .node-sub,
   .orbit-node span span { font-size: 0.38rem; }
-  .hero-leadership-pod {
-    max-width: 280px;
-    padding: 8px 12px;
+  .hero-presented-tag {
+    padding: 4px 10px;
+    gap: 5px;
+  }
+  .hero-presented-tag .tag-label {
+    font-size: 0.64rem;
+  }
+  .hero-presented-tag .tag-name {
+    font-size: 0.78rem;
+  }
+  .hero-presented-tag .tag-title {
+    font-size: 0.62rem;
   }
 }
 
