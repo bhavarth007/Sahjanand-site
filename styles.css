@@ -739,6 +739,55 @@ body.mobile-nav-open {
   z-index: 2;
 }
 
+/* Hero Heritage "Since 1989" Badge */
+.hero-since-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 14px 4px 5px;
+  border-radius: 9999px;
+  background: rgba(14, 30, 53, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-bottom: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.hero-since-tag .since-flag {
+  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  padding: 4px 11px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+  line-height: 1.2;
+}
+
+.hero-since-tag .since-sep {
+  width: 1px;
+  height: 13px;
+  background: rgba(56, 189, 248, 0.35);
+}
+
+.hero-since-tag .since-loc {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #CBD5E1;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+}
+
+.hero-since-tag .since-loc svg {
+  color: #38BDF8;
+}
+
 .hero-content h1 {
   color: #FFFFFF;
   margin-bottom: 20px;
@@ -1102,12 +1151,23 @@ body.mobile-nav-open {
 }
 
 .orbit-icon-wrap img,
+.orbit-icon-wrap img.orbit-machine-icon,
+.orbit-icon-wrap img.orbit-yarn-icon {
+  display: block;
+  object-fit: contain;
+}
+
 .orbit-icon-wrap img.orbit-machine-icon {
   width: 36px;
   height: auto;
   max-height: 26px;
-  display: block;
-  object-fit: contain;
+}
+
+.orbit-icon-wrap img.orbit-yarn-icon {
+  width: auto;
+  height: 28px;
+  max-width: 32px;
+  max-height: 28px;
 }
 
 .orbit-node:hover .orbit-icon-wrap svg {
@@ -1157,7 +1217,7 @@ body.mobile-nav-open {
 }
 
 /* ==========================================================================
-   HERO PRESENTATION BYLINE (Managing Director Ghanshyam Dobariya)
+   HERO PRESENTATION BYLINE (Founder GHANSHYAM DOBARIYA)
    Modern Minimalist Byline Pill - Simple, Clean Typography
    ========================================================================== */
 .hero-art {
@@ -1195,33 +1255,20 @@ body.mobile-nav-open {
 
 .hero-presented-tag .tag-label {
   font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 0.76rem;
+  font-weight: 600;
   color: #94A3B8;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .hero-presented-tag .tag-name {
   font-family: var(--font-display);
-  font-size: 0.98rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 800;
   color: #FFFFFF !important;
-  letter-spacing: 0.01em;
-}
-
-.hero-presented-tag .tag-sep {
-  color: #38BDF8;
-  font-size: 0.85rem;
-  opacity: 0.7;
-  user-select: none;
-}
-
-.hero-presented-tag .tag-title {
-  font-family: var(--font-body);
-  font-size: 0.76rem;
-  font-weight: 600;
-  color: #7DD3FC;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 /* Tablet & Mobile Hero Scaling */
