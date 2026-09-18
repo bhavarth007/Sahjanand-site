@@ -341,45 +341,68 @@ document.addEventListener('DOMContentLoaded', function () {
       var originalBtnText = submitBtn ? submitBtn.innerHTML : '';
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Redirecting to Email...';
+        submitBtn.textContent = 'Sending Message...';
       }
 
-      // Prepare mailto URI directed to official company inbox
-      var mailtoSubject = encodeURIComponent('Product Enquiry: ' + subject + ' - ' + name);
-      var mailtoBody = encodeURIComponent(
-        'Dear Sahjanand Polyweaves Team,\n\n' +
-        'I am submitting an enquiry via your official website:\n\n' +
-        '-----------------------------------------\n' +
-        'Full Name: ' + name + '\n' +
-        'Email Address: ' + email + '\n' +
-        'Phone / Mobile: ' + (phone || 'Not provided') + '\n' +
-        'Enquiry Subject: ' + subject + '\n' +
-        '-----------------------------------------\n\n' +
-        'Detailed Message:\n' + message + '\n\n' +
-        'Best regards,\n' + name
-      );
+      status.innerHTML = 'Sending your enquiry to <strong>sahjanandpolyweavespvtltd18@gmail.com</strong>...';
+      status.className = 'form-status';
 
-      var mailtoUrl = 'mailto:sahjanandpolyweavespvtltd18@gmail.com?subject=' + mailtoSubject + '&body=' + mailtoBody;
-
-      status.innerHTML = 'Thank you, <strong>' + name + '</strong>! Redirecting your enquiry to <strong>sahjanandpolyweavespvtltd18@gmail.com</strong>...<br>' +
-        '<span style="font-size:0.9rem; display:inline-block; margin-top:8px;">' +
-        'If your email client does not launch automatically, <a href="' + mailtoUrl + '" style="color:#0284C7; font-weight:700; text-decoration:underline;">click here to open and send your enquiry email</a>.' +
-        '</span>';
-      status.className = 'form-status success';
-
-      // Launch email client
-      try {
-        window.location.href = mailtoUrl;
-      } catch (err) {
-        console.error('Mailto launch error:', err);
-      }
-
-      setTimeout(function () {
+      fetch('https://formsubmit.co/ajax/sahjanandpolyweavespvtltd18@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: 'Website Enquiry: ' + subject + ' - ' + name,
+          _template: 'table',
+          _captcha: 'false',
+          'Full Name': name,
+          'Email Address': email,
+          'Phone / Mobile': phone || 'Not provided',
+          'Enquiry Subject': subject,
+          'Detailed Message': message
+        })
+      })
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        if (data.success === 'true' || data.success === true) {
+          status.innerHTML = '✓ Thank you, <strong>' + name + '</strong>! Your enquiry has been delivered successfully to <strong>sahjanandpolyweavespvtltd18@gmail.com</strong>. Our team will get back to you shortly.<br>' +
+            '<span style="font-size:0.88rem; display:inline-block; margin-top:8px;">Need urgent support? You can also <a href="https://wa.me/919727564411?text=' + encodeURIComponent('Hello Sahjanand team, I submitted an enquiry regarding: ' + subject + ' (' + name + ')') + '" target="_blank" style="color:#0284C7; font-weight:700; text-decoration:underline;">Chat directly on WhatsApp (+91 97275 64411) &rarr;</a></span>';
+          status.className = 'form-status success';
+          form.reset();
+        } else if (data.message && data.message.indexOf('Activation') !== -1) {
+          status.innerHTML = '✓ Thank you, <strong>' + name + '</strong>! Your message was submitted.<br>' +
+            '<span style="display:inline-block; margin-top:6px; font-size:0.9rem;"><strong>Action Required:</strong> FormSubmit has sent a one-time activation email to <strong>sahjanandpolyweavespvtltd18@gmail.com</strong>. Please open that email and click <em>"Activate Form"</em> once to enable direct inbox delivery for all inquiries.</span>';
+          status.className = 'form-status success';
+        } else {
+          status.innerHTML = 'Message submitted! You can also email us directly at <a href="mailto:sahjanandpolyweavespvtltd18@gmail.com" style="color:#0284C7; font-weight:700;">sahjanandpolyweavespvtltd18@gmail.com</a> or WhatsApp <a href="https://wa.me/919727564411" target="_blank" style="color:#0284C7; font-weight:700;">+91 97275 64411</a>.';
+          status.className = 'form-status success';
+        }
+      })
+      .catch(function (err) {
+        console.error('Form submission error:', err);
+        var mailtoSubject = encodeURIComponent('Product Enquiry: ' + subject + ' - ' + name);
+        var mailtoBody = encodeURIComponent(
+          'Dear Sahjanand Team,\n\n' +
+          'Full Name: ' + name + '\n' +
+          'Email: ' + email + '\n' +
+          'Phone: ' + (phone || 'N/A') + '\n' +
+          'Subject: ' + subject + '\n\n' +
+          'Message:\n' + message
+        );
+        var mailtoUrl = 'mailto:sahjanandpolyweavespvtltd18@gmail.com?subject=' + mailtoSubject + '&body=' + mailtoBody;
+        status.innerHTML = 'Unable to send automatically via background server. <a href="' + mailtoUrl + '" style="color:#0284C7; font-weight:700; text-decoration:underline;">Click here to send via email app</a> or <a href="https://wa.me/919727564411" target="_blank" style="color:#0284C7; font-weight:700; text-decoration:underline;">message on WhatsApp</a>.';
+        status.className = 'form-status error';
+      })
+      .finally(function () {
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalBtnText;
         }
-      }, 3000);
+      });
     });
   }
 
