@@ -793,165 +793,145 @@ body.mobile-nav-open {
 }
 
 /* ==========================================================================
-   SACRED OM (ॐ) CONTINUOUS RADIATION ANIMATION
+   DYNAMIC 4-WORK INDUSTRIAL SHOWCASE (Infinite 3s Spreading Cycle)
+   Cycles through Weaving, Yarn, Chemical, and Trade every 3 seconds
    ========================================================================== */
-.om-emission-field {
+.work-showcase-field {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 0;
-  height: 0;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  overflow: hidden;
   pointer-events: none;
-  z-index: 4;
+  z-index: 4; /* Behind center logo (z-index 5), inside orbit ring */
+  box-shadow: 0 0 40px rgba(14, 165, 233, 0.35);
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 50%, rgba(0,0,0,0.85) 75%, transparent 100%);
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 50%, rgba(0,0,0,0.85) 75%, transparent 100%);
 }
 
-.om-stream {
+.work-showcase-ring {
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
-  height: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(56, 189, 248, 0.45);
+  box-shadow: inset 0 0 30px rgba(14, 165, 233, 0.3), 0 0 30px rgba(56, 189, 248, 0.3);
+  z-index: 2;
+  pointer-events: none;
 }
 
-.om-glyph {
+.work-slide {
   position: absolute;
   top: 0;
   left: 0;
-  font-size: 1.85rem;
-  font-weight: 700;
-  font-family: 'Cinzel', 'Noto Sans Devanagari', 'Segoe UI Symbol', 'Arial Unicode MS', sans-serif;
-  color: #E0F2FE;
-  text-shadow: 0 0 8px #38BDF8, 0 0 18px #0284C7, 0 0 32px #F59E0B, 0 0 45px rgba(56, 189, 248, 0.7);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-  animation-duration: 4.2s;
-  animation-timing-function: cubic-bezier(0.25, 0.75, 0.5, 1);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.85);
+  animation-duration: 12s;
+  animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
   animation-iteration-count: infinite;
-  opacity: 0;
 }
 
-/* Staggered Continuous Emission Waves */
-.om-stream.wave-1 .om-glyph { animation-delay: 0s; }
-.om-stream.wave-2 .om-glyph { animation-delay: 1.4s; }
-.om-stream.wave-3 .om-glyph { animation-delay: 2.8s; }
-
-/* 8 Directions for Glyphs radiating from center outward */
-.om-glyph.dir-0   { animation-name: omPull_0; }
-.om-glyph.dir-45  { animation-name: omPull_45; }
-.om-glyph.dir-90  { animation-name: omPull_90; }
-.om-glyph.dir-135 { animation-name: omPull_135; }
-.om-glyph.dir-180 { animation-name: omPull_180; }
-.om-glyph.dir-225 { animation-name: omPull_225; }
-.om-glyph.dir-270 { animation-name: omPull_270; }
-.om-glyph.dir-315 { animation-name: omPull_315; }
-
-@keyframes omPull_0 {
-  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
-  22% { opacity: 0.95; }
-  75% { opacity: 0.75; }
-  100% { transform: translate(-50%, -50%) translate(195px, 0px) scale(1.35); opacity: 0; }
-}
-@keyframes omPull_45 {
-  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
-  22% { opacity: 0.95; }
-  75% { opacity: 0.75; }
-  100% { transform: translate(-50%, -50%) translate(138px, 138px) scale(1.35); opacity: 0; }
-}
-@keyframes omPull_90 {
-  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
-  22% { opacity: 0.95; }
-  75% { opacity: 0.75; }
-  100% { transform: translate(-50%, -50%) translate(0px, 195px) scale(1.35); opacity: 0; }
-}
-@keyframes omPull_135 {
-  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
-  22% { opacity: 0.95; }
-  75% { opacity: 0.75; }
-  100% { transform: translate(-50%, -50%) translate(-138px, 138px) scale(1.35); opacity: 0; }
-}
-@keyframes omPull_180 {
-  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
-  22% { opacity: 0.95; }
-  75% { opacity: 0.75; }
-  100% { transform: translate(-50%, -50%) translate(-195px, 0px) scale(1.35); opacity: 0; }
-}
-@keyframes omPull_225 {
-  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
-  22% { opacity: 0.95; }
-  75% { opacity: 0.75; }
-  100% { transform: translate(-50%, -50%) translate(-138px, -138px) scale(1.35); opacity: 0; }
-}
-@keyframes omPull_270 {
-  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
-  22% { opacity: 0.95; }
-  75% { opacity: 0.75; }
-  100% { transform: translate(-50%, -50%) translate(0px, -195px) scale(1.35); opacity: 0; }
-}
-@keyframes omPull_315 {
-  0% { transform: translate(-50%, -50%) translate(0px, 0px) scale(0.6); opacity: 0; }
-  22% { opacity: 0.95; }
-  75% { opacity: 0.75; }
-  100% { transform: translate(-50%, -50%) translate(138px, -138px) scale(1.35); opacity: 0; }
+.work-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: brightness(0.92) contrast(1.08);
+  display: block;
 }
 
-/* Central Expanding Om Pulse Ripple */
-.om-pulse-center {
+.work-slide-tag {
   position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 6.8rem;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(7, 21, 39, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.65rem;
   font-weight: 700;
-  font-family: 'Cinzel', 'Noto Sans Devanagari', 'Segoe UI Symbol', 'Arial Unicode MS', sans-serif;
-  color: rgba(56, 189, 248, 0.45);
-  text-shadow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 55px rgba(14, 165, 233, 0.45);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-  transform: translate(-50%, -50%) scale(0.65);
-  opacity: 0;
-  animation: omCenterPulse 4.2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+  color: #7DD3FC;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 3;
 }
 
-.om-pulse-center.pulse-1 { animation-delay: 0s; }
-.om-pulse-center.pulse-2 { animation-delay: 2.1s; }
+/* Staggered 3s Spreading Animation per Slide (Total 12s) */
+.work-slide.slide-weaving  { animation-name: workShowcase1; }
+.work-slide.slide-yarn     { animation-name: workShowcase2; }
+.work-slide.slide-chemical { animation-name: workShowcase3; }
+.work-slide.slide-trade    { animation-name: workShowcase4; }
 
-@keyframes omCenterPulse {
-  0% {
-    transform: translate(-50%, -50%) scale(0.65);
-    opacity: 0;
-  }
-  25% {
-    opacity: 0.7;
-  }
-  75% {
-    opacity: 0.25;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(2.25);
-    opacity: 0;
-  }
+/* Slide 1: Weaving (0% - 25% of 12s = 0s to 3s) */
+@keyframes workShowcase1 {
+  0% { opacity: 0; transform: scale(0.85); }
+  3% { opacity: 1; }
+  22% { opacity: 1; transform: scale(1.12); }
+  25% { opacity: 0; transform: scale(1.18); }
+  100% { opacity: 0; transform: scale(0.85); }
 }
 
-/* Responsive scaling for the Om emission field across screen sizes */
+/* Slide 2: Yarn (25% - 50% of 12s = 3s to 6s) */
+@keyframes workShowcase2 {
+  0%, 22% { opacity: 0; transform: scale(0.85); }
+  25% { opacity: 0; transform: scale(0.85); }
+  28% { opacity: 1; }
+  47% { opacity: 1; transform: scale(1.12); }
+  50% { opacity: 0; transform: scale(1.18); }
+  100% { opacity: 0; transform: scale(0.85); }
+}
+
+/* Slide 3: Chemical (50% - 75% of 12s = 6s to 9s) */
+@keyframes workShowcase3 {
+  0%, 47% { opacity: 0; transform: scale(0.85); }
+  50% { opacity: 0; transform: scale(0.85); }
+  53% { opacity: 1; }
+  72% { opacity: 1; transform: scale(1.12); }
+  75% { opacity: 0; transform: scale(1.18); }
+  100% { opacity: 0; transform: scale(0.85); }
+}
+
+/* Slide 4: Trade (75% - 100% of 12s = 9s to 12s) */
+@keyframes workShowcase4 {
+  0%, 72% { opacity: 0; transform: scale(0.85); }
+  75% { opacity: 0; transform: scale(0.85); }
+  78% { opacity: 1; }
+  97% { opacity: 1; transform: scale(1.12); }
+  100% { opacity: 0; transform: scale(1.18); }
+}
+
+/* Responsive Scaling for Work Showcase Backdrop */
 @media (max-width: 992px) {
-  .om-emission-field {
-    transform: scale(0.85);
+  .work-showcase-field {
+    width: 270px;
+    height: 270px;
   }
 }
 
 @media (max-width: 576px) {
-  .om-emission-field {
-    transform: scale(0.72);
-  }
-  .om-glyph {
-    font-size: 1.6rem;
+  .work-showcase-field {
+    width: 230px;
+    height: 230px;
   }
 }
 
 @media (max-width: 360px) {
-  .om-emission-field {
-    transform: scale(0.6);
+  .work-showcase-field {
+    width: 195px;
+    height: 195px;
   }
 }
 
@@ -1008,8 +988,8 @@ body.mobile-nav-open {
 /* Orbiting Nodes (4 Core Sectors: Compact Refined Satellite Nodes with Blue Icon Emblem & Bold Black Text) */
 .orbit-node {
   position: absolute;
-  width: 92px;
-  height: 92px;
+  width: 98px;
+  height: 98px;
   border-radius: 50% !important;
   background: linear-gradient(180deg, #E0F2FE 0%, #FFFFFF 48%) !important;
   border: 2px solid #38BDF8 !important;
@@ -1018,7 +998,7 @@ body.mobile-nav-open {
   align-items: center !important;
   justify-content: center !important;
   text-align: center !important;
-  padding: 6px 4px !important;
+  padding: 4px 6px !important;
   color: #0A192F !important;
   text-decoration: none !important;
   cursor: pointer;
@@ -1026,6 +1006,7 @@ body.mobile-nav-open {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 6;
   animation: nodeAuraBreathe 3.6s ease-in-out infinite alternate;
+  box-sizing: border-box;
 }
 
 .orbit-node.node-1 { animation-delay: 0s; }
@@ -1059,23 +1040,23 @@ body.mobile-nav-open {
 
 /* Blue Circular Icon Pod to break up white and add color */
 .orbit-icon-wrap {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #FFFFFF !important;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
   box-shadow: 0 2px 8px rgba(2, 132, 199, 0.45);
   transition: all 0.3s ease;
   flex-shrink: 0;
 }
 
 .orbit-icon-wrap svg {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   color: #FFFFFF !important;
   stroke: #FFFFFF !important;
   filter: none !important;
@@ -1088,40 +1069,59 @@ body.mobile-nav-open {
   box-shadow: 0 0 12px rgba(0, 166, 255, 0.7);
 }
 
+.orbit-node span.node-label,
 .orbit-node span {
   font-size: 0.68rem;
   font-weight: 800;
   line-height: 1.15;
-  color: #0A192F !important; /* Bold Black */
+  color: #0A192F !important;
   text-decoration: none !important;
   letter-spacing: -0.01em;
   font-family: var(--font-body);
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  width: 100%;
 }
 
+.orbit-node strong {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #0A192F !important;
+  display: block;
+  line-height: 1.15;
+}
+
+.orbit-node .node-sub,
 .orbit-node span span {
-  display: inline;
+  display: block;
   color: #1E293B !important;
   font-weight: 700;
-  font-size: 0.82em;
+  font-size: 0.53rem;
+  margin-top: 1px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  line-height: 1.1;
 }
 
+.orbit-node:hover strong,
 .orbit-node:hover span {
   color: #000000 !important;
-  font-weight: 900;
 }
 
 /* 4 Positions */
-.orbit-node.node-1 { top: 12px; left: 50%; transform: translateX(-50%); }
-.orbit-node.node-2 { right: 12px; top: 50%; transform: translateY(-50%); }
-.orbit-node.node-3 { bottom: 12px; left: 50%; transform: translateX(-50%); }
-.orbit-node.node-4 { left: 12px; top: 50%; transform: translateY(-50%); }
+.orbit-node.node-1 { top: 8px; left: 50%; transform: translateX(-50%); }
+.orbit-node.node-2 { right: 8px; top: 50%; transform: translateY(-50%); }
+.orbit-node.node-3 { bottom: 8px; left: 50%; transform: translateX(-50%); }
+.orbit-node.node-4 { left: 8px; top: 50%; transform: translateY(-50%); }
 
-.orbit-node.node-1:hover { transform: translateX(-50%) scale(1.12) !important; }
-.orbit-node.node-2:hover { transform: translateY(-50%) scale(1.12) !important; }
-.orbit-node.node-3:hover { transform: translateX(-50%) scale(1.12) !important; }
-.orbit-node.node-4:hover { transform: translateY(-50%) scale(1.12) !important; }
+.orbit-node.node-1:hover { transform: translateX(-50%) scale(1.1) !important; }
+.orbit-node.node-2:hover { transform: translateY(-50%) scale(1.1) !important; }
+.orbit-node.node-3:hover { transform: translateX(-50%) scale(1.1) !important; }
+.orbit-node.node-4:hover { transform: translateY(-50%) scale(1.1) !important; }
+
 
 /* Tablet & Mobile Hero Scaling */
 @media (max-width: 992px) {
@@ -1158,20 +1158,24 @@ body.mobile-nav-open {
   .constellation-center img.constellation-logo,
   .constellation-center img { width: 125px; max-width: 90%; }
   .orbit-node {
-    width: 82px;
-    height: 82px;
-    padding: 5px 3px !important;
+    width: 86px;
+    height: 86px;
+    padding: 3px 4px !important;
   }
   .orbit-icon-wrap {
-    width: 26px;
-    height: 26px;
+    width: 22px;
+    height: 22px;
     margin-bottom: 2px;
   }
   .orbit-icon-wrap svg {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
   }
-  .orbit-node span { font-size: 0.62rem; }
+  .orbit-node span.node-label,
+  .orbit-node span { font-size: 0.60rem; }
+  .orbit-node strong { font-size: 0.60rem; }
+  .orbit-node .node-sub,
+  .orbit-node span span { font-size: 0.48rem; }
 }
 
 @media (max-width: 576px) {
@@ -1196,20 +1200,24 @@ body.mobile-nav-open {
   .constellation-center img.constellation-logo,
   .constellation-center img { width: 107px; max-width: 90%; }
   .orbit-node {
-    width: 72px;
-    height: 72px;
-    padding: 4px 2px !important;
+    width: 76px;
+    height: 76px;
+    padding: 2px 3px !important;
   }
   .orbit-icon-wrap {
-    width: 22px;
-    height: 22px;
-    margin-bottom: 2px;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 1px;
   }
   .orbit-icon-wrap svg {
     width: 12px;
     height: 12px;
   }
-  .orbit-node span { font-size: 0.54rem; }
+  .orbit-node span.node-label,
+  .orbit-node span { font-size: 0.52rem; }
+  .orbit-node strong { font-size: 0.52rem; }
+  .orbit-node .node-sub,
+  .orbit-node span span { font-size: 0.42rem; }
   .orbit-node.node-1 { top: 0px; }
   .orbit-node.node-2 { right: 0px; }
   .orbit-node.node-3 { bottom: 0px; }
@@ -1237,20 +1245,24 @@ body.mobile-nav-open {
   .constellation-center img.constellation-logo,
   .constellation-center img { width: 92px; max-width: 90%; }
   .orbit-node {
-    width: 64px;
-    height: 64px;
-    padding: 3px 2px !important;
+    width: 68px;
+    height: 68px;
+    padding: 2px !important;
   }
   .orbit-icon-wrap {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
     margin-bottom: 1px;
   }
   .orbit-icon-wrap svg {
     width: 10px;
     height: 10px;
   }
-  .orbit-node span { font-size: 0.48rem; }
+  .orbit-node span.node-label,
+  .orbit-node span { font-size: 0.46rem; }
+  .orbit-node strong { font-size: 0.46rem; }
+  .orbit-node .node-sub,
+  .orbit-node span span { font-size: 0.38rem; }
 }
 
 /* ==========================================================================
@@ -2147,13 +2159,44 @@ footer.site-footer {
 }
 
 .footer-strip-brand {
-  display: flex;
+  display: none;
+}
+
+.footer-strip-message {
+  max-width: 520px;
+}
+
+.footer-message-badge {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  font-family: var(--font-display);
+  gap: 7px;
+  font-size: 0.74rem;
   font-weight: 700;
-  color: #FFFFFF;
-  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cyan-neon);
+  margin-bottom: 4px;
+}
+
+.footer-message-badge .badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(1.3); }
+}
+
+.footer-message-text {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #CBD5E1;
+  margin: 0;
 }
 
 .footer-strip-contact {
