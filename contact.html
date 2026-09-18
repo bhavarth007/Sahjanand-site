@@ -12,7 +12,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<link rel="stylesheet" href="styles.css?v=56">
+<link rel="stylesheet" href="styles.css?v=57">
 </head>
 <body>
 
@@ -103,20 +103,46 @@
 
        <div class="field">
         <label for="subject">Enquiry Subject *</label>
-        <select id="subject" name="subject" required>
-         <option value="">Select an enquiry type</option>
-         <option value="Textile: Yarn Section & Preparation">Textile: 1. Yarn Section &amp; Warp Preparation</option>
-         <option value="Textile: Rapier Section (Rapier Looms)">Textile: 2. Rapier Section (Rapier Looms Division)</option>
-         <option value="Textile: Weaving Segment (High-Speed Weaving)">Textile: 3. Weaving Segment (High-Speed Weaving Division)</option>
-         <option value="Textile: Purchase Section & Trading">Textile: 4. Purchase Section &amp; Grey Trading</option>
-         <option value="Textile Manufacturing & Fabric Supply">Textile: General Bulk Fabric Supply</option>
-         <option value="Concrete Blocks & Pavers">Concrete Blocks &amp; Pavers</option>
-         <option value="Structural Steel Components">Structural Steel Components</option>
-         <option value="Precast Drainage Units">Precast Drainage Units</option>
-         <option value="Industrial Pipe Fittings">Industrial Pipe Fittings</option>
-         <option value="Plant Visit Request">Plant Visit &amp; Quality Inspection</option>
-         <option value="General Corporate Enquiry">General Corporate Enquiry</option>
-        </select>
+        <div class="custom-select-wrap" id="custom-subject-wrap">
+         <button type="button" class="custom-select-btn" id="custom-subject-btn" aria-haspopup="listbox" aria-expanded="false">
+          <span class="custom-select-label is-placeholder">Select an enquiry type</span>
+          <span class="custom-select-chevron" aria-hidden="true">
+           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+           </svg>
+          </span>
+         </button>
+         <div class="custom-select-dropdown" id="custom-subject-dropdown" role="listbox" aria-labelledby="custom-subject-btn">
+          <div class="custom-select-group">Textile Division</div>
+          <div class="custom-select-item" data-value="Textile: Yarn Section & Preparation" role="option">Yarn Section &amp; Warp Preparation</div>
+          <div class="custom-select-item" data-value="Textile: Rapier Looms Division" role="option">Rapier Looms Division</div>
+          <div class="custom-select-item" data-value="Textile: Weaving Segment" role="option">High-Speed Weaving Division</div>
+          <div class="custom-select-item" data-value="Textile: Purchase Section & Trading" role="option">Purchase Section &amp; Grey Trading</div>
+          <div class="custom-select-item" data-value="Textile: Bulk Fabric Supply" role="option">General Bulk Fabric Supply</div>
+          <div class="custom-select-group">Industrial Division</div>
+          <div class="custom-select-item" data-value="Concrete Blocks & Pavers" role="option">Concrete Blocks &amp; Pavers</div>
+          <div class="custom-select-item" data-value="Structural Steel Components" role="option">Structural Steel Components</div>
+          <div class="custom-select-item" data-value="Precast Drainage Units" role="option">Precast Drainage Units</div>
+          <div class="custom-select-item" data-value="Industrial Pipe Fittings" role="option">Industrial Pipe Fittings</div>
+          <div class="custom-select-group">Corporate &amp; General</div>
+          <div class="custom-select-item" data-value="Plant Visit Request" role="option">Plant Visit &amp; Quality Inspection</div>
+          <div class="custom-select-item" data-value="General Corporate Enquiry" role="option">General Corporate Enquiry</div>
+         </div>
+         <select id="subject" name="subject" required class="native-hidden-select" tabindex="-1" aria-hidden="true">
+          <option value="">Select an enquiry type</option>
+          <option value="Textile: Yarn Section & Preparation">Yarn Section &amp; Warp Preparation</option>
+          <option value="Textile: Rapier Looms Division">Rapier Looms Division</option>
+          <option value="Textile: Weaving Segment">High-Speed Weaving Division</option>
+          <option value="Textile: Purchase Section & Trading">Purchase Section &amp; Grey Trading</option>
+          <option value="Textile: Bulk Fabric Supply">General Bulk Fabric Supply</option>
+          <option value="Concrete Blocks & Pavers">Concrete Blocks &amp; Pavers</option>
+          <option value="Structural Steel Components">Structural Steel Components</option>
+          <option value="Precast Drainage Units">Precast Drainage Units</option>
+          <option value="Industrial Pipe Fittings">Industrial Pipe Fittings</option>
+          <option value="Plant Visit Request">Plant Visit &amp; Quality Inspection</option>
+          <option value="General Corporate Enquiry">General Corporate Enquiry</option>
+         </select>
+        </div>
        </div>
 
        <div class="field full">
@@ -269,7 +295,7 @@
  </div>
 </footer>
 
-<script src="main.js?v=56"></script>
+<script src="main.js?v=57"></script>
 <!-- FLOATING WHATSAPP CHAT BUTTON (+91 97275 64411) -->
 <a href="https://wa.me/919727564411" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" aria-label="Chat with Sahjanand on WhatsApp (+91 97275 64411)" title="Chat on WhatsApp (+91 97275 64411)">
  <span class="wa-pulse" aria-hidden="true"></span>

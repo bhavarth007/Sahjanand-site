@@ -215,6 +215,100 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
+    // Custom Select Component Logic & Two-Way Sync
+    var selectWrap = document.getElementById('custom-subject-wrap');
+    var customBtn = document.getElementById('custom-subject-btn');
+    var customLabel = customBtn ? customBtn.querySelector('.custom-select-label') : null;
+    var customDropdown = document.getElementById('custom-subject-dropdown');
+    var customItems = customDropdown ? customDropdown.querySelectorAll('.custom-select-item') : [];
+    var subjectSelect = form.querySelector('#subject');
+
+    function syncCustomSelectDisplay(val) {
+      if (!customLabel || !subjectSelect) return;
+      var selectedText = '';
+      if (!val) {
+        customLabel.textContent = 'Select an enquiry type';
+        customLabel.classList.add('is-placeholder');
+      } else {
+        for (var idx = 0; idx < subjectSelect.options.length; idx++) {
+          if (subjectSelect.options[idx].value === val) {
+            selectedText = subjectSelect.options[idx].text;
+            break;
+          }
+        }
+        customLabel.textContent = selectedText || val;
+        customLabel.classList.remove('is-placeholder');
+      }
+      for (var m = 0; m < customItems.length; m++) {
+        if (customItems[m].getAttribute('data-value') === val) {
+          customItems[m].classList.add('is-selected');
+        } else {
+          customItems[m].classList.remove('is-selected');
+        }
+      }
+    }
+
+    if (selectWrap && customBtn && customDropdown) {
+      customBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = selectWrap.classList.contains('is-open');
+        if (isOpen) {
+          selectWrap.classList.remove('is-open');
+          customBtn.setAttribute('aria-expanded', 'false');
+        } else {
+          selectWrap.classList.add('is-open');
+          customBtn.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      for (var ci = 0; ci < customItems.length; ci++) {
+        (function (item) {
+          item.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var chosenVal = item.getAttribute('data-value');
+            if (subjectSelect) {
+              subjectSelect.value = chosenVal;
+              var evt = document.createEvent('HTMLEvents');
+              evt.initEvent('change', true, false);
+              subjectSelect.dispatchEvent(evt);
+            }
+            syncCustomSelectDisplay(chosenVal);
+            selectWrap.classList.remove('is-open');
+            customBtn.setAttribute('aria-expanded', 'false');
+            customBtn.focus();
+          });
+        })(customItems[ci]);
+      }
+
+      document.addEventListener('click', function (e) {
+        if (!selectWrap.contains(e.target)) {
+          selectWrap.classList.remove('is-open');
+          customBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' || e.keyCode === 27) {
+          selectWrap.classList.remove('is-open');
+          customBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (subjectSelect) {
+        subjectSelect.addEventListener('change', function () {
+          syncCustomSelectDisplay(subjectSelect.value);
+        });
+        // Initial sync on page load (handles prefilled URL params)
+        syncCustomSelectDisplay(subjectSelect.value);
+      }
+
+      form.addEventListener('reset', function () {
+        setTimeout(function () {
+          syncCustomSelectDisplay('');
+        }, 10);
+      });
+    }
+
     var status = form.querySelector('.form-status');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
