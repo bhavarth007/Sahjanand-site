@@ -422,11 +422,12 @@ body.mobile-nav-open {
   }
 
   .nav-row {
-    padding: 7px 16px;
+    padding: 5px 14px;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+    min-height: 42px;
   }
 
   .brand {
@@ -437,8 +438,8 @@ body.mobile-nav-open {
   .brand img,
   .brand-logo-img,
   .navbar-brand-logo {
-    height: 34px;
-    max-width: 175px;
+    height: 28px;
+    max-width: 145px;
   }
 
   .brand-text {
@@ -448,7 +449,7 @@ body.mobile-nav-open {
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     margin-left: 0;
   }
 
@@ -456,42 +457,43 @@ body.mobile-nav-open {
     display: none; /* Keep header clean on mobile; prominent CTA is in the drawer */
   }
 
-  /* 3-Line Hamburger Menu Button on Top Right */
+  /* 3-Line Hamburger Menu Button on Top Right (Compact & Modern) */
   .mobile-nav-toggle {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
-    width: 44px;
-    height: 44px;
-    padding: 8px;
-    background: #F1F5F9;
-    border: 1px solid #CBD5E1;
-    border-radius: 8px;
+    gap: 3.5px;
+    width: 32px;
+    height: 32px;
+    padding: 5px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.25s ease;
     z-index: 2503 !important; /* Above backdrop & drawer so tapping 3 lines closes it */
     position: relative;
+    box-shadow: 0 1px 3px rgba(10, 25, 47, 0.05);
   }
 
   .mobile-nav-toggle:hover {
-    background: #E2E8F0;
-    border-color: #94A3B8;
+    background: #F1F5F9;
+    border-color: #CBD5E1;
   }
 
   .mobile-nav-toggle .hamburger-line {
     display: block;
-    width: 22px;
-    height: 2.5px;
+    width: 17px;
+    height: 2px;
     background-color: var(--navy-dark, #0A192F);
     border-radius: 2px;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
   }
 
   /* Hamburger toggle animation when open */
   .mobile-nav-toggle.active .hamburger-line:nth-child(1) {
-    transform: translateY(7.5px) rotate(45deg);
+    transform: translateY(5.5px) rotate(45deg);
   }
 
   .mobile-nav-toggle.active .hamburger-line:nth-child(2) {
@@ -499,7 +501,7 @@ body.mobile-nav-open {
   }
 
   .mobile-nav-toggle.active .hamburger-line:nth-child(3) {
-    transform: translateY(-7.5px) rotate(-45deg);
+    transform: translateY(-5.5px) rotate(-45deg);
   }
 
   /* Right-Side Slide-in Drawer (100% Full Height Top-to-Bottom, Crystal Clear, NO BLUR) */
