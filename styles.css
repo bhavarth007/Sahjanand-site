@@ -1522,15 +1522,15 @@ body.mobile-nav-open {
 }
 
 /* ==========================================================================
-   PAGE HEADERS (INNER PAGES)
+   PAGE HEADERS (INNER PAGES) - MILESTONES REFERENCE HEIGHT FOR ALL MENUS
    ========================================================================== */
 .page-header {
   background: radial-gradient(circle at 80% 20%, #123358 0%, #071527 70%);
   color: #FFFFFF;
-  min-height: 200px;
+  min-height: 314px;
   display: flex;
   align-items: center;
-  padding: 32px 0 24px;
+  padding: 58px 0 52px;
   position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   width: 100%;
@@ -1552,9 +1552,9 @@ body.mobile-nav-open {
 }
 
 .breadcrumb {
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   color: #94A3B8;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1565,13 +1565,13 @@ body.mobile-nav-open {
 .breadcrumb a:hover { color: var(--cyan-neon); }
 .breadcrumb span.sep { color: #64748B; font-size: 0.8em; }
 
-.page-header h1 { color: #FFFFFF; margin-bottom: 8px; }
-.page-header p.header-desc { color: #CBD5E1; font-size: 1.02rem; max-width: 60ch; margin-bottom: 0; }
+.page-header h1 { color: #FFFFFF; margin-bottom: 10px; }
+.page-header p.header-desc { color: #CBD5E1; font-size: 1.1rem; max-width: 60ch; }
 
 @media (max-width: 768px) {
   .page-header {
     min-height: auto;
-    padding: 22px 0 18px;
+    padding: 46px 0 38px;
     display: block;
   }
 }
