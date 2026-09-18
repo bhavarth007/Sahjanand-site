@@ -553,6 +553,40 @@ document.addEventListener('DOMContentLoaded', function () {
   initProductDivisionFilter();
 
 
+  // Mobile Certificate Carousel Scroll & Dots Sync
+  var certGrid = document.querySelector('.cert-grid');
+  var certDots = document.querySelectorAll('.cert-dot');
+  if (certGrid && certDots.length > 0) {
+    var certCards = certGrid.querySelectorAll('.cert-card');
+    
+    certGrid.addEventListener('scroll', function () {
+      if (window.innerWidth <= 992 && certCards.length > 0) {
+        var scrollLeft = certGrid.scrollLeft;
+        var cardWidth = certCards[0].offsetWidth + 16;
+        var activeIndex = Math.round(scrollLeft / cardWidth);
+        activeIndex = Math.max(0, Math.min(activeIndex, certDots.length - 1));
+        
+        for (var d = 0; d < certDots.length; d++) {
+          if (d === activeIndex) {
+            certDots[d].classList.add('is-active');
+          } else {
+            certDots[d].classList.remove('is-active');
+          }
+        }
+      }
+    }, { passive: true });
+
+    for (var di = 0; di < certDots.length; di++) {
+      (function (index) {
+        certDots[index].addEventListener('click', function () {
+          if (certCards[index]) {
+            certCards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          }
+        });
+      })(di);
+    }
+  }
+
   // 7. Interactive MSME ZED Gold Certificate Fullscreen Lightbox Modal
   function initCertLightbox() {
     var lightbox = document.querySelector('#cert-lightbox');
