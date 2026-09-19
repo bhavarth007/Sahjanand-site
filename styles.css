@@ -884,6 +884,35 @@ body.mobile-nav-open {
   to { transform: rotate(360deg); }
 }
 
+/* Continuously Rotating Extra Blue Dotted Circle */
+.constellation-dotted-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 360px;
+  pointer-events: none;
+  z-index: 5;
+  animation: rotateDottedRing 22s linear infinite;
+  filter: drop-shadow(0 0 5px rgba(14, 165, 233, 0.65));
+}
+
+.constellation-dotted-ring svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@keyframes rotateDottedRing {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
 /* ==========================================================================
    DYNAMIC 4-WORK INDUSTRIAL SHOWCASE (Infinite 3s Spreading Cycle)
    Cycles through Weaving, Yarn, Chemical, and Trade every 3 seconds
@@ -1349,7 +1378,8 @@ body.mobile-nav-open {
     min-height: 380px;
     max-width: 370px;
   }
-  .constellation-ring {
+  .constellation-ring,
+  .constellation-dotted-ring {
     width: 310px;
     height: 310px;
   }
@@ -1402,7 +1432,8 @@ body.mobile-nav-open {
     min-height: 330px;
     max-width: 320px;
   }
-  .constellation-ring {
+  .constellation-ring,
+  .constellation-dotted-ring {
     width: 270px;
     height: 270px;
   }
@@ -1465,7 +1496,8 @@ body.mobile-nav-open {
     min-height: 285px;
     max-width: 280px;
   }
-  .constellation-ring {
+  .constellation-ring,
+  .constellation-dotted-ring {
     width: 226px;
     height: 226px;
   }
@@ -1524,7 +1556,8 @@ body.mobile-nav-open {
 
 @media (prefers-reduced-motion: reduce) {
   .orbit-track,
-  .orbit-node {
+  .orbit-node,
+  .constellation-dotted-ring {
     animation: none !important;
   }
 }
