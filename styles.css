@@ -893,8 +893,8 @@ body.mobile-nav-open {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 320px;
-  height: 320px;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
   overflow: hidden;
   pointer-events: none;
@@ -1008,22 +1008,22 @@ body.mobile-nav-open {
 /* Responsive Scaling for Work Showcase Backdrop */
 @media (max-width: 992px) {
   .work-showcase-field {
-    width: 270px;
-    height: 270px;
+    width: 310px;
+    height: 310px;
   }
 }
 
 @media (max-width: 576px) {
   .work-showcase-field {
-    width: 230px;
-    height: 230px;
+    width: 270px;
+    height: 270px;
   }
 }
 
 @media (max-width: 360px) {
   .work-showcase-field {
-    width: 195px;
-    height: 195px;
+    width: 226px;
+    height: 226px;
   }
 }
 
