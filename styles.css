@@ -2233,15 +2233,15 @@ body.mobile-nav-open {
 
 .team-arch-card:hover .movie-credits-track,
 .team-photo-frame:hover .movie-credits-track {
-  animation: movieCreditsCrawl 18s ease-in-out infinite alternate;
+  animation: movieCreditsCrawl 20s ease-in-out infinite alternate;
 }
 
 @keyframes movieCreditsCrawl {
-  0%, 18% {
+  0%, 14% {
     transform: translateY(0%);
   }
-  78%, 92% {
-    transform: translateY(-38%);
+  75%, 90% {
+    transform: translateY(-46%);
   }
   100% {
     transform: translateY(0%);
