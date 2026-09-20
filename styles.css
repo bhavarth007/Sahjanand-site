@@ -2106,52 +2106,181 @@ body.mobile-nav-open {
 }
 
 /* ==========================================================================
-   MANAGEMENT TEAM CARDS (management.html)
+   MANAGEMENT TEAM ARCH CARDS (management.html)
+   Arch-Top Portrait Cards with Seamless Dark Bio Hover Overlay
    ========================================================================== */
-.team-member-card {
-  background: #FFFFFF;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-light);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.team-arch-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px 26px;
+  align-items: start;
+}
+
+.team-arch-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: 32px 22px 26px;
   width: 100%;
 }
 
-.team-member-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(2, 132, 199, 0.35);
+.team-photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 75px 75px 0 0;
+  overflow: hidden;
+  background: #0A192F;
+  box-shadow: 0 6px 20px rgba(7, 21, 39, 0.12);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  cursor: pointer;
 }
 
-.avatar-badge {
+.team-arch-card:hover .team-photo-frame {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(2, 132, 199, 0.22);
+}
+
+.team-photo-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.team-photo-img.is-hidden {
+  display: none !important;
+}
+
+.team-arch-card:hover .team-photo-img {
+  transform: scale(1.05);
+}
+
+.team-photo-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(155deg, #0A192F 0%, #153860 60%, #071527 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+
+.avatar-badge-arch {
   width: 86px;
   height: 86px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0A192F 0%, #163B66 100%);
+  background: linear-gradient(135deg, #102A4C 0%, #0284C7 100%);
   color: #FFFFFF;
   font-family: var(--font-display);
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 18px;
-  border: 4px solid #E0F2FE;
-  box-shadow: 0 4px 14px rgba(10, 25, 47, 0.15);
+  border: 3px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.3);
 }
 
-.team-member-card h4 { font-size: 1.18rem; margin-bottom: 4px; }
-.team-role {
-  color: var(--blue-bright);
-  font-weight: 600;
+/* Dark Bio Overlay on Hover (Arrow over person) */
+.team-photo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(7, 21, 39, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 18px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  z-index: 2;
+}
+
+.team-arch-card:hover .team-photo-overlay,
+.team-photo-frame:hover .team-photo-overlay,
+.team-photo-frame:focus-within .team-photo-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.team-overlay-bio {
+  color: #FFFFFF;
   font-size: 0.88rem;
-  margin-bottom: 12px;
+  line-height: 1.55;
+  font-weight: 400;
+  margin: 0;
+  transform: translateY(8px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.team-arch-card:hover .team-overlay-bio,
+.team-photo-frame:hover .team-overlay-bio {
+  transform: translateY(0);
+}
+
+/* Metadata below the arch photo frame */
+.team-arch-meta {
+  padding-top: 14px;
+  width: 100%;
+}
+
+.team-arch-role {
+  color: #64748B;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 4px;
   display: block;
 }
-.team-member-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+.team-arch-name {
+  color: var(--navy-dark);
+  font-size: 1.12rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.35;
+}
+
+@media (max-width: 1024px) {
+  .team-arch-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-arch-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px 16px;
+  }
+  .team-photo-frame {
+    border-radius: 56px 56px 0 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-arch-grid {
+    grid-template-columns: 1fr;
+    max-width: 290px;
+    margin: 0 auto;
+    gap: 28px;
+  }
+}
 
 /* ==========================================================================
    INVESTORS SECTION (investors.html)
