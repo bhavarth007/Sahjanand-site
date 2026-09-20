@@ -1530,23 +1530,23 @@ body.mobile-nav-open {
 }
 
 /* ==========================================================================
-   PAGE HEADERS (INNER PAGES) - MILESTONES REFERENCE HEIGHT FOR ALL MENUS
+   PAGE HEADERS (INNER PAGES) - THEMATIC TRANSPARENT BACKGROUND BANNERS
    ========================================================================== */
 .page-header {
-  background: radial-gradient(circle at 80% 20%, #123358 0%, #071527 70%);
-  color: #FFFFFF;
+  position: relative;
   min-height: 314px;
   display: flex;
   align-items: center;
   padding: 58px 0 52px;
-  position: relative;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   width: 100%;
   box-sizing: border-box;
-}
-
-.page-header .container {
-  width: 100%;
+  color: #FFFFFF;
+  background-color: #071527;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  overflow: hidden;
 }
 
 .page-header::before {
@@ -1557,7 +1557,32 @@ body.mobile-nav-open {
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--brand-red), var(--brand-orange), var(--blue-bright));
+  z-index: 3;
 }
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #071527 0%, rgba(7, 21, 39, 0.93) 38%, rgba(7, 21, 39, 0.70) 70%, rgba(7, 21, 39, 0.30) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.page-header .container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.header-infrastructure { background-image: url('images/banner-infrastructure.jpg'); }
+.header-products { background-image: url('images/banner-products.jpg'); }
+.header-milestones { background-image: url('images/banner-milestones.jpg'); }
+.header-management { background-image: url('images/banner-management.jpg'); }
+.header-contact { background-image: url('images/banner-contact.jpg'); }
 
 .breadcrumb {
   font-size: 0.88rem;
@@ -1581,6 +1606,10 @@ body.mobile-nav-open {
     min-height: auto;
     padding: 46px 0 38px;
     display: block;
+    background-position: center right;
+  }
+  .page-header::after {
+    background: linear-gradient(180deg, rgba(7, 21, 39, 0.88) 0%, rgba(7, 21, 39, 0.95) 100%);
   }
 }
 
