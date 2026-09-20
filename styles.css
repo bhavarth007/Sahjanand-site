@@ -2198,18 +2198,18 @@ body.mobile-nav-open {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 50% 30%, rgba(10, 25, 47, 0.94) 0%, rgba(5, 14, 26, 0.98) 100%);
+  background: radial-gradient(circle at 50% 25%, rgba(10, 25, 47, 0.92) 0%, rgba(5, 14, 26, 0.96) 100%);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 20px 16px;
+  justify-content: flex-start;
+  padding: 22px 15px 18px;
   text-align: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease;
   z-index: 2;
   overflow: hidden;
 }
@@ -2221,41 +2221,30 @@ body.mobile-nav-open {
   visibility: visible;
 }
 
-/* Movie-Credits Crawl Track */
+/* Movie-Credits Crawl Track - Moves Upward Continuously Like Video Playing */
 .movie-credits-track {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  transform: translateY(14%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  transform: translateY(0);
+  will-change: transform;
 }
 
 .team-arch-card:hover .movie-credits-track,
 .team-photo-frame:hover .movie-credits-track {
-  opacity: 1;
-  animation: movieCreditsRoll 14s ease-in-out infinite alternate;
+  animation: movieCreditsCrawl 18s ease-in-out infinite alternate;
 }
 
-/* Pause movie crawl on hover so the user can read steadily */
-.movie-credits-track:hover,
-.team-photo-overlay:hover .movie-credits-track {
-  animation-play-state: paused;
-}
-
-@keyframes movieCreditsRoll {
-  0% {
-    transform: translateY(14%);
+@keyframes movieCreditsCrawl {
+  0%, 18% {
+    transform: translateY(0%);
   }
-  15% {
-    transform: translateY(8%);
-  }
-  85% {
-    transform: translateY(-16%);
+  78%, 92% {
+    transform: translateY(-38%);
   }
   100% {
-    transform: translateY(-20%);
+    transform: translateY(0%);
   }
 }
 
