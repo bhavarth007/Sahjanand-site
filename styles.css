@@ -2107,12 +2107,12 @@ body.mobile-nav-open {
 
 /* ==========================================================================
    MANAGEMENT TEAM ARCH CARDS (management.html)
-   Arch-Top Portrait Cards with Seamless Dark Bio Hover Overlay
+   Cinematic Movie-Credits Style Bio Overlay & Movie Opening Titles
    ========================================================================== */
 .team-arch-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 36px 26px;
+  gap: 38px 24px;
   align-items: start;
 }
 
@@ -2131,14 +2131,14 @@ body.mobile-nav-open {
   border-radius: 75px 75px 0 0;
   overflow: hidden;
   background: #0A192F;
-  box-shadow: 0 6px 20px rgba(7, 21, 39, 0.12);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  box-shadow: 0 8px 26px rgba(7, 21, 39, 0.14);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
   cursor: pointer;
 }
 
 .team-arch-card:hover .team-photo-frame {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 36px rgba(2, 132, 199, 0.22);
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2, 132, 199, 0.28);
 }
 
 .team-photo-img {
@@ -2148,9 +2148,9 @@ body.mobile-nav-open {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center top;
   z-index: 1;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .team-photo-img.is-hidden {
@@ -2158,7 +2158,7 @@ body.mobile-nav-open {
 }
 
 .team-arch-card:hover .team-photo-img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 .team-photo-placeholder {
@@ -2176,13 +2176,13 @@ body.mobile-nav-open {
 }
 
 .avatar-badge-arch {
-  width: 86px;
-  height: 86px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
   background: linear-gradient(135deg, #102A4C 0%, #0284C7 100%);
   color: #FFFFFF;
   font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: 1.85rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -2191,25 +2191,27 @@ body.mobile-nav-open {
   box-shadow: 0 8px 24px rgba(2, 132, 199, 0.3);
 }
 
-/* Dark Bio Overlay on Hover (Arrow over person) */
+/* Cinematic Dark Film Overlay on Hover */
 .team-photo-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(7, 21, 39, 0.88);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: radial-gradient(circle at 50% 30%, rgba(10, 25, 47, 0.94) 0%, rgba(5, 14, 26, 0.98) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 22px 18px;
+  padding: 20px 16px;
   text-align: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.35s ease, visibility 0.35s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
   z-index: 2;
+  overflow: hidden;
 }
 
 .team-arch-card:hover .team-photo-overlay,
@@ -2219,47 +2221,136 @@ body.mobile-nav-open {
   visibility: visible;
 }
 
-.team-overlay-bio {
+/* Movie-Credits Crawl Track */
+.movie-credits-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  transform: translateY(14%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.team-arch-card:hover .movie-credits-track,
+.team-photo-frame:hover .movie-credits-track {
+  opacity: 1;
+  animation: movieCreditsRoll 14s ease-in-out infinite alternate;
+}
+
+/* Pause movie crawl on hover so the user can read steadily */
+.movie-credits-track:hover,
+.team-photo-overlay:hover .movie-credits-track {
+  animation-play-state: paused;
+}
+
+@keyframes movieCreditsRoll {
+  0% {
+    transform: translateY(14%);
+  }
+  15% {
+    transform: translateY(8%);
+  }
+  85% {
+    transform: translateY(-16%);
+  }
+  100% {
+    transform: translateY(-20%);
+  }
+}
+
+.movie-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cyan-neon);
+  margin-bottom: 5px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.movie-person-name {
   color: #FFFFFF;
-  font-size: 0.88rem;
-  line-height: 1.55;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0 0 2px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.movie-person-role {
+  color: var(--cyan-neon);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.movie-line {
+  width: 38px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #38BDF8, transparent);
+  margin-bottom: 10px;
+}
+
+.movie-bio-text {
+  color: #E2E8F0;
+  font-size: 0.81rem;
+  line-height: 1.52;
   font-weight: 400;
-  margin: 0;
-  transform: translateY(8px);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  margin: 0 0 6px;
+  text-align: center;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-.team-arch-card:hover .team-overlay-bio,
-.team-photo-frame:hover .team-overlay-bio {
-  transform: translateY(0);
-}
-
-/* Metadata below the arch photo frame */
+/* Movie-Starting Title Below Card */
 .team-arch-meta {
   padding-top: 14px;
   width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.team-arch-card:hover .team-arch-meta {
+  transform: translateY(-2px);
 }
 
 .team-arch-role {
-  color: #64748B;
-  font-size: 0.85rem;
-  font-weight: 600;
+  color: #0284C7;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
   margin-bottom: 4px;
   display: block;
+  font-family: var(--font-display);
 }
 
 .team-arch-name {
   color: var(--navy-dark);
-  font-size: 1.12rem;
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
   margin: 0;
   line-height: 1.35;
+  transition: color 0.3s ease;
+}
+
+.team-arch-card:hover .team-arch-name {
+  color: #0284C7;
 }
 
 @media (max-width: 1024px) {
   .team-arch-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px 20px;
+    gap: 32px 20px;
   }
 }
 
@@ -2271,6 +2362,9 @@ body.mobile-nav-open {
   .team-photo-frame {
     border-radius: 56px 56px 0 0;
   }
+  .movie-credits-track {
+    animation-duration: 18s;
+  }
 }
 
 @media (max-width: 480px) {
@@ -2278,7 +2372,7 @@ body.mobile-nav-open {
     grid-template-columns: 1fr;
     max-width: 290px;
     margin: 0 auto;
-    gap: 28px;
+    gap: 30px;
   }
 }
 
