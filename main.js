@@ -564,6 +564,52 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // 4b. Contact Office & Plant Invitation Rotating Message Banner (changes every 2.5s)
+  var visitRotator = document.querySelector('.contact-visit-banner');
+  if (visitRotator) {
+    var messageItems = visitRotator.querySelectorAll('.visit-message-item');
+    var dotItems = visitRotator.querySelectorAll('.visit-dot');
+    var currentIndex = 0;
+    var totalMessages = messageItems.length;
+    var rotatorInterval = null;
+
+    function showMessage(index) {
+      for (var i = 0; i < totalMessages; i++) {
+        messageItems[i].classList.remove('active');
+        if (dotItems[i]) dotItems[i].classList.remove('active');
+      }
+      messageItems[index].classList.add('active');
+      if (dotItems[index]) dotItems[index].classList.add('active');
+      currentIndex = index;
+    }
+
+    function startRotator() {
+      if (rotatorInterval) clearInterval(rotatorInterval);
+      rotatorInterval = setInterval(function () {
+        var nextIndex = (currentIndex + 1) % totalMessages;
+        showMessage(nextIndex);
+      }, 2500);
+    }
+
+    function stopRotator() {
+      if (rotatorInterval) clearInterval(rotatorInterval);
+    }
+
+    visitRotator.addEventListener('mouseenter', stopRotator);
+    visitRotator.addEventListener('mouseleave', startRotator);
+
+    for (var d = 0; d < dotItems.length; d++) {
+      (function (idx) {
+        dotItems[idx].addEventListener('click', function () {
+          showMessage(idx);
+          startRotator();
+        });
+      })(d);
+    }
+
+    startRotator();
+  }
+
   // 5. Interactive Textile Department Switcher
   function initTextilePageSwitcher() {
     var tabBtns = document.querySelectorAll('.textile-tab-btn');
