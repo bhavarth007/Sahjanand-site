@@ -2289,7 +2289,7 @@ body.mobile-nav-open {
   position: relative;
   width: 100%;
   aspect-ratio: 3 / 4;
-  border-radius: 75px 75px 0 0;
+  border-radius: 12px 12px 0 0;
   overflow: hidden;
   background: #0A192F;
   box-shadow: 0 8px 26px rgba(7, 21, 39, 0.14);
@@ -2513,7 +2513,7 @@ body.mobile-nav-open {
     gap: 26px 16px;
   }
   .team-photo-frame {
-    border-radius: 56px 56px 0 0;
+    border-radius: 12px 12px 0 0;
   }
   .movie-credits-track {
     animation-duration: 18s;
