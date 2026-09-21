@@ -2593,12 +2593,25 @@ body.mobile-nav-open {
 /* ==========================================================================
    CONTACT FORM & INFO (contact.html)
    ========================================================================== */
+.contact-section,
+section.bg-light {
+  overflow: visible !important;
+}
+
+.contact-section {
+  padding: 36px 0 110px;
+  position: relative;
+  z-index: 20;
+}
+
 .contact-wrapper {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 40px;
   align-items: stretch;
   width: 100%;
+  position: relative;
+  z-index: 25;
 }
 
 @media (max-width: 900px) {
@@ -4481,6 +4494,10 @@ footer.site-footer {
   width: 100%;
 }
 
+.custom-select-wrap.is-open {
+  z-index: 120;
+}
+
 .custom-select-btn {
   width: 100%;
   font-family: var(--font-body);
@@ -4549,8 +4566,8 @@ footer.site-footer {
   background: #FFFFFF;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
-  box-shadow: 0 16px 36px rgba(10, 25, 47, 0.18), 0 4px 12px rgba(0, 0, 0, 0.08);
-  z-index: 100;
+  box-shadow: 0 16px 36px rgba(10, 25, 47, 0.22), 0 4px 12px rgba(0, 0, 0, 0.08);
+  z-index: 150;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px);
@@ -4635,21 +4652,21 @@ footer.site-footer {
 
 .custom-select-submenu {
   position: absolute;
-  top: 0;
-  left: 100%;
+  top: -6px;
+  left: calc(100% + 4px);
   min-width: 260px;
   background: #FFFFFF;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
-  box-shadow: 0 16px 36px rgba(10, 25, 47, 0.22), 0 4px 14px rgba(0, 0, 0, 0.1);
-  padding: 6px 0;
-  z-index: 120;
+  box-shadow: 0 18px 40px rgba(10, 25, 47, 0.25), 0 6px 16px rgba(0, 0, 0, 0.1);
+  padding: 4px 0;
+  z-index: 200;
   opacity: 0;
   visibility: hidden;
   transform: translateX(8px);
   transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s ease;
   pointer-events: none;
-  max-height: 380px;
+  max-height: 440px;
   overflow-y: auto;
 }
 
@@ -4670,7 +4687,7 @@ footer.site-footer {
 }
 
 .custom-select-subitem {
-  padding: 8px 14px;
+  padding: 7px 14px;
   font-size: 0.88rem;
   color: #1E293B;
   cursor: pointer;
