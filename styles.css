@@ -384,7 +384,7 @@ nav.main-nav a.active::after {
   align-items: center;
   gap: 16px;
   flex-shrink: 0;
-  margin-left: 20px;
+  margin-left: 42px;
 }
 
 .nav-cta-btn {
