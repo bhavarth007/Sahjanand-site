@@ -12,7 +12,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<link rel="stylesheet" href="styles.css?v=89">
+<link rel="stylesheet" href="styles.css?v=90">
 </head>
 <body>
 
@@ -109,36 +109,91 @@
            </svg>
           </span>
          </button>
-         <div class="custom-select-dropdown" id="custom-subject-dropdown" role="listbox" aria-labelledby="custom-subject-btn">
-          <div class="custom-select-group">Textile Division</div>
-          <div class="custom-select-item" data-value="Textile: Yarn Section & Preparation" role="option">Yarn Section &amp; Warp Preparation</div>
-          <div class="custom-select-item" data-value="Textile: Rapier Looms Division" role="option">Rapier Looms Division</div>
-          <div class="custom-select-item" data-value="Textile: Weaving Segment" role="option">High-Speed Weaving Division</div>
-          <div class="custom-select-item" data-value="Textile: Purchase Section & Trading" role="option">Purchase Section &amp; Grey Trading</div>
-          <div class="custom-select-item" data-value="Textile: Bulk Fabric Supply" role="option">General Bulk Fabric Supply</div>
-          <div class="custom-select-group">Industrial Division</div>
-          <div class="custom-select-item" data-value="Concrete Blocks & Pavers" role="option">Concrete Blocks &amp; Pavers</div>
-          <div class="custom-select-item" data-value="Structural Steel Components" role="option">Structural Steel Components</div>
-          <div class="custom-select-item" data-value="Precast Drainage Units" role="option">Precast Drainage Units</div>
-          <div class="custom-select-item" data-value="Industrial Pipe Fittings" role="option">Industrial Pipe Fittings</div>
-          <div class="custom-select-group">Corporate &amp; General</div>
-          <div class="custom-select-item" data-value="Plant Visit Request" role="option">Plant Visit &amp; Quality Inspection</div>
-          <div class="custom-select-item" data-value="General Corporate Enquiry" role="option">General Corporate Enquiry</div>
-         </div>
-         <select id="subject" name="subject" required class="native-hidden-select" tabindex="-1" aria-hidden="true">
-          <option value="">Select an enquiry type</option>
-          <option value="Textile: Yarn Section & Preparation">Yarn Section &amp; Warp Preparation</option>
-          <option value="Textile: Rapier Looms Division">Rapier Looms Division</option>
-          <option value="Textile: Weaving Segment">High-Speed Weaving Division</option>
-          <option value="Textile: Purchase Section & Trading">Purchase Section &amp; Grey Trading</option>
-          <option value="Textile: Bulk Fabric Supply">General Bulk Fabric Supply</option>
-          <option value="Concrete Blocks & Pavers">Concrete Blocks &amp; Pavers</option>
-          <option value="Structural Steel Components">Structural Steel Components</option>
-          <option value="Precast Drainage Units">Precast Drainage Units</option>
-          <option value="Industrial Pipe Fittings">Industrial Pipe Fittings</option>
-          <option value="Plant Visit Request">Plant Visit &amp; Quality Inspection</option>
-          <option value="General Corporate Enquiry">General Corporate Enquiry</option>
-         </select>
+          <div class="custom-select-dropdown" id="custom-subject-dropdown" role="listbox" aria-labelledby="custom-subject-btn">
+           <div class="custom-select-group">Manufacturing Segments</div>
+
+           <!-- 1. Weaving Segment with Right Submenu -->
+           <div class="custom-select-has-submenu" data-submenu="weaving">
+            <div class="custom-select-item custom-select-parent-item" data-value="Weaving Segment (High-Speed Weaving Division)" role="option">
+             <span>Weaving Segment (High-Speed Weaving)</span>
+             <span class="custom-submenu-indicator" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+             </span>
+            </div>
+            <div class="custom-select-submenu" role="menu">
+             <div class="custom-select-subitem" data-value="Weaving: Rapier Looms Division" role="option">Rapier Looms Division</div>
+             <div class="custom-select-subitem" data-value="Weaving: Jacquard Looms Division" role="option">Jacquard Looms Division</div>
+             <div class="custom-select-subitem" data-value="Weaving: Power Looms Division" role="option">Power Looms Division</div>
+             <div class="custom-select-subitem" data-value="Weaving: Waterjet & Airjet Looms" role="option">Waterjet &amp; Airjet Looms</div>
+             <div class="custom-select-subitem" data-value="Weaving Segment (High-Speed Weaving Division)" role="option">General Weaving Output</div>
+            </div>
+           </div>
+
+           <!-- 2. Yarn Segment with Right Submenu -->
+           <div class="custom-select-has-submenu" data-submenu="yarn">
+            <div class="custom-select-item custom-select-parent-item" data-value="Yarn Segment & Warp Preparation" role="option">
+             <span>Yarn Segment &amp; Warp Preparation</span>
+             <span class="custom-submenu-indicator" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+             </span>
+            </div>
+            <div class="custom-select-submenu" role="menu">
+             <div class="custom-select-subitem" data-value="Yarn: Textured Yarn (DTY)" role="option">Textured Yarn (DTY)</div>
+             <div class="custom-select-subitem" data-value="Yarn: Crimp Yarn" role="option">Crimp Yarn</div>
+             <div class="custom-select-subitem" data-value="Yarn: Roto Yarn" role="option">Roto / Intermingled Yarn</div>
+             <div class="custom-select-subitem" data-value="Yarn: Kota Yarn" role="option">Kota Yarn</div>
+             <div class="custom-select-subitem" data-value="Yarn: TPM Yarn" role="option">TPM Yarn (Twist Per Metre)</div>
+             <div class="custom-select-subitem" data-value="Yarn: 17x24 Nylon TPM" role="option">17&times;24 Nylon TPM</div>
+             <div class="custom-select-subitem" data-value="Yarn: 42x24 Nylon TPM" role="option">42&times;24 Nylon TPM</div>
+             <div class="custom-select-subitem" data-value="Yarn: 40 FD TPM" role="option">40 FD TPM</div>
+             <div class="custom-select-subitem" data-value="Yarn: Slit-3 Muskaan" role="option">Slit-3 Muskaan</div>
+             <div class="custom-select-subitem" data-value="Yarn Segment & Warp Preparation" role="option">General Yarn &amp; Warp Preparation</div>
+            </div>
+           </div>
+
+           <!-- 3. Chemical Segment -->
+           <div class="custom-select-item" data-value="Chemical: Sizing Chemicals & Auxiliaries" role="option">Chemical Segment (Specialty Auxiliaries &amp; Sizing)</div>
+
+           <!-- 4. Trade Segment -->
+           <div class="custom-select-item" data-value="Trade: Import & Export Division" role="option">Trade Segment (Import &amp; Export / Grey Trading)</div>
+
+           <!-- Corporate & General (Untouched) -->
+           <div class="custom-select-group">Corporate &amp; General</div>
+           <div class="custom-select-item" data-value="Plant Visit Request" role="option">Plant Visit &amp; Quality Inspection</div>
+           <div class="custom-select-item" data-value="General Corporate Enquiry" role="option">General Corporate Enquiry</div>
+          </div>
+          <select id="subject" name="subject" required class="native-hidden-select" tabindex="-1" aria-hidden="true">
+           <option value="">Select an enquiry type</option>
+           <optgroup label="Weaving Segment">
+            <option value="Weaving: Rapier Looms Division">Rapier Looms Division</option>
+            <option value="Weaving: Jacquard Looms Division">Jacquard Looms Division</option>
+            <option value="Weaving: Power Looms Division">Power Looms Division</option>
+            <option value="Weaving: Waterjet & Airjet Looms">Waterjet &amp; Airjet Looms</option>
+            <option value="Weaving Segment (High-Speed Weaving Division)">General Weaving Output</option>
+           </optgroup>
+           <optgroup label="Yarn Segment & Warp Preparation">
+            <option value="Yarn: Textured Yarn (DTY)">Textured Yarn (DTY)</option>
+            <option value="Yarn: Crimp Yarn">Crimp Yarn</option>
+            <option value="Yarn: Roto Yarn">Roto / Intermingled Yarn</option>
+            <option value="Yarn: Kota Yarn">Kota Yarn</option>
+            <option value="Yarn: TPM Yarn">TPM Yarn (Twist Per Metre)</option>
+            <option value="Yarn: 17x24 Nylon TPM">17×24 Nylon TPM</option>
+            <option value="Yarn: 42x24 Nylon TPM">42×24 Nylon TPM</option>
+            <option value="Yarn: 40 FD TPM">40 FD TPM</option>
+            <option value="Yarn: Slit-3 Muskaan">Slit-3 Muskaan</option>
+            <option value="Yarn Segment & Warp Preparation">General Yarn &amp; Warp Preparation</option>
+           </optgroup>
+           <optgroup label="Chemical Segment">
+            <option value="Chemical: Sizing Chemicals & Auxiliaries">Chemical Segment (Specialty Auxiliaries &amp; Sizing)</option>
+           </optgroup>
+           <optgroup label="Trade Segment">
+            <option value="Trade: Import & Export Division">Trade Segment (Import &amp; Export / Grey Trading)</option>
+           </optgroup>
+           <optgroup label="Corporate & General">
+            <option value="Plant Visit Request">Plant Visit &amp; Quality Inspection</option>
+            <option value="General Corporate Enquiry">General Corporate Enquiry</option>
+           </optgroup>
+          </select>
         </div>
        </div>
 
@@ -296,7 +351,7 @@
  </div>
 </footer>
 
-<script src="main.js?v=69"></script>
+<script src="main.js?v=90"></script>
 <!-- FLOATING WHATSAPP CHAT BUTTON (+91 97275 64411) -->
 <a href="https://wa.me/919727564411" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" aria-label="Chat with Sahjanand on WhatsApp (+91 97275 64411)" title="Chat on WhatsApp (+91 97275 64411)">
  <span class="wa-pulse" aria-hidden="true"></span>

@@ -167,8 +167,10 @@ document.addEventListener('DOMContentLoaded', function () {
           if ((inqLower.indexOf('yarn') !== -1 && optVal.indexOf('yarn') !== -1) ||
               ((inqLower.indexOf('rapier') !== -1 || inqLower.indexOf('vapiar') !== -1) && (optVal.indexOf('rapier') !== -1 || optVal.indexOf('vapiar') !== -1)) ||
               ((inqLower.indexOf('weaving') !== -1 || inqLower.indexOf('viving') !== -1) && (optVal.indexOf('weaving') !== -1 || optVal.indexOf('viving') !== -1)) ||
-              (inqLower.indexOf('purchase') !== -1 && optVal.indexOf('purchase') !== -1) ||
-              (inqLower === 'textile' && optVal.indexOf('textile') !== -1)) {
+              (inqLower.indexOf('chemical') !== -1 && optVal.indexOf('chemical') !== -1) ||
+              (inqLower.indexOf('trade') !== -1 && optVal.indexOf('trade') !== -1) ||
+              (inqLower.indexOf('purchase') !== -1 && optVal.indexOf('trade') !== -1) ||
+              (inqLower === 'textile' && optVal.indexOf('weaving') !== -1)) {
             subjectSelect.selectedIndex = i;
             matched = true;
             break;
@@ -176,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (!matched) {
           for (var j = 0; j < subjectSelect.options.length; j++) {
-            if (subjectSelect.options[j].value.toLowerCase().indexOf('textile') !== -1) {
+            if (subjectSelect.options[j].value.toLowerCase().indexOf('weaving') !== -1) {
               subjectSelect.selectedIndex = j;
               break;
             }
@@ -220,7 +222,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var customBtn = document.getElementById('custom-subject-btn');
     var customLabel = customBtn ? customBtn.querySelector('.custom-select-label') : null;
     var customDropdown = document.getElementById('custom-subject-dropdown');
-    var customItems = customDropdown ? customDropdown.querySelectorAll('.custom-select-item') : [];
+    var customItems = customDropdown ? customDropdown.querySelectorAll('.custom-select-item, .custom-select-subitem') : [];
+    var submenuContainers = customDropdown ? customDropdown.querySelectorAll('.custom-select-has-submenu') : [];
     var subjectSelect = form.querySelector('#subject');
 
     function syncCustomSelectDisplay(val) {
@@ -248,6 +251,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
+    function closeAllSubmenus() {
+      for (var s = 0; s < submenuContainers.length; s++) {
+        submenuContainers[s].classList.remove('is-submenu-open');
+      }
+    }
+
     if (selectWrap && customBtn && customDropdown) {
       customBtn.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -255,6 +264,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isOpen) {
           selectWrap.classList.remove('is-open');
           customBtn.setAttribute('aria-expanded', 'false');
+          closeAllSubmenus();
         } else {
           selectWrap.classList.add('is-open');
           customBtn.setAttribute('aria-expanded', 'true');
@@ -265,6 +275,19 @@ document.addEventListener('DOMContentLoaded', function () {
         (function (item) {
           item.addEventListener('click', function (e) {
             e.stopPropagation();
+            var parentSubmenuWrap = item.closest('.custom-select-has-submenu');
+            // On touch or smaller screens, clicking parent item toggles submenu
+            if (item.classList.contains('custom-select-parent-item') && parentSubmenuWrap) {
+              if (window.innerWidth <= 768) {
+                var wasOpen = parentSubmenuWrap.classList.contains('is-submenu-open');
+                closeAllSubmenus();
+                if (!wasOpen) {
+                  parentSubmenuWrap.classList.add('is-submenu-open');
+                }
+                return;
+              }
+            }
+
             var chosenVal = item.getAttribute('data-value');
             if (subjectSelect) {
               subjectSelect.value = chosenVal;
@@ -275,6 +298,7 @@ document.addEventListener('DOMContentLoaded', function () {
             syncCustomSelectDisplay(chosenVal);
             selectWrap.classList.remove('is-open');
             customBtn.setAttribute('aria-expanded', 'false');
+            closeAllSubmenus();
             customBtn.focus();
           });
         })(customItems[ci]);
@@ -284,6 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!selectWrap.contains(e.target)) {
           selectWrap.classList.remove('is-open');
           customBtn.setAttribute('aria-expanded', 'false');
+          closeAllSubmenus();
         }
       });
 
@@ -291,6 +316,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.key === 'Escape' || e.keyCode === 27) {
           selectWrap.classList.remove('is-open');
           customBtn.setAttribute('aria-expanded', 'false');
+          closeAllSubmenus();
         }
       });
 
@@ -305,6 +331,7 @@ document.addEventListener('DOMContentLoaded', function () {
       form.addEventListener('reset', function () {
         setTimeout(function () {
           syncCustomSelectDisplay('');
+          closeAllSubmenus();
         }, 10);
       });
     }

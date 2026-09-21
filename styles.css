@@ -2175,6 +2175,24 @@ body.mobile-nav-open {
   transform: translateY(-1px);
 }
 
+.panel-actions-row .panel-cta-btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 11px 22px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: normal;
+  transition: all 0.2s ease;
+}
+
+.panel-actions-row .panel-cta-btn:hover {
+  transform: translateY(-1px);
+}
+
 
 /* ==========================================================================
    TIMELINE (milestones.html)
@@ -2272,9 +2290,11 @@ body.mobile-nav-open {
    ========================================================================== */
 .team-arch-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 38px 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 36px;
   align-items: start;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .team-arch-card {
@@ -4503,15 +4523,11 @@ footer.site-footer {
   top: calc(100% + 5px);
   left: 0;
   width: 100%;
-  max-width: 100%;
   box-sizing: border-box;
   background: #FFFFFF;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
   box-shadow: 0 16px 36px rgba(10, 25, 47, 0.18), 0 4px 12px rgba(0, 0, 0, 0.08);
-  max-height: 270px;
-  overflow-y: auto;
-  overflow-x: hidden;
   z-index: 100;
   opacity: 0;
   visibility: hidden;
@@ -4523,21 +4539,6 @@ footer.site-footer {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-}
-
-.custom-select-dropdown::-webkit-scrollbar {
-  width: 6px;
-}
-.custom-select-dropdown::-webkit-scrollbar-track {
-  background: #F8FAFC;
-  border-radius: 4px;
-}
-.custom-select-dropdown::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 4px;
-}
-.custom-select-dropdown::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
 }
 
 .custom-select-group {
@@ -4580,6 +4581,136 @@ footer.site-footer {
   background: #E0F2FE;
   color: #0284C7;
   font-weight: 600;
+}
+
+/* Submenu container & parent styling */
+.custom-select-has-submenu {
+  position: relative;
+}
+
+.custom-select-parent-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.custom-submenu-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748B;
+  transition: transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.custom-select-parent-item:hover .custom-submenu-indicator,
+.custom-select-has-submenu:hover > .custom-select-parent-item .custom-submenu-indicator,
+.custom-select-has-submenu.is-submenu-open > .custom-select-parent-item .custom-submenu-indicator {
+  color: #0284C7;
+  transform: translateX(3px);
+}
+
+.custom-select-submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  min-width: 260px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 16px 36px rgba(10, 25, 47, 0.22), 0 4px 14px rgba(0, 0, 0, 0.1);
+  padding: 6px 0;
+  z-index: 120;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(8px);
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s ease;
+  pointer-events: none;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.custom-select-submenu::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-select-submenu::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+.custom-select-has-submenu:hover .custom-select-submenu,
+.custom-select-has-submenu.is-submenu-open .custom-select-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.custom-select-subitem {
+  padding: 8px 14px;
+  font-size: 0.88rem;
+  color: #1E293B;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  line-height: 1.35;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.custom-select-subitem:hover,
+.custom-select-subitem:focus {
+  background: #F0F9FF;
+  color: #0284C7;
+  font-weight: 600;
+}
+
+.custom-select-subitem.is-selected {
+  background: #E0F2FE;
+  color: #0284C7;
+  font-weight: 600;
+}
+
+/* Mobile & Tablet Responsive Accordion for Submenu */
+@media (max-width: 768px) {
+  .custom-select-dropdown {
+    max-height: 380px;
+    overflow-y: auto;
+  }
+  .custom-select-dropdown::-webkit-scrollbar {
+    width: 5px;
+  }
+  .custom-select-dropdown::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+  }
+  .custom-select-submenu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    border-left: 2px solid var(--blue-bright);
+    margin: 4px 10px 8px 16px;
+    padding: 2px 0 4px 6px;
+    background: #F8FAFC;
+    border-radius: 4px;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    max-height: none;
+    overflow-y: visible;
+  }
+  .custom-select-subitem {
+    white-space: normal;
+    padding: 8px 10px;
+  }
+  .custom-select-has-submenu.is-submenu-open .custom-select-submenu {
+    display: block;
+  }
+  .custom-select-has-submenu.is-submenu-open .custom-submenu-indicator {
+    transform: rotate(90deg) !important;
+  }
 }
 
 .native-hidden-select {
