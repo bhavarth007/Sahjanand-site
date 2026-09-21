@@ -564,7 +564,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 4b. Contact Office & Plant Invitation Rotating Message Banner (changes every 2.5s)
+  // 4b. Contact Office & Plant Invitation Rotating Message Banner (changes every 5s)
   var visitRotator = document.querySelector('.contact-visit-banner');
   if (visitRotator) {
     var messageItems = visitRotator.querySelectorAll('.visit-message-item');
@@ -588,7 +588,7 @@ document.addEventListener('DOMContentLoaded', function () {
       rotatorInterval = setInterval(function () {
         var nextIndex = (currentIndex + 1) % totalMessages;
         showMessage(nextIndex);
-      }, 2500);
+      }, 5000);
     }
 
     function stopRotator() {
