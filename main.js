@@ -957,75 +957,119 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-  // 9. Milestones Interactive Presentation Switcher & Growth Chart Interaction
-  var btnViewGraph = document.querySelector('#btn-view-graph');
-  var btnViewTimeline = document.querySelector('#btn-view-timeline');
-  var viewGraphContainer = document.querySelector('#view-graph-container');
-  var viewTimelineContainer = document.querySelector('#view-timeline-container');
+  // 9. Interactive Milestones: Year-by-Year Growth Showcase & All-Time Full Story
+  var milestoneStepBtns = document.querySelectorAll('.milestone-step-btn');
+  var singleShowcaseWrap = document.querySelector('#milestone-single-showcase');
+  var allTimeShowcaseWrap = document.querySelector('#milestone-alltime-showcase');
+  var progressFill = document.querySelector('#milestone-progress-fill');
 
-  if (btnViewGraph && btnViewTimeline && viewGraphContainer && viewTimelineContainer) {
-    function switchMilestoneView(view) {
-      if (view === 'graph') {
-        btnViewGraph.classList.add('active');
-        btnViewGraph.setAttribute('aria-pressed', 'true');
-        btnViewTimeline.classList.remove('active');
-        btnViewTimeline.setAttribute('aria-pressed', 'false');
+  if (milestoneStepBtns.length > 0 && singleShowcaseWrap && allTimeShowcaseWrap) {
+    var yearSteps = ['1989', '2005', '2021', '2025', '2026'];
 
-        viewTimelineContainer.style.display = 'none';
-        viewGraphContainer.style.display = 'block';
-        viewGraphContainer.style.opacity = '0';
+    function selectMilestone(targetYear, shouldScroll) {
+      // 1. Update stepper buttons active state
+      milestoneStepBtns.forEach(function (btn) {
+        var bYear = btn.getAttribute('data-year');
+        if (bYear === targetYear) {
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+        } else {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+        }
+      });
+
+      // 2. Update progress fill line
+      if (progressFill) {
+        if (targetYear === 'all') {
+          progressFill.style.width = '100%';
+        } else {
+          var stepIndex = yearSteps.indexOf(targetYear);
+          if (stepIndex >= 0) {
+            var percent = (stepIndex / (yearSteps.length - 1)) * 100;
+            progressFill.style.width = percent + '%';
+          }
+        }
+      }
+
+      // 3. Switch between Single Year card vs All Time showcase
+      if (targetYear === 'all') {
+        singleShowcaseWrap.style.display = 'none';
+        allTimeShowcaseWrap.style.display = 'block';
+        allTimeShowcaseWrap.style.opacity = '0';
         setTimeout(function () {
-          viewGraphContainer.style.opacity = '1';
+          allTimeShowcaseWrap.style.opacity = '1';
         }, 20);
+
+        if (shouldScroll) {
+          allTimeShowcaseWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
       } else {
-        btnViewTimeline.classList.add('active');
-        btnViewTimeline.setAttribute('aria-pressed', 'true');
-        btnViewGraph.classList.remove('active');
-        btnViewGraph.setAttribute('aria-pressed', 'false');
+        allTimeShowcaseWrap.style.display = 'none';
+        singleShowcaseWrap.style.display = 'block';
 
-        viewGraphContainer.style.display = 'none';
-        viewTimelineContainer.style.display = 'block';
-        viewTimelineContainer.style.opacity = '0';
-        setTimeout(function () {
-          viewTimelineContainer.style.opacity = '1';
-        }, 20);
+        // Hide all showcase cards and show ONLY the selected year card
+        var allCards = singleShowcaseWrap.querySelectorAll('.showcase-card');
+        allCards.forEach(function (card) {
+          card.style.display = 'none';
+          card.classList.remove('active');
+        });
+
+        var targetCard = document.getElementById('ms-card-' + targetYear);
+        if (targetCard) {
+          targetCard.style.display = 'block';
+          // Trigger reflow for fresh animation
+          void targetCard.offsetWidth;
+          targetCard.classList.add('active');
+        }
+
+        if (shouldScroll) {
+          singleShowcaseWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
       }
     }
 
-    btnViewGraph.addEventListener('click', function () {
-      switchMilestoneView('graph');
+    // Attach click events to top stepper buttons
+    milestoneStepBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var y = this.getAttribute('data-year');
+        selectMilestone(y, false);
+      });
     });
 
-    btnViewTimeline.addEventListener('click', function () {
-      switchMilestoneView('timeline');
-    });
-
-    // Interactive chart node click -> scroll to corresponding growth card & highlight
-    document.querySelectorAll('.growth-chart-svg .chart-node').forEach(function (node) {
-      function triggerNode() {
-        var targetId = node.getAttribute('data-target');
-        if (!targetId) return;
-        var targetCardRow = document.getElementById(targetId);
-        if (!targetCardRow) return;
-
-        targetCardRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        var innerCard = targetCardRow.querySelector('.growth-card');
-        if (innerCard) {
-          innerCard.classList.remove('flash-highlight');
-          // Force reflow
-          void innerCard.offsetWidth;
-          innerCard.classList.add('flash-highlight');
-        }
-      }
-
-      node.addEventListener('click', triggerNode);
-      node.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          triggerNode();
+    // Attach click events to "Next / Previous" navigation buttons within cards
+    document.querySelectorAll('.btn-step-nav').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var navTo = this.getAttribute('data-nav-to');
+        if (navTo) {
+          selectMilestone(navTo, true);
         }
       });
     });
+
+    // Attach click events to "View Year" micro buttons inside All Time cards
+    document.querySelectorAll('.btn-micro-focus').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var focusYear = this.getAttribute('data-focus-year');
+        if (focusYear) {
+          selectMilestone(focusYear, true);
+        }
+      });
+    });
+
+    // Attach click event to "Switch to Year-by-Year" button in All Time banner
+    var backToSingleBtn = document.querySelector('#btn-back-to-single');
+    if (backToSingleBtn) {
+      backToSingleBtn.addEventListener('click', function () {
+        var targetYear = this.getAttribute('data-nav-to') || '1989';
+        selectMilestone(targetYear, true);
+      });
+    }
+
+    // Set initial progress bar
+    if (progressFill) {
+      progressFill.style.width = '0%';
+    }
   }
 });
 

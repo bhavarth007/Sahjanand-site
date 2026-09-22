@@ -2285,131 +2285,26 @@ body.mobile-nav-open {
 }
 
 /* ==========================================================================
-   MILESTONES VIEW SWITCHER & GROWTH GRAPH VIEW (milestones.html)
+   INTERACTIVE MILESTONES & YEAR-BY-YEAR GROWTH SHOWCASE (milestones.html)
    ========================================================================== */
-.milestones-section {
-  padding: 40px 0 70px;
+.milestones-interactive-section {
+  padding: 40px 0 80px;
 }
 
-.milestones-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
+/* Navigator Card */
+.milestones-navigator-card {
   background: #FFFFFF;
-  padding: 12px 22px;
-  border-radius: 9999px;
+  border-radius: 22px;
   border: 1px solid var(--border-light);
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
-  max-width: 900px;
-  margin: 0 auto 36px;
-}
-
-.view-switcher-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--navy-dark);
-  letter-spacing: 0.02em;
-}
-
-.view-pulse-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
-  animation: pulseGreen 2s infinite ease-in-out;
-}
-
-@keyframes pulseGreen {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.25); opacity: 0.75; }
-}
-
-.view-switcher-pills {
-  display: inline-flex;
-  align-items: center;
-  background: #F1F5F9;
-  padding: 4px;
-  border-radius: 9999px;
-  gap: 4px;
-}
-
-.view-pill-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  border-radius: 9999px;
-  border: none;
-  background: transparent;
-  color: #64748B;
-  font-family: var(--font-body);
-  font-size: 0.86rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  white-space: nowrap;
-}
-
-.view-pill-btn svg {
-  transition: transform 0.25s ease;
-}
-
-.view-pill-btn .pill-badge {
-  font-size: 0.68rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background: rgba(2, 132, 199, 0.12);
-  color: #0284C7;
-  padding: 2px 7px;
-  border-radius: 9999px;
-  line-height: 1.2;
-}
-
-.view-pill-btn:hover {
-  color: var(--navy-dark);
-}
-
-.view-pill-btn.active {
-  background: #0F172A;
-  color: #FFFFFF;
-  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.25);
-}
-
-.view-pill-btn.active svg {
-  stroke: #38BDF8;
-}
-
-.view-pill-btn.active .pill-badge {
-  background: #0284C7;
-  color: #FFFFFF;
-}
-
-/* Milestone View Containers */
-.milestone-view-container {
-  transition: opacity 0.3s ease;
-}
-
-/* Upward Trajectory Graph Card */
-.growth-chart-card {
-  background: #FFFFFF;
-  border-radius: 20px;
-  border: 1px solid var(--border-light);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-  padding: 30px 36px 24px;
+  box-shadow: 0 10px 32px rgba(15, 23, 42, 0.06);
+  padding: 32px 36px 28px;
   max-width: 960px;
-  margin: 0 auto 48px;
+  margin: 0 auto 36px;
   position: relative;
   overflow: hidden;
 }
 
-.growth-chart-card::before {
+.milestones-navigator-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -2419,184 +2314,472 @@ body.mobile-nav-open {
   background: linear-gradient(90deg, #38BDF8 0%, #0284C7 50%, #0369A1 100%);
 }
 
-.growth-chart-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 24px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid #F1F5F9;
+.navigator-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 28px;
 }
 
-.chart-badge {
-  display: inline-block;
-  font-size: 0.72rem;
+.navigator-tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #0284C7;
   background: #E0F2FE;
-  padding: 4px 12px;
+  padding: 4px 14px;
   border-radius: 9999px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
-.chart-title {
+.pulse-point {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0284C7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25);
+  animation: pulsePointAnim 2s infinite ease-in-out;
+}
+
+@keyframes pulsePointAnim {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+.navigator-title {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--navy-dark);
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.navigator-desc {
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Stepper Track */
+.milestone-stepper-container {
+  position: relative;
+  margin-top: 10px;
+}
+
+.milestone-progress-track {
+  position: absolute;
+  top: 24px;
+  left: 5%;
+  right: 5%;
+  height: 4px;
+  background: #E2E8F0;
+  border-radius: 9999px;
+  z-index: 1;
+}
+
+.milestone-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #38BDF8, #0284C7);
+  border-radius: 9999px;
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
+}
+
+.milestone-stepper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.milestone-step-btn {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex: 1;
+  max-width: 135px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.milestone-step-btn:hover {
+  transform: translateY(-3px);
+  border-color: #BAE6FD;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.12);
+}
+
+.step-num-pill {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--navy-dark);
+  background: #F1F5F9;
+  padding: 4px 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  line-height: 1.2;
+}
+
+.step-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #64748B;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.step-elevation {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94A3B8;
+  background: #F8FAFC;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid #E2E8F0;
+}
+
+/* Active Stepper Button */
+.milestone-step-btn.active {
+  background: #0F172A;
+  border-color: #0284C7;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.28), 0 0 0 2px rgba(2, 132, 199, 0.35);
+}
+
+.milestone-step-btn.active .step-num-pill {
+  background: #0284C7;
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+}
+
+.milestone-step-btn.active .step-label {
+  color: #F8FAFC;
+  font-weight: 800;
+}
+
+.milestone-step-btn.active .step-elevation {
+  background: rgba(2, 132, 199, 0.2);
+  color: #38BDF8;
+  border-color: rgba(2, 132, 199, 0.4);
+}
+
+/* Apex & All-Time Specialty Stepper Accents */
+.step-num-pill.apex-pill {
+  color: #0369A1;
+}
+
+.milestone-step-btn.active .step-num-pill.apex-pill {
+  background: linear-gradient(135deg, #0284C7, #0369A1);
+  color: #FFFFFF;
+}
+
+.all-time-btn .step-num-pill.all-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #0F172A;
+}
+
+.all-time-btn.active .step-num-pill.all-pill {
+  background: #0284C7;
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   SINGLE YEAR SHOWCASE CARD
+   ========================================================================== */
+.milestone-single-showcase {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.showcase-card {
+  background: #FFFFFF;
+  border-radius: 22px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.07);
+  padding: 36px 42px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-card.active {
+  display: block !important;
+  animation: cardFadeSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardFadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.showcase-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  bottom: 0;
+  background: linear-gradient(180deg, #38BDF8 0%, #0284C7 100%);
+}
+
+.showcase-card-apex::before {
+  background: linear-gradient(180deg, #0284C7 0%, #0F172A 100%);
+  width: 8px;
+}
+
+.showcase-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 22px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.showcase-year-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  flex-grow: 1;
+}
+
+.showcase-year-badge {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  background: #0F172A;
+  padding: 6px 18px;
+  border-radius: 14px;
+  letter-spacing: -0.02em;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+  line-height: 1.15;
+  flex-shrink: 0;
+}
+
+.showcase-year-badge.apex-badge-num {
+  background: linear-gradient(135deg, #0284C7, #0F172A);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35);
+}
+
+.showcase-phase-info {
+  flex-grow: 1;
+}
+
+.showcase-level-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #0284C7;
+  margin-bottom: 4px;
+}
+
+.showcase-level-tag.apex-tag-accent {
+  color: #0369A1;
+  font-weight: 800;
+}
+
+.showcase-phase-title {
   font-size: 1.45rem;
   font-weight: 800;
   color: var(--navy-dark);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.showcase-card-body {
+  margin-bottom: 28px;
+}
+
+.showcase-narrative {
+  font-size: 1.05rem;
+  line-height: 1.78;
+  color: #334155;
+  margin-bottom: 24px;
+}
+
+.showcase-tags-section {
+  background: #F8FAFC;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+}
+
+.tags-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748B;
+  margin-bottom: 10px;
+}
+
+.showcase-card-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid #F1F5F9;
+}
+
+.btn-step-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 9999px;
+  border: 1px solid var(--border-light);
+  background: #FFFFFF;
+  color: var(--navy-dark);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.btn-step-nav:hover {
+  background: #F8FAFC;
+  border-color: #0284C7;
+  color: #0284C7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+}
+
+.btn-step-next,
+.btn-step-all {
+  background: #0284C7;
+  border-color: #0284C7;
+  color: #FFFFFF;
+  margin-left: auto;
+}
+
+.btn-step-next:hover,
+.btn-step-all:hover {
+  background: #0369A1;
+  color: #FFFFFF;
+  border-color: #0369A1;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+}
+
+/* ==========================================================================
+   ALL TIME FULL CHRONICLE VIEW
+   ========================================================================== */
+.milestone-alltime-showcase {
+  max-width: 960px;
+  margin: 0 auto;
+  animation: cardFadeSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.alltime-overview-banner {
+  background: #0F172A;
+  color: #FFFFFF;
+  border-radius: 20px;
+  padding: 28px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 36px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+  border-left: 5px solid #38BDF8;
+}
+
+.overview-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #38BDF8;
+  margin-bottom: 6px;
+}
+
+.overview-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #FFFFFF;
   margin-bottom: 6px;
   line-height: 1.25;
 }
 
-.chart-subtitle {
+.overview-sub {
   font-size: 0.92rem;
-  color: var(--text-muted);
-  max-width: 620px;
+  color: #94A3B8;
   margin: 0;
+  max-width: 580px;
   line-height: 1.55;
 }
 
-.chart-legend-wrap {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  border-radius: 9999px;
-  padding: 6px 14px;
-}
-
-.chart-legend-item {
+.btn-focus-year-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #475569;
-}
-
-.legend-line {
-  width: 18px;
-  height: 3px;
-  background: #0284C7;
-  border-radius: 2px;
-}
-
-.legend-node {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #0284C7;
-  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 3.5px #0284C7;
-}
-
-/* SVG Graph */
-.growth-chart-canvas-wrap {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 8px 0;
-}
-
-.growth-chart-svg {
-  width: 100%;
-  min-width: 680px;
-  height: auto;
-  display: block;
-}
-
-.chart-axis-label {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 700;
-  fill: #94A3B8;
-  letter-spacing: 0.02em;
-}
-
-.node-stage-text {
-  font-family: var(--font-body);
-  font-size: 10.5px;
-  font-weight: 700;
-  fill: #0284C7;
-}
-
-.node-stage-text.apex-tag {
-  fill: #0369A1;
-  font-weight: 800;
-  font-size: 11px;
-}
-
-.chart-node {
-  cursor: pointer;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  outline: none;
-}
-
-.chart-node:hover,
-.chart-node:focus-visible {
-  transform: translateY(-4px);
-}
-
-.chart-node:hover circle:first-child {
-  r: 22;
-  fill: rgba(2, 132, 199, 0.3);
-}
-
-.chart-node:hover rect {
-  fill: #0284C7;
-}
-
-.apex-pulse {
-  animation: apexPulseAnim 2.2s infinite ease-in-out;
-}
-
-@keyframes apexPulseAnim {
-  0%, 100% { r: 20; opacity: 0.3; }
-  50% { r: 26; opacity: 0.15; }
-}
-
-.growth-chart-hint {
-  display: flex;
-  align-items: center;
   gap: 8px;
-  font-size: 0.8rem;
-  color: #64748B;
-  background: #F8FAFC;
-  padding: 10px 16px;
-  border-radius: 8px;
-  border: 1px dashed #CBD5E1;
-  margin-top: 14px;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
 }
 
-.growth-chart-hint svg {
-  color: #0284C7;
-  flex-shrink: 0;
+.btn-focus-year-toggle:hover {
+  background: #FFFFFF;
+  color: #0F172A;
+  transform: translateY(-2px);
 }
 
-/* Ascending Growth Trajectory Cards Track */
-.growth-trajectory-track {
-  max-width: 900px;
-  margin: 0 auto;
+.alltime-timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   position: relative;
 }
 
-.growth-step-row {
+.alltime-item {
   display: flex;
   gap: 24px;
   position: relative;
-  margin-bottom: 32px;
-  scroll-margin-top: 100px;
 }
 
-.growth-step-row:last-child {
-  margin-bottom: 0;
-}
-
-.growth-step-indicator {
-  width: 95px;
+.alltime-rail {
+  width: 32px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -2604,194 +2787,226 @@ body.mobile-nav-open {
   position: relative;
 }
 
-.growth-step-lvl {
-  font-family: var(--font-display);
-  font-size: 0.76rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #0284C7;
-  background: #E0F2FE;
-  padding: 5px 10px;
-  border-radius: 9999px;
-  text-align: center;
-  width: 100%;
-  white-space: nowrap;
-  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.12);
-  border: 1px solid rgba(2, 132, 199, 0.2);
+.alltime-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 4px solid #0284C7;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.2);
+  margin-top: 24px;
+  z-index: 2;
+  flex-shrink: 0;
 }
 
-.growth-step-lvl.apex-lvl {
-  background: linear-gradient(135deg, #0284C7, #0F172A);
-  color: #FFFFFF;
-  border-color: #0284C7;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+.alltime-dot.apex-dot {
+  border-color: #0F172A;
+  box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.25);
+  background: #0284C7;
 }
 
-.growth-step-line {
+.alltime-line {
   width: 3px;
   flex-grow: 1;
-  background: linear-gradient(180deg, #0284C7 0%, #BAE6FD 100%);
-  margin-top: 10px;
+  background: #BAE6FD;
+  margin-top: 6px;
+  margin-bottom: -18px;
   border-radius: 2px;
 }
 
-.growth-step-row:last-child .growth-step-line {
+.alltime-item:last-child .alltime-line {
   display: none;
 }
 
-.growth-step-content {
+.alltime-card {
   flex-grow: 1;
-}
-
-.growth-card {
   background: #FFFFFF;
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 26px 30px;
   border: 1px solid var(--border-light);
   box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  margin-bottom: 28px;
   transition: all 0.3s ease;
-  position: relative;
 }
 
-.growth-card:hover {
+.alltime-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 26px rgba(15, 23, 42, 0.09);
   border-color: #BAE6FD;
+  box-shadow: 0 8px 26px rgba(15, 23, 42, 0.09);
 }
 
-.growth-card.flash-highlight {
-  animation: flashHighlightAnim 1.6s ease-out;
-}
-
-@keyframes flashHighlightAnim {
-  0% {
-    box-shadow: 0 0 0 5px #38BDF8, 0 8px 30px rgba(2, 132, 199, 0.35);
-    border-color: #0284C7;
-    background: #F0F9FF;
-  }
-  100% {
-    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
-    border-color: var(--border-light);
-    background: #FFFFFF;
-  }
-}
-
-.growth-card-apex-highlight {
+.alltime-card-apex {
   border: 2px solid #0284C7;
-  box-shadow: 0 10px 32px rgba(2, 132, 199, 0.14);
   background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  box-shadow: 0 8px 28px rgba(2, 132, 199, 0.12);
 }
 
-.growth-card-top {
+.alltime-card-top {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 12px;
 }
 
-.growth-year-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+.alltime-year-badge {
   font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #0F172A;
-  background: #F1F5F9;
-  padding: 4px 12px;
-  border-radius: 8px;
-  border: 1px solid #E2E8F0;
-}
-
-.growth-year-pill.apex-year-pill {
-  background: #0284C7;
-  color: #FFFFFF;
-  border-color: #0284C7;
-  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
-}
-
-.growth-stage-caption {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #64748B;
-  margin-left: auto;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.growth-stage-caption.apex-caption {
-  color: #0284C7;
-  font-weight: 800;
-}
-
-.growth-card h3 {
   font-size: 1.25rem;
   font-weight: 800;
+  color: #0284C7;
+  background: #E0F2FE;
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+
+.alltime-year-badge.apex-year-badge {
+  background: #0284C7;
+  color: #FFFFFF;
+}
+
+.btn-micro-focus {
+  margin-left: auto;
+  border: 1px solid #E2E8F0;
+  background: #F8FAFC;
+  color: #475569;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-micro-focus:hover {
+  background: #0F172A;
+  color: #FFFFFF;
+  border-color: #0F172A;
+}
+
+.alltime-heading {
+  font-size: 1.22rem;
+  font-weight: 800;
   color: var(--navy-dark);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   line-height: 1.35;
 }
 
-.growth-card p {
+.alltime-card p {
   font-size: 0.96rem;
-  line-height: 1.7;
+  line-height: 1.68;
   color: var(--text-body);
   margin-bottom: 0;
 }
 
-.milestone-tag.apex-tag-chip {
-  background: #0284C7;
-  color: #FFFFFF;
-  border-color: #0284C7;
-  font-weight: 700;
-}
-
+/* ==========================================================================
+   MOBILE RESPONSIVENESS (PERFECT FIT FOR PHONES AND TABLETS)
+   ========================================================================== */
 @media (max-width: 768px) {
-  .milestones-toolbar {
+  .milestones-interactive-section {
+    padding: 24px 0 50px;
+  }
+  .milestones-navigator-card {
+    padding: 20px 16px;
     border-radius: 16px;
+    margin-bottom: 24px;
+  }
+  .navigator-title {
+    font-size: 1.35rem;
+  }
+  .navigator-desc {
+    font-size: 0.88rem;
+  }
+  .milestone-progress-track {
+    display: none; /* Hide progress rail on wrapped mobile stepper */
+  }
+  .milestone-stepper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .milestone-step-btn {
+    max-width: 100%;
+    padding: 8px 6px;
+    border-radius: 10px;
+  }
+  .step-num-pill {
+    font-size: 0.92rem;
+    padding: 3px 6px;
+  }
+  .step-label {
+    font-size: 0.72rem;
+  }
+  .step-elevation {
+    font-size: 0.62rem;
+    padding: 1px 4px;
+  }
+  .showcase-card {
+    padding: 22px 18px 20px;
+    border-radius: 16px;
+  }
+  .showcase-year-wrap {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .showcase-year-badge {
+    font-size: 1.6rem;
+    padding: 4px 14px;
+    align-self: flex-start;
+  }
+  .showcase-phase-title {
+    font-size: 1.18rem;
+  }
+  .showcase-narrative {
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+  .showcase-tags-section {
+    padding: 12px 14px;
+  }
+  .showcase-card-nav {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
   }
-  .view-switcher-pills {
+  .btn-step-nav {
     width: 100%;
-  }
-  .view-pill-btn {
-    flex: 1;
     justify-content: center;
-    font-size: 0.8rem;
-    padding: 8px 12px;
+    padding: 10px 16px;
   }
-  .growth-chart-card {
-    padding: 20px 18px 18px;
-    border-radius: 16px;
-  }
-  .chart-title {
-    font-size: 1.2rem;
-  }
-  .growth-step-row {
+  .alltime-overview-banner {
+    padding: 20px 18px;
     flex-direction: column;
-    gap: 12px;
+    align-items: flex-start;
   }
-  .growth-step-indicator {
-    width: auto;
-    flex-direction: row;
-    align-items: center;
+  .alltime-item {
+    gap: 14px;
   }
-  .growth-step-lvl {
-    width: auto;
-    display: inline-block;
+  .alltime-rail {
+    width: 20px;
   }
-  .growth-step-line {
-    display: none;
+  .alltime-dot {
+    width: 16px;
+    height: 16px;
+    border-width: 3px;
+    margin-top: 18px;
   }
-  .growth-card {
-    padding: 18px;
+  .alltime-card {
+    padding: 18px 16px;
+    border-radius: 14px;
   }
-  .growth-stage-caption {
+  .alltime-heading {
+    font-size: 1.08rem;
+  }
+  .btn-micro-focus {
     margin-left: 0;
-    width: 100%;
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 420px) {
+  .milestone-stepper {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
