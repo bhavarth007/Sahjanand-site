@@ -188,13 +188,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (msgField && !msgField.value) {
         if (inqLower.indexOf('weaving') !== -1 || inqLower.indexOf('viving') !== -1) {
-          msgField.value = 'Inquiry regarding Weaving Segment (High-Speed Weaving Division). Please provide quotation for grey cloth production, monthly meterage, and quality standards.';
+          msgField.value = 'Inquiry regarding Weaving Segment. Please provide quotation for grey cloth production, monthly meterage, and quality standards.';
         } else if (inqLower.indexOf('yarn') !== -1) {
-          msgField.value = 'Inquiry regarding Yarn Segment & Warp Preparation. Please provide details on filament types, warping capacity, and supply timelines.';
+          msgField.value = 'Inquiry regarding Yarn Segment. Please provide details on filament types, warping capacity, and supply timelines.';
         } else if (inqLower.indexOf('chemical') !== -1 || inqLower.indexOf('camical') !== -1) {
           msgField.value = 'Inquiry regarding Chemical Segment. Please provide details on textile sizing chemicals, polymer binders, and processing auxiliaries.';
         } else if (inqLower.indexOf('trade') !== -1 || inqLower.indexOf('trad') !== -1 || inqLower.indexOf('import') !== -1 || inqLower.indexOf('export') !== -1 || inqLower.indexOf('purchase') !== -1) {
-          msgField.value = 'Inquiry regarding Trade (Import & Export Division). Please provide details on raw polymer procurement, export grey cloth contracts, and commercial supply.';
+          msgField.value = 'Inquiry regarding Trade Segment. Please provide details on raw polymer procurement, export grey cloth contracts, and commercial supply.';
         } else if (inqLower.indexOf('rapier') !== -1) {
           msgField.value = 'Inquiry regarding Rapier Weaving. Please provide information on fabric specifications, reed widths, and minimum lot sizes.';
         } else {
