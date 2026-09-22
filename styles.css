@@ -2285,6 +2285,517 @@ body.mobile-nav-open {
 }
 
 /* ==========================================================================
+   MILESTONES VIEW SWITCHER & GROWTH GRAPH VIEW (milestones.html)
+   ========================================================================== */
+.milestones-section {
+  padding: 40px 0 70px;
+}
+
+.milestones-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: #FFFFFF;
+  padding: 12px 22px;
+  border-radius: 9999px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  max-width: 900px;
+  margin: 0 auto 36px;
+}
+
+.view-switcher-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  letter-spacing: 0.02em;
+}
+
+.view-pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+  animation: pulseGreen 2s infinite ease-in-out;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.75; }
+}
+
+.view-switcher-pills {
+  display: inline-flex;
+  align-items: center;
+  background: #F1F5F9;
+  padding: 4px;
+  border-radius: 9999px;
+  gap: 4px;
+}
+
+.view-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: #64748B;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.view-pill-btn svg {
+  transition: transform 0.25s ease;
+}
+
+.view-pill-btn .pill-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(2, 132, 199, 0.12);
+  color: #0284C7;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  line-height: 1.2;
+}
+
+.view-pill-btn:hover {
+  color: var(--navy-dark);
+}
+
+.view-pill-btn.active {
+  background: #0F172A;
+  color: #FFFFFF;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.25);
+}
+
+.view-pill-btn.active svg {
+  stroke: #38BDF8;
+}
+
+.view-pill-btn.active .pill-badge {
+  background: #0284C7;
+  color: #FFFFFF;
+}
+
+/* Milestone View Containers */
+.milestone-view-container {
+  transition: opacity 0.3s ease;
+}
+
+/* Upward Trajectory Graph Card */
+.growth-chart-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  padding: 30px 36px 24px;
+  max-width: 960px;
+  margin: 0 auto 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.growth-chart-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #38BDF8 0%, #0284C7 50%, #0369A1 100%);
+}
+
+.growth-chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.chart-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0284C7;
+  background: #E0F2FE;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-bottom: 8px;
+}
+
+.chart-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--navy-dark);
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+
+.chart-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0;
+  line-height: 1.55;
+}
+
+.chart-legend-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 9999px;
+  padding: 6px 14px;
+}
+
+.chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.legend-line {
+  width: 18px;
+  height: 3px;
+  background: #0284C7;
+  border-radius: 2px;
+}
+
+.legend-node {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #0284C7;
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 3.5px #0284C7;
+}
+
+/* SVG Graph */
+.growth-chart-canvas-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 0;
+}
+
+.growth-chart-svg {
+  width: 100%;
+  min-width: 680px;
+  height: auto;
+  display: block;
+}
+
+.chart-axis-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  fill: #94A3B8;
+  letter-spacing: 0.02em;
+}
+
+.node-stage-text {
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  font-weight: 700;
+  fill: #0284C7;
+}
+
+.node-stage-text.apex-tag {
+  fill: #0369A1;
+  font-weight: 800;
+  font-size: 11px;
+}
+
+.chart-node {
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  outline: none;
+}
+
+.chart-node:hover,
+.chart-node:focus-visible {
+  transform: translateY(-4px);
+}
+
+.chart-node:hover circle:first-child {
+  r: 22;
+  fill: rgba(2, 132, 199, 0.3);
+}
+
+.chart-node:hover rect {
+  fill: #0284C7;
+}
+
+.apex-pulse {
+  animation: apexPulseAnim 2.2s infinite ease-in-out;
+}
+
+@keyframes apexPulseAnim {
+  0%, 100% { r: 20; opacity: 0.3; }
+  50% { r: 26; opacity: 0.15; }
+}
+
+.growth-chart-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #64748B;
+  background: #F8FAFC;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px dashed #CBD5E1;
+  margin-top: 14px;
+}
+
+.growth-chart-hint svg {
+  color: #0284C7;
+  flex-shrink: 0;
+}
+
+/* Ascending Growth Trajectory Cards Track */
+.growth-trajectory-track {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.growth-step-row {
+  display: flex;
+  gap: 24px;
+  position: relative;
+  margin-bottom: 32px;
+  scroll-margin-top: 100px;
+}
+
+.growth-step-row:last-child {
+  margin-bottom: 0;
+}
+
+.growth-step-indicator {
+  width: 95px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.growth-step-lvl {
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #0284C7;
+  background: #E0F2FE;
+  padding: 5px 10px;
+  border-radius: 9999px;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.12);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+}
+
+.growth-step-lvl.apex-lvl {
+  background: linear-gradient(135deg, #0284C7, #0F172A);
+  color: #FFFFFF;
+  border-color: #0284C7;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+}
+
+.growth-step-line {
+  width: 3px;
+  flex-grow: 1;
+  background: linear-gradient(180deg, #0284C7 0%, #BAE6FD 100%);
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+.growth-step-row:last-child .growth-step-line {
+  display: none;
+}
+
+.growth-step-content {
+  flex-grow: 1;
+}
+
+.growth-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 26px 30px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.growth-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(15, 23, 42, 0.09);
+  border-color: #BAE6FD;
+}
+
+.growth-card.flash-highlight {
+  animation: flashHighlightAnim 1.6s ease-out;
+}
+
+@keyframes flashHighlightAnim {
+  0% {
+    box-shadow: 0 0 0 5px #38BDF8, 0 8px 30px rgba(2, 132, 199, 0.35);
+    border-color: #0284C7;
+    background: #F0F9FF;
+  }
+  100% {
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+    border-color: var(--border-light);
+    background: #FFFFFF;
+  }
+}
+
+.growth-card-apex-highlight {
+  border: 2px solid #0284C7;
+  box-shadow: 0 10px 32px rgba(2, 132, 199, 0.14);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+}
+
+.growth-card-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.growth-year-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0F172A;
+  background: #F1F5F9;
+  padding: 4px 12px;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+}
+
+.growth-year-pill.apex-year-pill {
+  background: #0284C7;
+  color: #FFFFFF;
+  border-color: #0284C7;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+}
+
+.growth-stage-caption {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #64748B;
+  margin-left: auto;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.growth-stage-caption.apex-caption {
+  color: #0284C7;
+  font-weight: 800;
+}
+
+.growth-card h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--navy-dark);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.growth-card p {
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: var(--text-body);
+  margin-bottom: 0;
+}
+
+.milestone-tag.apex-tag-chip {
+  background: #0284C7;
+  color: #FFFFFF;
+  border-color: #0284C7;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .milestones-toolbar {
+    border-radius: 16px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .view-switcher-pills {
+    width: 100%;
+  }
+  .view-pill-btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+  .growth-chart-card {
+    padding: 20px 18px 18px;
+    border-radius: 16px;
+  }
+  .chart-title {
+    font-size: 1.2rem;
+  }
+  .growth-step-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .growth-step-indicator {
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+  }
+  .growth-step-lvl {
+    width: auto;
+    display: inline-block;
+  }
+  .growth-step-line {
+    display: none;
+  }
+  .growth-card {
+    padding: 18px;
+  }
+  .growth-stage-caption {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
    MANAGEMENT TEAM ARCH CARDS (management.html)
    Cinematic Movie-Credits Style Bio Overlay & Movie Opening Titles
    ========================================================================== */

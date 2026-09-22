@@ -955,4 +955,77 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+
+
+  // 9. Milestones Interactive Presentation Switcher & Growth Chart Interaction
+  var btnViewGraph = document.querySelector('#btn-view-graph');
+  var btnViewTimeline = document.querySelector('#btn-view-timeline');
+  var viewGraphContainer = document.querySelector('#view-graph-container');
+  var viewTimelineContainer = document.querySelector('#view-timeline-container');
+
+  if (btnViewGraph && btnViewTimeline && viewGraphContainer && viewTimelineContainer) {
+    function switchMilestoneView(view) {
+      if (view === 'graph') {
+        btnViewGraph.classList.add('active');
+        btnViewGraph.setAttribute('aria-pressed', 'true');
+        btnViewTimeline.classList.remove('active');
+        btnViewTimeline.setAttribute('aria-pressed', 'false');
+
+        viewTimelineContainer.style.display = 'none';
+        viewGraphContainer.style.display = 'block';
+        viewGraphContainer.style.opacity = '0';
+        setTimeout(function () {
+          viewGraphContainer.style.opacity = '1';
+        }, 20);
+      } else {
+        btnViewTimeline.classList.add('active');
+        btnViewTimeline.setAttribute('aria-pressed', 'true');
+        btnViewGraph.classList.remove('active');
+        btnViewGraph.setAttribute('aria-pressed', 'false');
+
+        viewGraphContainer.style.display = 'none';
+        viewTimelineContainer.style.display = 'block';
+        viewTimelineContainer.style.opacity = '0';
+        setTimeout(function () {
+          viewTimelineContainer.style.opacity = '1';
+        }, 20);
+      }
+    }
+
+    btnViewGraph.addEventListener('click', function () {
+      switchMilestoneView('graph');
+    });
+
+    btnViewTimeline.addEventListener('click', function () {
+      switchMilestoneView('timeline');
+    });
+
+    // Interactive chart node click -> scroll to corresponding growth card & highlight
+    document.querySelectorAll('.growth-chart-svg .chart-node').forEach(function (node) {
+      function triggerNode() {
+        var targetId = node.getAttribute('data-target');
+        if (!targetId) return;
+        var targetCardRow = document.getElementById(targetId);
+        if (!targetCardRow) return;
+
+        targetCardRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        var innerCard = targetCardRow.querySelector('.growth-card');
+        if (innerCard) {
+          innerCard.classList.remove('flash-highlight');
+          // Force reflow
+          void innerCard.offsetWidth;
+          innerCard.classList.add('flash-highlight');
+        }
+      }
+
+      node.addEventListener('click', triggerNode);
+      node.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          triggerNode();
+        }
+      });
+    });
+  }
 });
+
