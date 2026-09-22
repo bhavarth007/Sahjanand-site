@@ -2285,26 +2285,26 @@ body.mobile-nav-open {
 }
 
 /* ==========================================================================
-   INTERACTIVE MILESTONES & YEAR-BY-YEAR GROWTH SHOWCASE (milestones.html)
+   STEPPED INDUSTRIAL GROWTH GRAPH & ACHIEVEMENTS SHOWCASE (milestones.html)
    ========================================================================== */
 .milestones-interactive-section {
   padding: 40px 0 80px;
 }
 
-/* Navigator Card */
-.milestones-navigator-card {
+/* Stepped Graph Card Container */
+.stepped-graph-card {
   background: #FFFFFF;
   border-radius: 22px;
   border: 1px solid var(--border-light);
   box-shadow: 0 10px 32px rgba(15, 23, 42, 0.06);
   padding: 32px 36px 28px;
-  max-width: 960px;
+  max-width: 980px;
   margin: 0 auto 36px;
   position: relative;
   overflow: hidden;
 }
 
-.milestones-navigator-card::before {
+.stepped-graph-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -2314,13 +2314,22 @@ body.mobile-nav-open {
   background: linear-gradient(90deg, #38BDF8 0%, #0284C7 50%, #0369A1 100%);
 }
 
-.navigator-header {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 28px;
+.stepped-graph-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #F1F5F9;
 }
 
-.navigator-tag-badge {
+.graph-header-left {
+  max-width: 640px;
+}
+
+.graph-tag-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -2332,7 +2341,7 @@ body.mobile-nav-open {
   background: #E0F2FE;
   padding: 4px 14px;
   border-radius: 9999px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .pulse-point {
@@ -2349,166 +2358,325 @@ body.mobile-nav-open {
   50% { transform: scale(1.3); opacity: 0.7; }
 }
 
-.navigator-title {
-  font-size: 1.65rem;
+.graph-title {
+  font-size: 1.55rem;
   font-weight: 800;
   color: var(--navy-dark);
   margin-bottom: 8px;
   line-height: 1.25;
 }
 
-.navigator-desc {
-  font-size: 0.96rem;
+.graph-desc {
+  font-size: 0.94rem;
   color: var(--text-muted);
   line-height: 1.6;
   margin: 0;
 }
 
-/* Stepper Track */
-.milestone-stepper-container {
-  position: relative;
-  margin-top: 10px;
-}
-
-.milestone-progress-track {
-  position: absolute;
-  top: 24px;
-  left: 5%;
-  right: 5%;
-  height: 4px;
-  background: #E2E8F0;
-  border-radius: 9999px;
-  z-index: 1;
-}
-
-.milestone-progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #38BDF8, #0284C7);
-  border-radius: 9999px;
-  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
-}
-
-.milestone-stepper {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.milestone-step-btn {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 14px;
-  padding: 10px 14px;
+.graph-legend-box {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  background: #F8FAFC;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+}
+
+.legend-item {
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.legend-line-surge {
+  width: 18px;
+  height: 3px;
+  background: linear-gradient(90deg, #38BDF8, #0284C7);
+  border-radius: 2px;
+}
+
+.legend-line-plateau {
+  width: 18px;
+  height: 3px;
+  background: #0284C7;
+  border-radius: 2px;
+}
+
+.legend-node-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #0284C7;
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 3.5px #0284C7;
+}
+
+/* Stepped SVG Canvas */
+.stepped-graph-canvas-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px 0 4px;
+}
+
+.stepped-growth-svg {
+  width: 100%;
+  min-width: 760px;
+  height: auto;
+  display: block;
+}
+
+.svg-axis-txt {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  fill: #94A3B8;
+  letter-spacing: 0.02em;
+}
+
+.svg-axis-txt.apex-axis-txt {
+  fill: #0284C7;
+  font-weight: 800;
+}
+
+.svg-plateau-txt {
+  font-family: var(--font-body);
+  font-size: 9.5px;
+  font-weight: 700;
+  fill: #475569;
+}
+
+/* Interactive SVG Nodes */
+.svg-milestone-node {
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  outline: none;
+}
+
+.svg-milestone-node:hover,
+.svg-milestone-node:focus-visible {
+  transform: translateY(-4px);
+}
+
+.node-halo {
+  fill: rgba(2, 132, 199, 0.16);
+  transition: all 0.25s ease;
+}
+
+.node-center {
+  fill: #0284C7;
+  stroke: #FFFFFF;
+  stroke-width: 3;
+  transition: all 0.25s ease;
+}
+
+.node-year-box {
+  fill: #0F172A;
+  transition: fill 0.25s ease;
+}
+
+.node-year-txt {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  fill: #FFFFFF;
+}
+
+.node-sub-txt {
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  font-weight: 700;
+  fill: #0284C7;
+}
+
+.node-sub-txt.apex-highlight-txt {
+  font-weight: 800;
+  fill: #0369A1;
+}
+
+/* Active SVG Node State */
+.svg-milestone-node.active {
+  transform: translateY(-5px);
+}
+
+.svg-milestone-node.active .node-halo {
+  r: 22;
+  fill: rgba(2, 132, 199, 0.35);
+  animation: nodePulse 2s infinite ease-in-out;
+}
+
+.svg-milestone-node.active .node-center {
+  fill: #0284C7;
+  stroke-width: 3.5;
+}
+
+.svg-milestone-node.active .node-year-box {
+  fill: #0284C7;
+}
+
+@keyframes nodePulse {
+  0%, 100% { r: 20; opacity: 0.4; }
+  50% { r: 26; opacity: 0.15; }
+}
+
+.apex-node .apex-year-box {
+  fill: #0369A1;
+}
+
+.apex-node.active .apex-year-box {
+  fill: #0284C7;
+}
+
+.graph-mobile-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #64748B;
+  background: #F8FAFC;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px dashed #CBD5E1;
+  margin: 16px 0 20px;
+}
+
+.graph-mobile-hint svg {
+  color: #0284C7;
+  flex-shrink: 0;
+}
+
+/* Stepped Graph Toolbar */
+.stepped-graph-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: #F1F5F9;
+  padding: 8px;
+  border-radius: 16px;
+}
+
+.graph-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #475569;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.25s ease;
   flex: 1;
-  max-width: 135px;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  min-width: 105px;
 }
 
-.milestone-step-btn:hover {
-  transform: translateY(-3px);
-  border-color: #BAE6FD;
-  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.12);
-}
-
-.step-num-pill {
+.btn-year {
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 800;
   color: var(--navy-dark);
-  background: #F1F5F9;
-  padding: 4px 10px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
   line-height: 1.2;
 }
 
-.step-label {
-  font-size: 0.78rem;
+.btn-caption {
+  font-size: 0.72rem;
   font-weight: 700;
   color: #64748B;
-  transition: color 0.3s ease;
   white-space: nowrap;
 }
 
-.step-elevation {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #94A3B8;
-  background: #F8FAFC;
-  padding: 2px 6px;
-  border-radius: 4px;
-  border: 1px solid #E2E8F0;
+.graph-btn:hover {
+  background: #FFFFFF;
+  border-color: #E2E8F0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
 }
 
-/* Active Stepper Button */
-.milestone-step-btn.active {
+.graph-btn.active {
   background: #0F172A;
   border-color: #0284C7;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.28), 0 0 0 2px rgba(2, 132, 199, 0.35);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25);
+  transform: translateY(-3px);
 }
 
-.milestone-step-btn.active .step-num-pill {
-  background: #0284C7;
-  color: #FFFFFF;
-  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
-}
-
-.milestone-step-btn.active .step-label {
-  color: #F8FAFC;
-  font-weight: 800;
-}
-
-.milestone-step-btn.active .step-elevation {
-  background: rgba(2, 132, 199, 0.2);
+.graph-btn.active .btn-year {
   color: #38BDF8;
-  border-color: rgba(2, 132, 199, 0.4);
 }
 
-/* Apex & All-Time Specialty Stepper Accents */
-.step-num-pill.apex-pill {
-  color: #0369A1;
+.graph-btn.active .btn-caption {
+  color: #F8FAFC;
 }
 
-.milestone-step-btn.active .step-num-pill.apex-pill {
-  background: linear-gradient(135deg, #0284C7, #0369A1);
+.graph-btn.apex-btn.active .btn-year {
   color: #FFFFFF;
 }
 
-.all-time-btn .step-num-pill.all-pill {
-  display: inline-flex;
+/* Master All Achievements Button */
+.graph-btn.master-all-btn {
+  flex-direction: row;
   align-items: center;
-  gap: 5px;
-  color: #0F172A;
+  justify-content: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid #BAE6FD;
+  color: #0284C7;
+  font-weight: 800;
+  font-size: 0.88rem;
+  padding: 10px 18px;
+  flex: 1.3;
 }
 
-.all-time-btn.active .step-num-pill.all-pill {
+.graph-btn.master-all-btn svg {
+  stroke: #0284C7;
+}
+
+.graph-btn.master-all-btn .all-count-tag {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: #E0F2FE;
+  color: #0284C7;
+  padding: 2px 7px;
+  border-radius: 9999px;
+}
+
+.graph-btn.master-all-btn:hover {
+  background: #F0F9FF;
+  border-color: #0284C7;
+}
+
+.graph-btn.master-all-btn.active {
   background: #0284C7;
+  border-color: #0284C7;
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
+}
+
+.graph-btn.master-all-btn.active svg {
+  stroke: #FFFFFF;
+}
+
+.graph-btn.master-all-btn.active .all-count-tag {
+  background: rgba(255, 255, 255, 0.25);
   color: #FFFFFF;
 }
 
 /* ==========================================================================
-   SINGLE YEAR SHOWCASE CARD
+   ACHIEVEMENT SHOWCASE CARD (SINGLE YEAR REVEAL)
    ========================================================================== */
-.milestone-single-showcase {
-  max-width: 960px;
+.achievement-showcase-wrap {
+  max-width: 980px;
   margin: 0 auto;
 }
 
-.showcase-card {
+.achievement-card {
   background: #FFFFFF;
   border-radius: 22px;
   border: 1px solid var(--border-light);
@@ -2518,12 +2686,12 @@ body.mobile-nav-open {
   overflow: hidden;
 }
 
-.showcase-card.active {
+.achievement-card.active {
   display: block !important;
-  animation: cardFadeSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: cardRevealAnim 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes cardFadeSlideIn {
+@keyframes cardRevealAnim {
   0% {
     opacity: 0;
     transform: translateY(22px) scale(0.985);
@@ -2534,7 +2702,7 @@ body.mobile-nav-open {
   }
 }
 
-.showcase-card::before {
+.achievement-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -2544,12 +2712,12 @@ body.mobile-nav-open {
   background: linear-gradient(180deg, #38BDF8 0%, #0284C7 100%);
 }
 
-.showcase-card-apex::before {
+.achievement-card-apex::before {
   background: linear-gradient(180deg, #0284C7 0%, #0F172A 100%);
   width: 8px;
 }
 
-.showcase-card-header {
+.achievement-card-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -2560,14 +2728,14 @@ body.mobile-nav-open {
   border-bottom: 1px solid #F1F5F9;
 }
 
-.showcase-year-wrap {
+.achievement-year-cluster {
   display: flex;
   align-items: flex-start;
   gap: 18px;
   flex-grow: 1;
 }
 
-.showcase-year-badge {
+.achievement-year-badge {
   font-family: var(--font-display);
   font-size: 2.2rem;
   font-weight: 800;
@@ -2581,16 +2749,16 @@ body.mobile-nav-open {
   flex-shrink: 0;
 }
 
-.showcase-year-badge.apex-badge-num {
+.achievement-year-badge.apex-badge-num {
   background: linear-gradient(135deg, #0284C7, #0F172A);
   box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35);
 }
 
-.showcase-phase-info {
+.achievement-title-group {
   flex-grow: 1;
 }
 
-.showcase-level-tag {
+.achievement-phase-badge {
   display: inline-block;
   font-size: 0.78rem;
   font-weight: 800;
@@ -2600,12 +2768,12 @@ body.mobile-nav-open {
   margin-bottom: 4px;
 }
 
-.showcase-level-tag.apex-tag-accent {
+.achievement-phase-badge.apex-phase-badge {
   color: #0369A1;
   font-weight: 800;
 }
 
-.showcase-phase-title {
+.achievement-title {
   font-size: 1.45rem;
   font-weight: 800;
   color: var(--navy-dark);
@@ -2613,25 +2781,25 @@ body.mobile-nav-open {
   margin: 0;
 }
 
-.showcase-card-body {
+.achievement-card-body {
   margin-bottom: 28px;
 }
 
-.showcase-narrative {
+.achievement-desc {
   font-size: 1.05rem;
   line-height: 1.78;
   color: #334155;
   margin-bottom: 24px;
 }
 
-.showcase-tags-section {
+.achievement-tags-box {
   background: #F8FAFC;
   padding: 16px 20px;
   border-radius: 12px;
   border: 1px solid #E2E8F0;
 }
 
-.tags-label {
+.tags-header {
   display: block;
   font-size: 0.75rem;
   font-weight: 800;
@@ -2641,7 +2809,7 @@ body.mobile-nav-open {
   margin-bottom: 10px;
 }
 
-.showcase-card-nav {
+.achievement-card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2650,7 +2818,7 @@ body.mobile-nav-open {
   border-top: 1px solid #F1F5F9;
 }
 
-.btn-step-nav {
+.btn-step-flow {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -2667,7 +2835,7 @@ body.mobile-nav-open {
   box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
 }
 
-.btn-step-nav:hover {
+.btn-step-flow:hover {
   background: #F8FAFC;
   border-color: #0284C7;
   color: #0284C7;
@@ -2675,16 +2843,16 @@ body.mobile-nav-open {
   box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
 }
 
-.btn-step-next,
-.btn-step-all {
+.btn-next-step,
+.btn-master-trigger {
   background: #0284C7;
   border-color: #0284C7;
   color: #FFFFFF;
   margin-left: auto;
 }
 
-.btn-step-next:hover,
-.btn-step-all:hover {
+.btn-next-step:hover,
+.btn-master-trigger:hover {
   background: #0369A1;
   color: #FFFFFF;
   border-color: #0369A1;
@@ -2692,15 +2860,15 @@ body.mobile-nav-open {
 }
 
 /* ==========================================================================
-   ALL TIME FULL CHRONICLE VIEW
+   ALL ACHIEVEMENTS CHRONICLE (FULL VIEW OF ALL YEARS)
    ========================================================================== */
-.milestone-alltime-showcase {
-  max-width: 960px;
+.all-achievements-wrap {
+  max-width: 980px;
   margin: 0 auto;
-  animation: cardFadeSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: cardRevealAnim 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.alltime-overview-banner {
+.all-achievements-banner {
   background: #0F172A;
   color: #FFFFFF;
   border-radius: 20px;
@@ -2715,7 +2883,7 @@ body.mobile-nav-open {
   border-left: 5px solid #38BDF8;
 }
 
-.overview-pill {
+.banner-tag {
   display: inline-block;
   font-size: 0.72rem;
   font-weight: 800;
@@ -2725,7 +2893,7 @@ body.mobile-nav-open {
   margin-bottom: 6px;
 }
 
-.overview-title {
+.banner-heading {
   font-size: 1.45rem;
   font-weight: 800;
   color: #FFFFFF;
@@ -2733,7 +2901,7 @@ body.mobile-nav-open {
   line-height: 1.25;
 }
 
-.overview-sub {
+.banner-sub {
   font-size: 0.92rem;
   color: #94A3B8;
   margin: 0;
@@ -2741,7 +2909,7 @@ body.mobile-nav-open {
   line-height: 1.55;
 }
 
-.btn-focus-year-toggle {
+.btn-return-single {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -2759,26 +2927,26 @@ body.mobile-nav-open {
   white-space: nowrap;
 }
 
-.btn-focus-year-toggle:hover {
+.btn-return-single:hover {
   background: #FFFFFF;
   color: #0F172A;
   transform: translateY(-2px);
 }
 
-.alltime-timeline-list {
+.all-timeline-stack {
   display: flex;
   flex-direction: column;
   gap: 0;
   position: relative;
 }
 
-.alltime-item {
+.all-milestone-entry {
   display: flex;
   gap: 24px;
   position: relative;
 }
 
-.alltime-rail {
+.entry-rail {
   width: 32px;
   flex-shrink: 0;
   display: flex;
@@ -2787,7 +2955,7 @@ body.mobile-nav-open {
   position: relative;
 }
 
-.alltime-dot {
+.entry-dot {
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -2799,13 +2967,13 @@ body.mobile-nav-open {
   flex-shrink: 0;
 }
 
-.alltime-dot.apex-dot {
+.entry-dot.apex-dot {
   border-color: #0F172A;
   box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.25);
   background: #0284C7;
 }
 
-.alltime-line {
+.entry-line {
   width: 3px;
   flex-grow: 1;
   background: #BAE6FD;
@@ -2814,11 +2982,11 @@ body.mobile-nav-open {
   border-radius: 2px;
 }
 
-.alltime-item:last-child .alltime-line {
+.all-milestone-entry:last-child .entry-line {
   display: none;
 }
 
-.alltime-card {
+.entry-card {
   flex-grow: 1;
   background: #FFFFFF;
   border-radius: 18px;
@@ -2829,19 +2997,19 @@ body.mobile-nav-open {
   transition: all 0.3s ease;
 }
 
-.alltime-card:hover {
+.entry-card:hover {
   transform: translateY(-2px);
   border-color: #BAE6FD;
   box-shadow: 0 8px 26px rgba(15, 23, 42, 0.09);
 }
 
-.alltime-card-apex {
+.entry-card-apex {
   border: 2px solid #0284C7;
   background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
   box-shadow: 0 8px 28px rgba(2, 132, 199, 0.12);
 }
 
-.alltime-card-top {
+.entry-card-header {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -2849,7 +3017,7 @@ body.mobile-nav-open {
   margin-bottom: 12px;
 }
 
-.alltime-year-badge {
+.entry-year-badge {
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 800;
@@ -2859,12 +3027,12 @@ body.mobile-nav-open {
   border-radius: 8px;
 }
 
-.alltime-year-badge.apex-year-badge {
+.entry-year-badge.apex-year-badge {
   background: #0284C7;
   color: #FFFFFF;
 }
 
-.btn-micro-focus {
+.btn-jump-single {
   margin-left: auto;
   border: 1px solid #E2E8F0;
   background: #F8FAFC;
@@ -2878,13 +3046,13 @@ body.mobile-nav-open {
   transition: all 0.2s ease;
 }
 
-.btn-micro-focus:hover {
+.btn-jump-single:hover {
   background: #0F172A;
   color: #FFFFFF;
   border-color: #0F172A;
 }
 
-.alltime-heading {
+.entry-title {
   font-size: 1.22rem;
   font-weight: 800;
   color: var(--navy-dark);
@@ -2892,7 +3060,7 @@ body.mobile-nav-open {
   line-height: 1.35;
 }
 
-.alltime-card p {
+.entry-card p {
   font-size: 0.96rem;
   line-height: 1.68;
   color: var(--text-body);
@@ -2900,113 +3068,114 @@ body.mobile-nav-open {
 }
 
 /* ==========================================================================
-   MOBILE RESPONSIVENESS (PERFECT FIT FOR PHONES AND TABLETS)
+   MOBILE RESPONSIVENESS
    ========================================================================== */
 @media (max-width: 768px) {
   .milestones-interactive-section {
     padding: 24px 0 50px;
   }
-  .milestones-navigator-card {
+  .stepped-graph-card {
     padding: 20px 16px;
     border-radius: 16px;
     margin-bottom: 24px;
   }
-  .navigator-title {
+  .graph-title {
     font-size: 1.35rem;
   }
-  .navigator-desc {
+  .graph-desc {
     font-size: 0.88rem;
   }
-  .milestone-progress-track {
-    display: none; /* Hide progress rail on wrapped mobile stepper */
-  }
-  .milestone-stepper {
+  .stepped-graph-toolbar {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 6px;
+    padding: 6px;
   }
-  .milestone-step-btn {
-    max-width: 100%;
-    padding: 8px 6px;
+  .graph-btn {
+    min-width: unset;
+    padding: 6px 4px;
     border-radius: 10px;
   }
-  .step-num-pill {
+  .btn-year {
     font-size: 0.92rem;
-    padding: 3px 6px;
   }
-  .step-label {
-    font-size: 0.72rem;
+  .btn-caption {
+    font-size: 0.68rem;
   }
-  .step-elevation {
-    font-size: 0.62rem;
-    padding: 1px 4px;
+  .graph-btn.master-all-btn {
+    grid-column: span 3;
+    padding: 8px 12px;
+    font-size: 0.82rem;
   }
-  .showcase-card {
+  .achievement-card {
     padding: 22px 18px 20px;
     border-radius: 16px;
   }
-  .showcase-year-wrap {
+  .achievement-year-cluster {
     flex-direction: column;
     gap: 8px;
   }
-  .showcase-year-badge {
+  .achievement-year-badge {
     font-size: 1.6rem;
     padding: 4px 14px;
     align-self: flex-start;
   }
-  .showcase-phase-title {
+  .achievement-title {
     font-size: 1.18rem;
   }
-  .showcase-narrative {
+  .achievement-desc {
     font-size: 0.94rem;
     line-height: 1.65;
   }
-  .showcase-tags-section {
+  .achievement-tags-box {
     padding: 12px 14px;
   }
-  .showcase-card-nav {
+  .achievement-card-footer {
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
   }
-  .btn-step-nav {
+  .btn-step-flow {
     width: 100%;
     justify-content: center;
     padding: 10px 16px;
   }
-  .alltime-overview-banner {
+  .all-achievements-banner {
     padding: 20px 18px;
     flex-direction: column;
     align-items: flex-start;
   }
-  .alltime-item {
+  .all-milestone-entry {
     gap: 14px;
   }
-  .alltime-rail {
+  .entry-rail {
     width: 20px;
   }
-  .alltime-dot {
+  .entry-dot {
     width: 16px;
     height: 16px;
     border-width: 3px;
     margin-top: 18px;
   }
-  .alltime-card {
+  .entry-card {
     padding: 18px 16px;
     border-radius: 14px;
   }
-  .alltime-heading {
+  .entry-title {
     font-size: 1.08rem;
   }
-  .btn-micro-focus {
+  .btn-jump-single {
     margin-left: 0;
     margin-top: 4px;
   }
 }
 
 @media (max-width: 420px) {
-  .milestone-stepper {
+  .stepped-graph-toolbar {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .graph-btn.master-all-btn {
+    grid-column: span 2;
   }
 }
 

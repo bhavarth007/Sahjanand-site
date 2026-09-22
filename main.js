@@ -957,65 +957,56 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-  // 9. Interactive Milestones: Year-by-Year Growth Showcase & All-Time Full Story
-  var milestoneStepBtns = document.querySelectorAll('.milestone-step-btn');
-  var singleShowcaseWrap = document.querySelector('#milestone-single-showcase');
-  var allTimeShowcaseWrap = document.querySelector('#milestone-alltime-showcase');
-  var progressFill = document.querySelector('#milestone-progress-fill');
+  // 9. Stepped Industrial Growth Graph & Milestones Interactive Achievements
+  var svgMilestoneNodes = document.querySelectorAll('.svg-milestone-node');
+  var graphToolbarBtns = document.querySelectorAll('.graph-btn');
+  var singleShowcaseWrap = document.querySelector('#single-year-showcase');
+  var allYearsShowcaseWrap = document.querySelector('#all-years-showcase');
 
-  if (milestoneStepBtns.length > 0 && singleShowcaseWrap && allTimeShowcaseWrap) {
-    var yearSteps = ['1989', '2005', '2021', '2025', '2026'];
-
-    function selectMilestone(targetYear, shouldScroll) {
-      // 1. Update stepper buttons active state
-      milestoneStepBtns.forEach(function (btn) {
-        var bYear = btn.getAttribute('data-year');
-        if (bYear === targetYear) {
+  if (singleShowcaseWrap && allYearsShowcaseWrap) {
+    function activateMilestone(targetYear, shouldScroll) {
+      // 1. Update toolbar buttons active state
+      graphToolbarBtns.forEach(function (btn) {
+        if (btn.getAttribute('data-year') === targetYear) {
           btn.classList.add('active');
-          btn.setAttribute('aria-selected', 'true');
         } else {
           btn.classList.remove('active');
-          btn.setAttribute('aria-selected', 'false');
         }
       });
 
-      // 2. Update progress fill line
-      if (progressFill) {
-        if (targetYear === 'all') {
-          progressFill.style.width = '100%';
+      // 2. Update SVG nodes active state
+      svgMilestoneNodes.forEach(function (node) {
+        if (node.getAttribute('data-year') === targetYear) {
+          node.classList.add('active');
         } else {
-          var stepIndex = yearSteps.indexOf(targetYear);
-          if (stepIndex >= 0) {
-            var percent = (stepIndex / (yearSteps.length - 1)) * 100;
-            progressFill.style.width = percent + '%';
-          }
+          node.classList.remove('active');
         }
-      }
+      });
 
-      // 3. Switch between Single Year card vs All Time showcase
+      // 3. Switch between Single Year card vs All Achievements view
       if (targetYear === 'all') {
         singleShowcaseWrap.style.display = 'none';
-        allTimeShowcaseWrap.style.display = 'block';
-        allTimeShowcaseWrap.style.opacity = '0';
+        allYearsShowcaseWrap.style.display = 'block';
+        allYearsShowcaseWrap.style.opacity = '0';
         setTimeout(function () {
-          allTimeShowcaseWrap.style.opacity = '1';
+          allYearsShowcaseWrap.style.opacity = '1';
         }, 20);
 
         if (shouldScroll) {
-          allTimeShowcaseWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          allYearsShowcaseWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       } else {
-        allTimeShowcaseWrap.style.display = 'none';
+        allYearsShowcaseWrap.style.display = 'none';
         singleShowcaseWrap.style.display = 'block';
 
-        // Hide all showcase cards and show ONLY the selected year card
-        var allCards = singleShowcaseWrap.querySelectorAll('.showcase-card');
+        // Hide all cards and show ONLY the selected year card
+        var allCards = singleShowcaseWrap.querySelectorAll('.achievement-card');
         allCards.forEach(function (card) {
           card.style.display = 'none';
           card.classList.remove('active');
         });
 
-        var targetCard = document.getElementById('ms-card-' + targetYear);
+        var targetCard = document.getElementById('card-' + targetYear);
         if (targetCard) {
           targetCard.style.display = 'block';
           // Trigger reflow for fresh animation
@@ -1029,46 +1020,52 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // Attach click events to top stepper buttons
-    milestoneStepBtns.forEach(function (btn) {
+    // SVG Node click & enter key
+    svgMilestoneNodes.forEach(function (node) {
+      function handleNodeClick() {
+        var y = node.getAttribute('data-year');
+        if (y) activateMilestone(y, true);
+      }
+      node.addEventListener('click', handleNodeClick);
+      node.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleNodeClick();
+        }
+      });
+    });
+
+    // Toolbar button click
+    graphToolbarBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
         var y = this.getAttribute('data-year');
-        selectMilestone(y, false);
+        if (y) activateMilestone(y, false);
       });
     });
 
-    // Attach click events to "Next / Previous" navigation buttons within cards
-    document.querySelectorAll('.btn-step-nav').forEach(function (btn) {
+    // "Next / Previous" navigation inside single year cards
+    document.querySelectorAll('.btn-step-flow').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var navTo = this.getAttribute('data-nav-to');
-        if (navTo) {
-          selectMilestone(navTo, true);
-        }
+        var navYear = this.getAttribute('data-nav');
+        if (navYear) activateMilestone(navYear, true);
       });
     });
 
-    // Attach click events to "View Year" micro buttons inside All Time cards
-    document.querySelectorAll('.btn-micro-focus').forEach(function (btn) {
+    // "Focus Year" button inside All Achievements cards
+    document.querySelectorAll('.btn-jump-single').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var focusYear = this.getAttribute('data-focus-year');
-        if (focusYear) {
-          selectMilestone(focusYear, true);
-        }
+        var navYear = this.getAttribute('data-nav');
+        if (navYear) activateMilestone(navYear, true);
       });
     });
 
-    // Attach click event to "Switch to Year-by-Year" button in All Time banner
-    var backToSingleBtn = document.querySelector('#btn-back-to-single');
-    if (backToSingleBtn) {
-      backToSingleBtn.addEventListener('click', function () {
-        var targetYear = this.getAttribute('data-nav-to') || '1989';
-        selectMilestone(targetYear, true);
+    // "Switch to Single-Year View" in All Achievements banner
+    var returnSingleBtn = document.querySelector('.btn-return-single');
+    if (returnSingleBtn) {
+      returnSingleBtn.addEventListener('click', function () {
+        var navYear = this.getAttribute('data-nav') || '1989';
+        activateMilestone(navYear, true);
       });
-    }
-
-    // Set initial progress bar
-    if (progressFill) {
-      progressFill.style.width = '0%';
     }
   }
 });

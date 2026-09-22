@@ -12,7 +12,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<link rel="stylesheet" href="styles.css?v=96">
+<link rel="stylesheet" href="styles.css?v=97">
 </head>
 <body>
 
@@ -72,83 +72,192 @@
   <section class="bg-light milestones-interactive-section">
    <div class="container">
 
-    <!-- Interactive Year Stepper Navigator -->
-    <div class="milestones-navigator-card">
-     <div class="navigator-header">
-      <div class="navigator-tag-badge">
-       <span class="pulse-point"></span>
-       <span>INTERACTIVE GROWTH TIMELINE</span>
+    <!-- Stepped Growth Graph Card -->
+    <div class="stepped-graph-card">
+     <div class="stepped-graph-header">
+      <div class="graph-header-left">
+       <span class="graph-tag-badge">
+        <span class="pulse-point"></span>
+        <span>STEPPED INDUSTRIAL GROWTH GRAPH (1989 &mdash; 2026)</span>
+       </span>
+       <h2 class="graph-title">Sahjanand Enterprise Evolution Curve</h2>
+       <p class="graph-desc">Visualizing three and a half decades of disciplined industrial expansion &mdash; showing foundational start in 1989, steady operational consolidation plateaus, upward expansion surges, and multi-sector ZED Gold apex.</p>
       </div>
-      <h2 class="navigator-title">Sahjanand Journey &amp; Milestones</h2>
-      <p class="navigator-desc">Select any milestone year to reveal that specific stage's operational growth, or select <strong>All Time</strong> to view our entire 37-year evolution together.</p>
+      <div class="graph-legend-box">
+       <div class="legend-item"><span class="legend-line-surge"></span> Upward Growth Surge</div>
+       <div class="legend-item"><span class="legend-line-plateau"></span> Operational Plateau</div>
+       <div class="legend-item"><span class="legend-node-dot"></span> Milestone Peak</div>
+      </div>
      </div>
 
-     <!-- Interactive Stepper Track -->
-     <div class="milestone-stepper-container">
-      <div class="milestone-progress-track">
-       <div class="milestone-progress-fill" id="milestone-progress-fill"></div>
-      </div>
-      <div class="milestone-stepper" role="tablist" aria-label="Milestone Years">
-       <button type="button" class="milestone-step-btn active" data-year="1989" role="tab" aria-selected="true" aria-controls="ms-card-1989">
-        <span class="step-num-pill">1989</span>
-        <span class="step-label">Foundation</span>
-        <span class="step-elevation">Level 1</span>
-       </button>
-       <button type="button" class="milestone-step-btn" data-year="2005" role="tab" aria-selected="false" aria-controls="ms-card-2005">
-        <span class="step-num-pill">2005</span>
-        <span class="step-label">Scale</span>
-        <span class="step-elevation">Level 2</span>
-       </button>
-       <button type="button" class="milestone-step-btn" data-year="2021" role="tab" aria-selected="false" aria-controls="ms-card-2021">
-        <span class="step-num-pill">2021</span>
-        <span class="step-label">Modernize</span>
-        <span class="step-elevation">Level 3</span>
-       </button>
-       <button type="button" class="milestone-step-btn" data-year="2025" role="tab" aria-selected="false" aria-controls="ms-card-2025">
-        <span class="step-num-pill">2025</span>
-        <span class="step-label">Diversify</span>
-        <span class="step-elevation">Level 4</span>
-       </button>
-       <button type="button" class="milestone-step-btn apex-step" data-year="2026" role="tab" aria-selected="false" aria-controls="ms-card-2026">
-        <span class="step-num-pill apex-pill">2026 &#9733;</span>
-        <span class="step-label">MSME Apex</span>
-        <span class="step-elevation">Apex</span>
-       </button>
-       <button type="button" class="milestone-step-btn all-time-btn" data-year="all" role="tab" aria-selected="false" aria-controls="milestone-alltime-showcase">
-        <span class="step-num-pill all-pill">
-         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-         All Time
-        </span>
-        <span class="step-label">Full Story</span>
-        <span class="step-elevation">All Years</span>
-       </button>
-      </div>
+     <!-- Stepped Plateau SVG Graph -->
+     <div class="stepped-graph-canvas-wrap">
+      <svg class="stepped-growth-svg" viewBox="0 0 960 360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Sahjanand Stepped Industrial Growth Graph">
+       <defs>
+        <linearGradient id="steppedAreaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+         <stop offset="0%" stop-color="#0284c7" stop-opacity="0.30"/>
+         <stop offset="60%" stop-color="#0284c7" stop-opacity="0.08"/>
+         <stop offset="100%" stop-color="#0284c7" stop-opacity="0.00"/>
+        </linearGradient>
+        <linearGradient id="steppedStrokeGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+         <stop offset="0%" stop-color="#38bdf8"/>
+         <stop offset="45%" stop-color="#0284c7"/>
+         <stop offset="100%" stop-color="#0369a1"/>
+        </linearGradient>
+        <filter id="glowFilter" x="-40%" y="-40%" width="180%" height="180%">
+         <feGaussianBlur stdDeviation="3.5" result="blur"/>
+         <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+         </feMerge>
+        </filter>
+       </defs>
+
+       <!-- Horizontal Guide Grids -->
+       <g class="graph-guides">
+        <line x1="50" y1="50" x2="920" y2="50" stroke="#e2e8f0" stroke-dasharray="3,3" stroke-width="1"/>
+        <line x1="50" y1="105" x2="920" y2="105" stroke="#e2e8f0" stroke-dasharray="3,3" stroke-width="1"/>
+        <line x1="50" y1="160" x2="920" y2="160" stroke="#e2e8f0" stroke-dasharray="3,3" stroke-width="1"/>
+        <line x1="50" y1="230" x2="920" y2="230" stroke="#e2e8f0" stroke-dasharray="3,3" stroke-width="1"/>
+        <line x1="50" y1="300" x2="920" y2="300" stroke="#cbd5e1" stroke-width="1.5"/>
+       </g>
+
+       <!-- Y-Axis Level Labels -->
+       <g class="graph-y-labels">
+        <text x="40" y="304" text-anchor="end" class="svg-axis-txt">Base &middot; Level 1</text>
+        <text x="40" y="234" text-anchor="end" class="svg-axis-txt">Scale &middot; Level 2</text>
+        <text x="40" y="164" text-anchor="end" class="svg-axis-txt">Modern &middot; Level 3</text>
+        <text x="40" y="109" text-anchor="end" class="svg-axis-txt">Diversify &middot; Level 4</text>
+        <text x="40" y="54" text-anchor="end" class="svg-axis-txt apex-axis-txt">Apex &middot; Level 5</text>
+       </g>
+
+       <!-- Stepped Shaded Area -->
+       <path class="stepped-fill-area" d="M 80 320 L 80 290 L 240 290 C 270 290, 290 220, 330 220 L 490 220 C 520 220, 540 150, 580 150 L 700 150 C 730 150, 750 95, 780 95 C 815 95, 845 45, 880 45 L 880 320 Z" fill="url(#steppedAreaGrad)"/>
+
+       <!-- Stepped Trajectory Line (1989 -> 1990-2004 flat -> 2005 surge -> 2006-2020 flat -> 2021 surge -> 2022-2024 flat -> 2025 surge -> 2026 apex) -->
+       <path class="stepped-curve-stroke" d="M 80 290 L 240 290 C 270 290, 290 220, 330 220 L 490 220 C 520 220, 540 150, 580 150 L 700 150 C 730 150, 750 95, 780 95 C 815 95, 845 45, 880 45" fill="none" stroke="url(#steppedStrokeGrad)" stroke-width="4" stroke-linecap="round"/>
+
+       <!-- Operational Plateau Annotations (Flat Periods) -->
+       <g class="graph-plateaus">
+        <!-- 1990 - 2004 Plateau -->
+        <line x1="80" y1="290" x2="240" y2="290" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/>
+        <rect x="100" y="302" width="120" height="18" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+        <text x="160" y="315" text-anchor="middle" class="svg-plateau-txt">1990 &ndash; 2004 Steady Operations</text>
+
+        <!-- 2006 - 2020 Plateau -->
+        <line x1="330" y1="220" x2="490" y2="220" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/>
+        <rect x="350" y="232" width="120" height="18" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+        <text x="410" y="245" text-anchor="middle" class="svg-plateau-txt">2006 &ndash; 2020 Pan-India Expansion</text>
+
+        <!-- 2022 - 2024 Plateau -->
+        <line x1="580" y1="150" x2="700" y2="150" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/>
+        <rect x="590" y="162" width="105" height="18" rx="4" fill="#f8fafc" stroke="#e2e8f0"/>
+        <text x="642" y="175" text-anchor="middle" class="svg-plateau-txt">2022 &ndash; 2024 Advanced Machinery</text>
+       </g>
+
+       <!-- Interactive Milestone Peak Nodes -->
+       <!-- 1989 Peak Node -->
+       <g class="svg-milestone-node active" data-year="1989" tabindex="0" role="button" aria-label="Milestone 1989: Inception &amp; Weaving Foundation">
+        <circle cx="80" cy="290" r="15" class="node-halo"/>
+        <circle cx="80" cy="290" r="8" class="node-center" filter="url(#glowFilter)"/>
+        <rect x="38" y="250" width="84" height="24" rx="6" class="node-year-box"/>
+        <text x="80" y="266" text-anchor="middle" class="node-year-txt">1989</text>
+        <text x="80" y="242" text-anchor="middle" class="node-sub-txt">Foundation</text>
+       </g>
+
+       <!-- 2005 Peak Node -->
+       <g class="svg-milestone-node" data-year="2005" tabindex="0" role="button" aria-label="Milestone 2005: Commercial Scale">
+        <circle cx="330" cy="220" r="15" class="node-halo"/>
+        <circle cx="330" cy="220" r="8" class="node-center" filter="url(#glowFilter)"/>
+        <rect x="288" y="180" width="84" height="24" rx="6" class="node-year-box"/>
+        <text x="330" y="196" text-anchor="middle" class="node-year-txt">2005</text>
+        <text x="330" y="172" text-anchor="middle" class="node-sub-txt">Yarn Scale</text>
+       </g>
+
+       <!-- 2021 Peak Node -->
+       <g class="svg-milestone-node" data-year="2021" tabindex="0" role="button" aria-label="Milestone 2021: Technological Modernization">
+        <circle cx="580" cy="150" r="15" class="node-halo"/>
+        <circle cx="580" cy="150" r="8" class="node-center" filter="url(#glowFilter)"/>
+        <rect x="538" y="110" width="84" height="24" rx="6" class="node-year-box"/>
+        <text x="580" y="126" text-anchor="middle" class="node-year-txt">2021</text>
+        <text x="580" y="102" text-anchor="middle" class="node-sub-txt">Machinery</text>
+       </g>
+
+       <!-- 2025 Peak Node -->
+       <g class="svg-milestone-node" data-year="2025" tabindex="0" role="button" aria-label="Milestone 2025: Strategic Diversification">
+        <circle cx="780" cy="95" r="15" class="node-halo"/>
+        <circle cx="780" cy="95" r="8" class="node-center" filter="url(#glowFilter)"/>
+        <rect x="738" y="55" width="84" height="24" rx="6" class="node-year-box"/>
+        <text x="780" y="71" text-anchor="middle" class="node-year-txt">2025</text>
+        <text x="780" y="47" text-anchor="middle" class="node-sub-txt">Chemicals</text>
+       </g>
+
+       <!-- 2026 Apex Peak Node -->
+       <g class="svg-milestone-node apex-node" data-year="2026" tabindex="0" role="button" aria-label="Milestone 2026: Enterprise Milestone &amp; ZED Gold Apex">
+        <circle cx="880" cy="45" r="18" class="node-halo apex-halo"/>
+        <circle cx="880" cy="45" r="9" class="node-center apex-center" filter="url(#glowFilter)"/>
+        <rect x="832" y="70" width="96" height="25" rx="6" class="node-year-box apex-year-box"/>
+        <text x="880" y="87" text-anchor="middle" class="node-year-txt apex-txt">2026 &#9733;</text>
+        <text x="880" y="32" text-anchor="middle" class="node-sub-txt apex-highlight-txt">MSME ZED Gold</text>
+       </g>
+      </svg>
+     </div>
+     <div class="graph-mobile-hint">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+      <span>Click any milestone year on the graph to show its achievements below, or select <strong>All Achievements</strong>.</span>
+     </div>
+
+     <!-- Interactive Year & Master Button Toolbar -->
+     <div class="stepped-graph-toolbar" role="toolbar" aria-label="Select Milestone Year">
+      <button type="button" class="graph-btn active" data-year="1989">
+       <span class="btn-year">1989</span>
+       <span class="btn-caption">Foundation</span>
+      </button>
+      <button type="button" class="graph-btn" data-year="2005">
+       <span class="btn-year">2005</span>
+       <span class="btn-caption">Yarn Scale</span>
+      </button>
+      <button type="button" class="graph-btn" data-year="2021">
+       <span class="btn-year">2021</span>
+       <span class="btn-caption">Modernize</span>
+      </button>
+      <button type="button" class="graph-btn" data-year="2025">
+       <span class="btn-year">2025</span>
+       <span class="btn-caption">Chemicals</span>
+      </button>
+      <button type="button" class="graph-btn apex-btn" data-year="2026">
+       <span class="btn-year">2026 &#9733;</span>
+       <span class="btn-caption">MSME Apex</span>
+      </button>
+      <button type="button" class="graph-btn master-all-btn" data-year="all">
+       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+       <span>All Achievements</span>
+       <span class="all-count-tag">Full Story</span>
+      </button>
      </div>
     </div>
 
     <!-- 1. SINGLE YEAR SHOWCASE (Shows ONLY selected year with classic animation) -->
-    <div id="milestone-single-showcase" class="milestone-single-showcase">
+    <div id="single-year-showcase" class="achievement-showcase-wrap">
 
      <!-- 1989 Card -->
-     <div class="showcase-card active" id="ms-card-1989" role="tabpanel">
-      <div class="showcase-card-header">
-       <div class="showcase-year-wrap">
-        <span class="showcase-year-badge">1989</span>
-        <div class="showcase-phase-info">
-         <span class="showcase-level-tag">Stage 01 of 05 &middot; Level 1 Base</span>
-         <h3 class="showcase-phase-title">Inception in Textiles &amp; Powerloom Weaving</h3>
+     <div class="achievement-card active" id="card-1989">
+      <div class="achievement-card-header">
+       <div class="achievement-year-cluster">
+        <span class="achievement-year-badge">1989</span>
+        <div class="achievement-title-group">
+         <span class="achievement-phase-badge">Stage 01 of 05 &middot; Level 1 Base</span>
+         <h3 class="achievement-title">Inception in Textiles &amp; Powerloom Weaving</h3>
         </div>
        </div>
-       <div class="showcase-badge-wrap">
-        <span class="timeline-badge">Inception &amp; Weaving Foundation</span>
-       </div>
+       <span class="timeline-badge">Inception &amp; Weaving Foundation</span>
       </div>
 
-      <div class="showcase-card-body">
-       <p class="showcase-narrative">Sahjanand commenced its textile manufacturing operations in Surat, starting with foundational powerloom units. Meeting expanding market demand for high-grade synthetic fabrics, the enterprise rapidly modernized with high-speed Water Jet machines, advanced Rapier looms, and dedicated yarn dyeing lines &mdash; setting benchmark standards in fabric strength, weaving consistency, and color fastness.</p>
+      <div class="achievement-card-body">
+       <p class="achievement-desc">Sahjanand commenced its textile manufacturing operations in Surat, starting with foundational powerloom units. Meeting expanding market demand for high-grade synthetic fabrics, the enterprise rapidly modernized with high-speed Water Jet machines, advanced Rapier looms, and dedicated yarn dyeing lines &mdash; setting benchmark standards in fabric strength, weaving consistency, and color fastness.</p>
        
-       <div class="showcase-tags-section">
-        <span class="tags-label">Key Operational Milestones:</span>
+       <div class="achievement-tags-box">
+        <span class="tags-header">Key Operational Milestones Achieved:</span>
         <div class="timeline-tags">
          <span class="milestone-tag">Textiles Inception</span>
          <span class="milestone-tag">Powerloom Units</span>
@@ -159,34 +268,32 @@
        </div>
       </div>
 
-      <div class="showcase-card-nav">
-       <div class="nav-ghost-wrap"></div>
-       <button type="button" class="btn-step-nav btn-step-next" data-nav-to="2005">
+      <div class="achievement-card-footer">
+       <div class="card-footer-empty"></div>
+       <button type="button" class="btn-step-flow btn-next-step" data-nav="2005">
         <span>Next Milestone: 2005 &rarr;</span>
        </button>
       </div>
      </div>
 
      <!-- 2005 Card -->
-     <div class="showcase-card" id="ms-card-2005" role="tabpanel" style="display: none;">
-      <div class="showcase-card-header">
-       <div class="showcase-year-wrap">
-        <span class="showcase-year-badge">2005</span>
-        <div class="showcase-phase-info">
-         <span class="showcase-level-tag">Stage 02 of 05 &middot; Level 2 Scale</span>
-         <h3 class="showcase-phase-title">Strategic Yarn Division Expansion &amp; Market Growth</h3>
+     <div class="achievement-card" id="card-2005" style="display: none;">
+      <div class="achievement-card-header">
+       <div class="achievement-year-cluster">
+        <span class="achievement-year-badge">2005</span>
+        <div class="achievement-title-group">
+         <span class="achievement-phase-badge">Stage 02 of 05 &middot; Level 2 Scale</span>
+         <h3 class="achievement-title">Strategic Yarn Division Expansion &amp; Market Growth</h3>
         </div>
        </div>
-       <div class="showcase-badge-wrap">
-        <span class="timeline-badge">Commercial Scale</span>
-       </div>
+       <span class="timeline-badge">Commercial Scale</span>
       </div>
 
-      <div class="showcase-card-body">
-       <p class="showcase-narrative">Achieved transformative commercial growth in the yarn segment. Upgraded yarn processing and handling facilities, expanded centralized warehousing, and established robust distribution networks across Surat and pan-India textile markets &mdash; securing long-term institutional supply partnerships with major fabric manufacturers.</p>
+      <div class="achievement-card-body">
+       <p class="achievement-desc">Achieved transformative commercial growth in the yarn segment. Upgraded yarn processing and handling facilities, expanded centralized warehousing, and established robust distribution networks across Surat and pan-India textile markets &mdash; securing long-term institutional supply partnerships with major fabric manufacturers.</p>
        
-       <div class="showcase-tags-section">
-        <span class="tags-label">Key Operational Milestones:</span>
+       <div class="achievement-tags-box">
+        <span class="tags-header">Key Operational Milestones Achieved:</span>
         <div class="timeline-tags">
          <span class="milestone-tag">Yarn Division Growth</span>
          <span class="milestone-tag">Processing Infrastructure</span>
@@ -196,36 +303,34 @@
        </div>
       </div>
 
-      <div class="showcase-card-nav">
-       <button type="button" class="btn-step-nav btn-step-prev" data-nav-to="1989">
+      <div class="achievement-card-footer">
+       <button type="button" class="btn-step-flow btn-prev-step" data-nav="1989">
         <span>&larr; Previous: 1989</span>
        </button>
-       <button type="button" class="btn-step-nav btn-step-next" data-nav-to="2021">
+       <button type="button" class="btn-step-flow btn-next-step" data-nav="2021">
         <span>Next Milestone: 2021 &rarr;</span>
        </button>
       </div>
      </div>
 
      <!-- 2021 Card -->
-     <div class="showcase-card" id="ms-card-2021" role="tabpanel" style="display: none;">
-      <div class="showcase-card-header">
-       <div class="showcase-year-wrap">
-        <span class="showcase-year-badge">2021</span>
-        <div class="showcase-phase-info">
-         <span class="showcase-level-tag">Stage 03 of 05 &middot; Level 3 Modernize</span>
-         <h3 class="showcase-phase-title">Advanced Yarn Texturising, Twisting &amp; Kasab Jari Machinery</h3>
+     <div class="achievement-card" id="card-2021" style="display: none;">
+      <div class="achievement-card-header">
+       <div class="achievement-year-cluster">
+        <span class="achievement-year-badge">2021</span>
+        <div class="achievement-title-group">
+         <span class="achievement-phase-badge">Stage 03 of 05 &middot; Level 3 Modernize</span>
+         <h3 class="achievement-title">Advanced Yarn Texturising, Twisting &amp; Kasab Jari Machinery</h3>
         </div>
        </div>
-       <div class="showcase-badge-wrap">
-        <span class="timeline-badge">Technological Modernization</span>
-       </div>
+       <span class="timeline-badge">Technological Modernization</span>
       </div>
 
-      <div class="showcase-card-body">
-       <p class="showcase-narrative">Executed an extensive technological and machinery upgrade across production lines. Commissioned modern yarn texturising units, conventional twisting, high-speed twisting, and yarn covering machinery. Expanded specialized capabilities with the addition of Kasab &amp; Metallic Jari machines &mdash; enabling ultra-fine filament processing, premium ethnic zari production, fancy embroidery yarns, and high-tenacity technical weaves.</p>
+      <div class="achievement-card-body">
+       <p class="achievement-desc">Executed an extensive technological and machinery upgrade across production lines. Commissioned modern yarn texturising units, conventional twisting, high-speed twisting, and yarn covering machinery. Expanded specialized capabilities with the addition of Kasab &amp; Metallic Jari machines &mdash; enabling ultra-fine filament processing, premium ethnic zari production, fancy embroidery yarns, and high-tenacity technical weaves.</p>
        
-       <div class="showcase-tags-section">
-        <span class="tags-label">Key Operational Milestones:</span>
+       <div class="achievement-tags-box">
+        <span class="tags-header">Key Operational Milestones Achieved:</span>
         <div class="timeline-tags">
          <span class="milestone-tag">Yarn Texturising</span>
          <span class="milestone-tag">Conventional Twisting</span>
@@ -236,36 +341,34 @@
        </div>
       </div>
 
-      <div class="showcase-card-nav">
-       <button type="button" class="btn-step-nav btn-step-prev" data-nav-to="2005">
+      <div class="achievement-card-footer">
+       <button type="button" class="btn-step-flow btn-prev-step" data-nav="2005">
         <span>&larr; Previous: 2005</span>
        </button>
-       <button type="button" class="btn-step-nav btn-step-next" data-nav-to="2025">
+       <button type="button" class="btn-step-flow btn-next-step" data-nav="2025">
         <span>Next Milestone: 2025 &rarr;</span>
        </button>
       </div>
      </div>
 
      <!-- 2025 Card -->
-     <div class="showcase-card" id="ms-card-2025" role="tabpanel" style="display: none;">
-      <div class="showcase-card-header">
-       <div class="showcase-year-wrap">
-        <span class="showcase-year-badge">2025</span>
-        <div class="showcase-phase-info">
-         <span class="showcase-level-tag">Stage 04 of 05 &middot; Level 4 Diversify</span>
-         <h3 class="showcase-phase-title">Chemical Segment Diversification &amp; Sustainable Industrial Growth</h3>
+     <div class="achievement-card" id="card-2025" style="display: none;">
+      <div class="achievement-card-header">
+       <div class="achievement-year-cluster">
+        <span class="achievement-year-badge">2025</span>
+        <div class="achievement-title-group">
+         <span class="achievement-phase-badge">Stage 04 of 05 &middot; Level 4 Diversify</span>
+         <h3 class="achievement-title">Chemical Segment Diversification &amp; Sustainable Industrial Growth</h3>
         </div>
        </div>
-       <div class="showcase-badge-wrap">
-        <span class="timeline-badge">Strategic Diversification</span>
-       </div>
+       <span class="timeline-badge">Strategic Diversification</span>
       </div>
 
-      <div class="showcase-card-body">
-       <p class="showcase-narrative">Pioneered strategic expansion with the establishment of the Chemical Segment, introducing advanced industrial specialty chemicals, sizing auxiliaries, and eco-friendly textile processing agents. This high-growth vertical reinforces backward integration, powers self-reliance, and accelerates enterprise growth across diversified industrial manufacturing sectors.</p>
+      <div class="achievement-card-body">
+       <p class="achievement-desc">Pioneered strategic expansion with the establishment of the Chemical Segment, introducing advanced industrial specialty chemicals, sizing auxiliaries, and eco-friendly textile processing agents. This high-growth vertical reinforces backward integration, powers self-reliance, and accelerates enterprise growth across diversified industrial manufacturing sectors.</p>
        
-       <div class="showcase-tags-section">
-        <span class="tags-label">Key Operational Milestones:</span>
+       <div class="achievement-tags-box">
+        <span class="tags-header">Key Operational Milestones Achieved:</span>
         <div class="timeline-tags">
          <span class="milestone-tag">Chemical Segment</span>
          <span class="milestone-tag">Textile Auxiliaries</span>
@@ -275,36 +378,34 @@
        </div>
       </div>
 
-      <div class="showcase-card-nav">
-       <button type="button" class="btn-step-nav btn-step-prev" data-nav-to="2021">
+      <div class="achievement-card-footer">
+       <button type="button" class="btn-step-flow btn-prev-step" data-nav="2021">
         <span>&larr; Previous: 2021</span>
        </button>
-       <button type="button" class="btn-step-nav btn-step-next" data-nav-to="2026">
+       <button type="button" class="btn-step-flow btn-next-step" data-nav="2026">
         <span>Next Milestone: 2026 &#9733; &rarr;</span>
        </button>
       </div>
      </div>
 
      <!-- 2026 Card (Apex) -->
-     <div class="showcase-card showcase-card-apex" id="ms-card-2026" role="tabpanel" style="display: none;">
-      <div class="showcase-card-header">
-       <div class="showcase-year-wrap">
-        <span class="showcase-year-badge apex-badge-num">2026 &#9733;</span>
-        <div class="showcase-phase-info">
-         <span class="showcase-level-tag apex-tag-accent">Stage 05 of 05 &middot; Level 5 Apex (MSME ZED Gold)</span>
-         <h3 class="showcase-phase-title">Integrated Multi-Sector Group &amp; MSME ZED Gold Certified</h3>
+     <div class="achievement-card achievement-card-apex" id="card-2026" style="display: none;">
+      <div class="achievement-card-header">
+       <div class="achievement-year-cluster">
+        <span class="achievement-year-badge apex-badge-num">2026 &#9733;</span>
+        <div class="achievement-title-group">
+         <span class="achievement-phase-badge apex-phase-badge">Stage 05 of 05 &middot; Level 5 Apex (MSME ZED Gold)</span>
+         <h3 class="achievement-title">Integrated Multi-Sector Group &amp; MSME ZED Gold Certified</h3>
         </div>
        </div>
-       <div class="showcase-badge-wrap">
-        <span class="timeline-badge apex-badge">Enterprise Milestone</span>
-       </div>
+       <span class="timeline-badge apex-badge">Enterprise Milestone</span>
       </div>
 
-      <div class="showcase-card-body">
-       <p class="showcase-narrative">Sahjanand commands a cohesive multi-sector presence spanning the Weaving Segment, Yarn Segment, Chemical Segment, and Global Trade (Import &amp; Export). Officially awarded the Govt. of India MSME ZED Gold Certification (Zero Defect, Zero Effect), Sahjanand represents over three decades of benchmark manufacturing quality, operational safety, and customer trust.</p>
+      <div class="achievement-card-body">
+       <p class="achievement-desc">Sahjanand commands a cohesive multi-sector presence spanning the Weaving Segment, Yarn Segment, Chemical Segment, and Global Trade (Import &amp; Export). Officially awarded the Govt. of India MSME ZED Gold Certification (Zero Defect, Zero Effect), Sahjanand represents over three decades of benchmark manufacturing quality, operational safety, and customer trust.</p>
        
-       <div class="showcase-tags-section">
-        <span class="tags-label">Key Operational Milestones:</span>
+       <div class="achievement-tags-box">
+        <span class="tags-header">Key Operational Milestones Achieved:</span>
         <div class="timeline-tags">
          <span class="milestone-tag">Weaving Segment</span>
          <span class="milestone-tag">Yarn Segment</span>
@@ -315,47 +416,46 @@
        </div>
       </div>
 
-      <div class="showcase-card-nav">
-       <button type="button" class="btn-step-nav btn-step-prev" data-nav-to="2025">
+      <div class="achievement-card-footer">
+       <button type="button" class="btn-step-flow btn-prev-step" data-nav="2025">
         <span>&larr; Previous: 2025</span>
        </button>
-       <button type="button" class="btn-step-nav btn-step-all" data-nav-to="all">
-        <span>Explore All Time Journey &rarr;</span>
+       <button type="button" class="btn-step-flow btn-master-trigger" data-nav="all">
+        <span>View All Achievements Together &rarr;</span>
        </button>
       </div>
      </div>
 
     </div>
 
-    <!-- 2. ALL TIME SHOWCASE (Displays all years full details with cascade animation) -->
-    <div id="milestone-alltime-showcase" class="milestone-alltime-showcase" style="display: none;">
-     
-     <div class="alltime-overview-banner">
-      <div class="overview-meta">
-       <span class="overview-pill">1989 &mdash; 2026 COMPLETE CHRONICLE</span>
-       <h3 class="overview-title">37+ Years of Continuous Industrial Ascent</h3>
-       <p class="overview-sub">From foundational Surat powerlooms to a multi-division textile, yarn, and chemical enterprise certified MSME ZED Gold.</p>
+    <!-- 2. ALL ACHIEVEMENTS SHOWCASE (Displays full details of all years together) -->
+    <div id="all-years-showcase" class="all-achievements-wrap" style="display: none;">
+     <div class="all-achievements-banner">
+      <div class="banner-text">
+       <span class="banner-tag">1989 &mdash; 2026 COMPLETE CHRONICLE</span>
+       <h3 class="banner-heading">37+ Years of Continuous Industrial Ascent</h3>
+       <p class="banner-sub">Complete chronological details of all operational milestones and benchmark achievements across Surat and pan-India markets.</p>
       </div>
-      <button type="button" class="btn-focus-year-toggle" id="btn-back-to-single" data-nav-to="1989">
-       <span>Switch to Year-by-Year View</span>
+      <button type="button" class="btn-return-single" data-nav="1989">
+       <span>Switch to Single-Year View</span>
       </button>
      </div>
 
-     <div class="alltime-timeline-list">
+     <div class="all-timeline-stack">
       
-      <!-- 1989 in All Time -->
-      <div class="alltime-item">
-       <div class="alltime-rail">
-        <div class="alltime-dot"></div>
-        <div class="alltime-line"></div>
+      <!-- 1989 -->
+      <div class="all-milestone-entry">
+       <div class="entry-rail">
+        <div class="entry-dot"></div>
+        <div class="entry-line"></div>
        </div>
-       <div class="alltime-card">
-        <div class="alltime-card-top">
-         <span class="alltime-year-badge">1989</span>
-         <div class="timeline-badge">Inception &amp; Weaving Foundation</div>
-         <button type="button" class="btn-micro-focus" data-focus-year="1989" title="View 1989 alone">View Year &rarr;</button>
+       <div class="entry-card">
+        <div class="entry-card-header">
+         <span class="entry-year-badge">1989</span>
+         <span class="timeline-badge">Inception &amp; Weaving Foundation</span>
+         <button type="button" class="btn-jump-single" data-nav="1989" title="View 1989 alone">Focus Year &rarr;</button>
         </div>
-        <h4 class="alltime-heading">Inception in Textiles &amp; Powerloom Weaving</h4>
+        <h4 class="entry-title">Inception in Textiles &amp; Powerloom Weaving</h4>
         <p>Sahjanand commenced its textile manufacturing operations in Surat, starting with foundational powerloom units. Meeting expanding market demand for high-grade synthetic fabrics, the enterprise rapidly modernized with high-speed Water Jet machines, advanced Rapier looms, and dedicated yarn dyeing lines &mdash; setting benchmark standards in fabric strength, weaving consistency, and color fastness.</p>
         <div class="timeline-tags">
          <span class="milestone-tag">Textiles Inception</span>
@@ -367,19 +467,19 @@
        </div>
       </div>
 
-      <!-- 2005 in All Time -->
-      <div class="alltime-item">
-       <div class="alltime-rail">
-        <div class="alltime-dot"></div>
-        <div class="alltime-line"></div>
+      <!-- 2005 -->
+      <div class="all-milestone-entry">
+       <div class="entry-rail">
+        <div class="entry-dot"></div>
+        <div class="entry-line"></div>
        </div>
-       <div class="alltime-card">
-        <div class="alltime-card-top">
-         <span class="alltime-year-badge">2005</span>
-         <div class="timeline-badge">Commercial Scale</div>
-         <button type="button" class="btn-micro-focus" data-focus-year="2005" title="View 2005 alone">View Year &rarr;</button>
+       <div class="entry-card">
+        <div class="entry-card-header">
+         <span class="entry-year-badge">2005</span>
+         <span class="timeline-badge">Commercial Scale</span>
+         <button type="button" class="btn-jump-single" data-nav="2005" title="View 2005 alone">Focus Year &rarr;</button>
         </div>
-        <h4 class="alltime-heading">Strategic Yarn Division Expansion &amp; Market Growth</h4>
+        <h4 class="entry-title">Strategic Yarn Division Expansion &amp; Market Growth</h4>
         <p>Achieved transformative commercial growth in the yarn segment. Upgraded yarn processing and handling facilities, expanded centralized warehousing, and established robust distribution networks across Surat and pan-India textile markets &mdash; securing long-term institutional supply partnerships with major fabric manufacturers.</p>
         <div class="timeline-tags">
          <span class="milestone-tag">Yarn Division Growth</span>
@@ -390,19 +490,19 @@
        </div>
       </div>
 
-      <!-- 2021 in All Time -->
-      <div class="alltime-item">
-       <div class="alltime-rail">
-        <div class="alltime-dot"></div>
-        <div class="alltime-line"></div>
+      <!-- 2021 -->
+      <div class="all-milestone-entry">
+       <div class="entry-rail">
+        <div class="entry-dot"></div>
+        <div class="entry-line"></div>
        </div>
-       <div class="alltime-card">
-        <div class="alltime-card-top">
-         <span class="alltime-year-badge">2021</span>
-         <div class="timeline-badge">Technological Modernization</div>
-         <button type="button" class="btn-micro-focus" data-focus-year="2021" title="View 2021 alone">View Year &rarr;</button>
+       <div class="entry-card">
+        <div class="entry-card-header">
+         <span class="entry-year-badge">2021</span>
+         <span class="timeline-badge">Technological Modernization</span>
+         <button type="button" class="btn-jump-single" data-nav="2021" title="View 2021 alone">Focus Year &rarr;</button>
         </div>
-        <h4 class="alltime-heading">Advanced Yarn Texturising, Twisting &amp; Kasab Jari Machinery</h4>
+        <h4 class="entry-title">Advanced Yarn Texturising, Twisting &amp; Kasab Jari Machinery</h4>
         <p>Executed an extensive technological and machinery upgrade across production lines. Commissioned modern yarn texturising units, conventional twisting, high-speed twisting, and yarn covering machinery. Expanded specialized capabilities with the addition of Kasab &amp; Metallic Jari machines &mdash; enabling ultra-fine filament processing, premium ethnic zari production, fancy embroidery yarns, and high-tenacity technical weaves.</p>
         <div class="timeline-tags">
          <span class="milestone-tag">Yarn Texturising</span>
@@ -414,19 +514,19 @@
        </div>
       </div>
 
-      <!-- 2025 in All Time -->
-      <div class="alltime-item">
-       <div class="alltime-rail">
-        <div class="alltime-dot"></div>
-        <div class="alltime-line"></div>
+      <!-- 2025 -->
+      <div class="all-milestone-entry">
+       <div class="entry-rail">
+        <div class="entry-dot"></div>
+        <div class="entry-line"></div>
        </div>
-       <div class="alltime-card">
-        <div class="alltime-card-top">
-         <span class="alltime-year-badge">2025</span>
-         <div class="timeline-badge">Strategic Diversification</div>
-         <button type="button" class="btn-micro-focus" data-focus-year="2025" title="View 2025 alone">View Year &rarr;</button>
+       <div class="entry-card">
+        <div class="entry-card-header">
+         <span class="entry-year-badge">2025</span>
+         <span class="timeline-badge">Strategic Diversification</span>
+         <button type="button" class="btn-jump-single" data-nav="2025" title="View 2025 alone">Focus Year &rarr;</button>
         </div>
-        <h4 class="alltime-heading">Chemical Segment Diversification &amp; Sustainable Industrial Growth</h4>
+        <h4 class="entry-title">Chemical Segment Diversification &amp; Sustainable Industrial Growth</h4>
         <p>Pioneered strategic expansion with the establishment of the Chemical Segment, introducing advanced industrial specialty chemicals, sizing auxiliaries, and eco-friendly textile processing agents. This high-growth vertical reinforces backward integration, powers self-reliance, and accelerates enterprise growth across diversified industrial manufacturing sectors.</p>
         <div class="timeline-tags">
          <span class="milestone-tag">Chemical Segment</span>
@@ -437,18 +537,18 @@
        </div>
       </div>
 
-      <!-- 2026 in All Time (Apex) -->
-      <div class="alltime-item alltime-item-apex">
-       <div class="alltime-rail">
-        <div class="alltime-dot apex-dot"></div>
+      <!-- 2026 (Apex) -->
+      <div class="all-milestone-entry all-milestone-entry-apex">
+       <div class="entry-rail">
+        <div class="entry-dot apex-dot"></div>
        </div>
-       <div class="alltime-card alltime-card-apex">
-        <div class="alltime-card-top">
-         <span class="alltime-year-badge apex-year-badge">2026 &#9733;</span>
-         <div class="timeline-badge apex-badge">Enterprise Milestone</div>
-         <button type="button" class="btn-micro-focus" data-focus-year="2026" title="View 2026 alone">View Year &rarr;</button>
+       <div class="entry-card entry-card-apex">
+        <div class="entry-card-header">
+         <span class="entry-year-badge apex-year-badge">2026 &#9733;</span>
+         <span class="timeline-badge apex-badge">Enterprise Milestone</span>
+         <button type="button" class="btn-jump-single" data-nav="2026" title="View 2026 alone">Focus Year &rarr;</button>
         </div>
-        <h4 class="alltime-heading">Integrated Multi-Sector Group &amp; MSME ZED Gold Certified</h4>
+        <h4 class="entry-title">Integrated Multi-Sector Group &amp; MSME ZED Gold Certified</h4>
         <p>Sahjanand commands a cohesive multi-sector presence spanning the Weaving Segment, Yarn Segment, Chemical Segment, and Global Trade (Import &amp; Export). Officially awarded the Govt. of India MSME ZED Gold Certification (Zero Defect, Zero Effect), Sahjanand represents over three decades of benchmark manufacturing quality, operational safety, and customer trust.</p>
         <div class="timeline-tags">
          <span class="milestone-tag">Weaving Segment</span>
@@ -563,7 +663,7 @@
  </div>
 </footer>
 
-<script src="main.js?v=96"></script>
+<script src="main.js?v=97"></script>
 <!-- FLOATING WHATSAPP CHAT BUTTON (+91 97275 64411) -->
 <a href="https://wa.me/919727564411" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" aria-label="Chat with Sahjanand on WhatsApp (+91 97275 64411)" title="Chat on WhatsApp (+91 97275 64411)">
  <span class="wa-pulse" aria-hidden="true"></span>
