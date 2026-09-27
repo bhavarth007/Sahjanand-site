@@ -12,7 +12,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<link rel="stylesheet" href="styles.css?v=103">
+<link rel="stylesheet" href="styles.css?v=104">
 </head>
 <body>
 
@@ -115,6 +115,69 @@
       <div class="division-address-content">
        <span class="division-address-label">Facility Address:</span>
        <span class="division-address-text">4303/8, Rd Number 43-B, GIDC, Sachin, Surat, Gujarat 394230</span>
+      </div>
+     </div>
+
+     <!-- WEAVING PLANT MEDIA SHOWCASE (Video Tour & Factory Photos) -->
+     <div class="division-media-showcase">
+      <div class="media-showcase-head">
+       <div class="media-title-group">
+        <span class="media-badge">
+         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+         <span>PLANT INFRASTRUCTURE &amp; PRODUCTION TOUR</span>
+        </span>
+        <h4 class="media-heading">Weaving Division Plant Floor, Machinery &amp; Operations</h4>
+       </div>
+       <div class="media-tags-group">
+        <span class="media-tag-pill">10-Sec Video Tour</span>
+        <span class="media-tag-pill">Gate-1 Weaving Facility</span>
+        <span class="media-tag-pill">High-Speed Looms</span>
+       </div>
+      </div>
+
+      <div class="division-media-grid">
+       <!-- Plant Video Player Card -->
+       <div class="media-video-card">
+        <div class="media-video-wrapper">
+         <video id="weaving-plant-video" class="facility-video-player" playsinline preload="metadata" poster="videos/weaving-plant-poster.jpg" controls>
+          <source src="videos/weaving-plant-tour.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+         </video>
+        </div>
+        <div class="video-card-meta">
+         <span class="video-meta-badge">Plant Tour &bull; 10s</span>
+         <h5 class="video-card-title">Inside Sahjanand Weaving Plant &amp; Facility Complex</h5>
+         <p class="video-card-desc">Sahjanand multi-story production facility, Gate-1 entry, raw yarn spools storage, and active high-speed weaving looms production lines in Surat, Gujarat.</p>
+        </div>
+       </div>
+
+       <!-- Facility Photos Grid -->
+       <div class="media-photos-gallery">
+        <div class="media-photo-thumb" data-photo="images/weaving-plant-exterior.jpg" data-caption="Sahjanand Multi-Story Head Office &amp; Weaving Complex (Sachin GIDC, Surat)" tabindex="0" role="button" aria-label="View plant exterior photo">
+         <img src="images/weaving-plant-exterior.jpg" alt="Sahjanand Weaving Complex Exterior" loading="lazy">
+         <div class="photo-overlay-tag">
+          <span>Plant Exterior &bull; Sachin GIDC</span>
+         </div>
+        </div>
+        <div class="media-photo-thumb" data-photo="images/weaving-plant-looms.jpg" data-caption="High-Speed Waterjet &amp; Rapier Looms Continuous Weaving Floor" tabindex="0" role="button" aria-label="View weaving looms floor photo">
+         <img src="images/weaving-plant-looms.jpg" alt="Active Weaving Looms Floor" loading="lazy">
+         <div class="photo-overlay-tag">
+          <span>High-Speed Looms Floor</span>
+         </div>
+        </div>
+        <div class="media-photo-thumb" data-photo="images/weaving-plant-yarns.jpg" data-caption="Synthetic Yarn Spools Inventory for High-Density Weaving Output" tabindex="0" role="button" aria-label="View yarn spools inventory photo">
+         <img src="images/weaving-plant-yarns.jpg" alt="Textile Yarn Spools Storage" loading="lazy">
+         <div class="photo-overlay-tag">
+          <span>Textile Yarn Inventory</span>
+         </div>
+        </div>
+        <div class="media-photo-thumb" data-photo="images/weaving-plant-gate1.jpg" data-caption="Gate-1 Weaving Facility Entrance &amp; Quality Inspection Racks" tabindex="0" role="button" aria-label="View Gate-1 weaving entrance photo">
+         <img src="images/weaving-plant-gate1.jpg" alt="Gate-1 Weaving Facility Entry" loading="lazy">
+         <div class="photo-overlay-tag">
+          <span>Gate-1 Unit &bull; Entrance</span>
+         </div>
+        </div>
+       </div>
       </div>
      </div>
     </div>
@@ -723,7 +786,19 @@
  </div>
 </footer>
 
-<script src="main.js?v=103"></script>
+<!-- FACILITY PHOTO FULLSCREEN LIGHTBOX MODAL -->
+<div id="facility-lightbox" class="facility-lightbox" role="dialog" aria-modal="true" aria-hidden="true" style="display:none;">
+ <div class="facility-lightbox-backdrop" aria-hidden="true"></div>
+ <div class="facility-lightbox-container">
+  <button type="button" class="facility-lightbox-close" aria-label="Close photo preview">&times;</button>
+  <div class="facility-lightbox-content">
+   <img id="facility-lightbox-img" src="" alt="Sahjanand Facility Preview">
+   <div class="facility-lightbox-caption" id="facility-lightbox-caption"></div>
+  </div>
+ </div>
+</div>
+
+<script src="main.js?v=104"></script>
 <!-- FLOATING WHATSAPP CHAT BUTTON (+91 97275 64411) -->
 <a href="https://wa.me/919727564411" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" aria-label="Chat with Sahjanand on WhatsApp (+91 97275 64411)" title="Chat on WhatsApp (+91 97275 64411)">
  <span class="wa-pulse" aria-hidden="true"></span>

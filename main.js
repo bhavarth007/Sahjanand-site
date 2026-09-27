@@ -1068,5 +1068,66 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
+
+  // 12. Facility Photo Lightbox Modal (products.html)
+  function initFacilityLightbox() {
+    var lightbox = document.getElementById('facility-lightbox');
+    if (!lightbox) return;
+
+    var lightboxImg = document.getElementById('facility-lightbox-img');
+    var lightboxCaption = document.getElementById('facility-lightbox-caption');
+    var closeBtn = lightbox.querySelector('.facility-lightbox-close');
+    var backdrop = lightbox.querySelector('.facility-lightbox-backdrop');
+    var photoThumbs = document.querySelectorAll('.media-photo-thumb');
+
+    function openLightbox(src, caption) {
+      if (!src) return;
+      if (lightboxImg) lightboxImg.src = src;
+      if (lightboxCaption) lightboxCaption.textContent = caption || '';
+      lightbox.style.display = 'flex';
+      void lightbox.offsetWidth; // Force reflow
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(function () {
+        if (!lightbox.classList.contains('active')) {
+          lightbox.style.display = 'none';
+          if (lightboxImg) lightboxImg.src = '';
+        }
+      }, 250);
+    }
+
+    photoThumbs.forEach(function (thumb) {
+      function handleOpen() {
+        var src = thumb.getAttribute('data-photo');
+        var caption = thumb.getAttribute('data-caption');
+        openLightbox(src, caption);
+      }
+      thumb.addEventListener('click', handleOpen);
+      thumb.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleOpen();
+        }
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    if (backdrop) backdrop.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  }
+
+  initFacilityLightbox();
 });
 
