@@ -773,6 +773,16 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
+    // Attach click listeners to hero jump CTA buttons
+    document.querySelectorAll('[data-jump]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var division = this.getAttribute('data-jump');
+        if (division) {
+          applyDivisionFilter(division, true);
+        }
+      });
+    });
+
     checkUrlForDivision();
     window.addEventListener('hashchange', checkUrlForDivision);
   }
@@ -1129,5 +1139,139 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   initFacilityLightbox();
+
+  // 13. Products Page 4-Segment Rotating Hero Carousel (every 3 seconds)
+  function initProductsHeroCarousel() {
+    var carousel = document.getElementById('productsHeroCarousel');
+    if (!carousel) return;
+
+    var slides = carousel.querySelectorAll('.hero-slide');
+    var tabBtns = carousel.querySelectorAll('.hero-tab-btn');
+    var prevBtn = carousel.querySelector('.hero-arrow-btn.prev-btn');
+    var nextBtn = carousel.querySelector('.hero-arrow-btn.next-btn');
+
+    if (!slides.length) return;
+
+    var currentIndex = 0;
+    var totalSlides = slides.length;
+    var SLIDE_DURATION = 3000; // 3 seconds per segment
+    var timer = null;
+
+    function resetProgress(tabBtn) {
+      if (!tabBtn) return;
+      var fill = tabBtn.querySelector('.tab-progress-fill');
+      if (fill) {
+        fill.style.transition = 'none';
+        fill.style.width = '0%';
+      }
+    }
+
+    function animateProgress(tabBtn) {
+      if (!tabBtn) return;
+      var fill = tabBtn.querySelector('.tab-progress-fill');
+      if (fill) {
+        fill.style.transition = 'none';
+        fill.style.width = '0%';
+        void fill.offsetWidth; // Force reflow
+        fill.style.transition = 'width ' + SLIDE_DURATION + 'ms linear';
+        fill.style.width = '100%';
+      }
+    }
+
+    function showSlide(targetIndex) {
+      for (var i = 0; i < totalSlides; i++) {
+        slides[i].classList.remove('active');
+        if (tabBtns[i]) {
+          tabBtns[i].classList.remove('active');
+          tabBtns[i].setAttribute('aria-selected', 'false');
+          resetProgress(tabBtns[i]);
+        }
+      }
+
+      currentIndex = (targetIndex + totalSlides) % totalSlides;
+      slides[currentIndex].classList.add('active');
+      if (tabBtns[currentIndex]) {
+        tabBtns[currentIndex].classList.add('active');
+        tabBtns[currentIndex].setAttribute('aria-selected', 'true');
+        animateProgress(tabBtns[currentIndex]);
+      }
+    }
+
+    function startTimer() {
+      if (timer) clearInterval(timer);
+      if (tabBtns[currentIndex]) {
+        animateProgress(tabBtns[currentIndex]);
+      }
+      timer = setInterval(function () {
+        showSlide(currentIndex + 1);
+      }, SLIDE_DURATION);
+    }
+
+    function stopTimer() {
+      if (timer) clearInterval(timer);
+      if (tabBtns[currentIndex]) {
+        var fill = tabBtns[currentIndex].querySelector('.tab-progress-fill');
+        if (fill) {
+          var computedWidth = window.getComputedStyle(fill).width;
+          fill.style.transition = 'none';
+          fill.style.width = computedWidth;
+        }
+      }
+    }
+
+    // Attach click events to tabs
+    tabBtns.forEach(function (tab, idx) {
+      tab.addEventListener('click', function () {
+        showSlide(idx);
+        startTimer();
+      });
+    });
+
+    // Arrow navigation
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        showSlide(currentIndex + 1);
+        startTimer();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        showSlide(currentIndex - 1);
+        startTimer();
+      });
+    }
+
+    // Pause on hover, resume on leave
+    carousel.addEventListener('mouseenter', stopTimer);
+    carousel.addEventListener('mouseleave', startTimer);
+
+    // Touch swipe support for mobile
+    var touchStartX = 0;
+    var touchEndX = 0;
+    carousel.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+      stopTimer();
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', function (e) {
+      touchEndX = e.changedTouches[0].screenX;
+      var diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+          showSlide(currentIndex + 1);
+        } else {
+          showSlide(currentIndex - 1);
+        }
+      }
+      startTimer();
+    }, { passive: true });
+
+    // Initial start
+    showSlide(0);
+    startTimer();
+  }
+
+  initProductsHeroCarousel();
 });
 

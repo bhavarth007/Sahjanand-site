@@ -6090,3 +6090,308 @@ footer.site-footer {
   background: #0B1120;
   text-align: center;
 }
+
+/* ==========================================================================
+   PRODUCTS 4-SEGMENT ROTATING HERO CAROUSEL (Every 3 seconds)
+   ========================================================================== */
+.products-hero-carousel {
+  position: relative;
+  min-height: 440px;
+  overflow: hidden;
+  padding: 0;
+  display: block;
+  background-color: #071527;
+  color: #FFFFFF;
+}
+
+.products-hero-carousel .hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.03);
+  display: flex;
+  align-items: center;
+  padding: 60px 0 100px;
+  z-index: 1;
+}
+
+.products-hero-carousel .hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+  z-index: 2;
+  position: relative;
+}
+
+.hero-slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #071527 0%, rgba(7, 21, 39, 0.94) 38%, rgba(7, 21, 39, 0.72) 70%, rgba(7, 21, 39, 0.32) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-slide .container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero-segment-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(2, 132, 199, 0.22);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  color: #38BDF8;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.15);
+}
+
+.hero-segment-badge .badge-dot {
+  width: 7px;
+  height: 7px;
+  background: #38BDF8;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #38BDF8;
+  display: inline-block;
+}
+
+.hero-slide-title {
+  color: #FFFFFF;
+  font-size: clamp(1.65rem, 3.4vw, 2.35rem);
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.015em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+}
+
+.hero-slide .header-desc {
+  color: #CBD5E1;
+  font-size: 1.06rem;
+  line-height: 1.6;
+  max-width: 65ch;
+  margin: 0 0 22px 0;
+}
+
+.hero-slide-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-outline-white:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* Bottom Navigation Bar for Carousel */
+.hero-carousel-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: rgba(7, 21, 39, 0.82);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 15px;
+}
+
+.hero-segment-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hero-tab-btn {
+  position: relative;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94A3B8;
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 8px 16px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.hero-tab-btn .tab-index {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #64748B;
+  transition: color 0.25s ease;
+}
+
+.hero-tab-btn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.hero-tab-btn:hover .tab-index {
+  color: #38BDF8;
+}
+
+.hero-tab-btn.active {
+  color: #FFFFFF;
+  background: rgba(2, 132, 199, 0.18);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.hero-tab-btn.active .tab-index {
+  color: #38BDF8;
+}
+
+.hero-tab-btn .tab-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hero-tab-btn .tab-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #38BDF8, #0284C7);
+  border-radius: 2px;
+}
+
+.hero-arrow-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-arrow-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hero-arrow-btn:hover {
+  background: var(--blue-bright);
+  border-color: var(--blue-bright);
+  transform: scale(1.08);
+}
+
+@media (max-width: 992px) {
+  .products-hero-carousel {
+    min-height: 480px;
+  }
+  .products-hero-carousel .hero-slide {
+    padding: 50px 0 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-hero-carousel {
+    min-height: 520px;
+  }
+  .products-hero-carousel .hero-slide {
+    padding: 40px 0 85px;
+    background-position: center right;
+  }
+  .hero-slide-overlay {
+    background: linear-gradient(180deg, rgba(7, 21, 39, 0.82) 0%, rgba(7, 21, 39, 0.95) 100%);
+  }
+  .hero-nav-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 8px 12px;
+  }
+  .hero-segment-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  .hero-tab-btn {
+    padding: 6px 8px 10px;
+    justify-content: center;
+    font-size: 0.76rem;
+    gap: 4px;
+  }
+  .hero-arrow-controls {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-tab-btn .tab-text {
+    font-size: 0.72rem;
+  }
+  .hero-slide-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-slide-actions .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
