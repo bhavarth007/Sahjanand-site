@@ -2429,6 +2429,16 @@ body.mobile-nav-open {
   display: block;
 }
 
+.stepped-curve-stroke {
+  stroke-width: 2.2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stepped-fill-area {
+  transition: opacity 0.3s ease;
+}
+
 .svg-axis-txt {
   font-family: var(--font-body);
   font-size: 11px;
