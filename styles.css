@@ -2430,9 +2430,19 @@ body.mobile-nav-open {
 }
 
 .stepped-curve-stroke {
-  stroke-width: 2.2px;
+  stroke-width: 2.5px;
   stroke-linecap: round;
   stroke-linejoin: round;
+  filter: drop-shadow(0 2px 8px rgba(2, 132, 199, 0.35));
+}
+
+.zigzag-glow-stroke {
+  pointer-events: none;
+}
+
+.zigzag-accents circle {
+  pointer-events: none;
+  filter: drop-shadow(0 1px 3px rgba(2, 132, 199, 0.4));
 }
 
 .stepped-fill-area {

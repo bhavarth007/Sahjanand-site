@@ -12,7 +12,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<link rel="stylesheet" href="styles.css?v=102">
+<link rel="stylesheet" href="styles.css?v=103">
 </head>
 <body>
 
@@ -90,8 +90,9 @@
       <svg class="stepped-growth-svg" viewBox="0 0 960 360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Sahjanand Stepped Industrial Growth Graph">
        <defs>
         <linearGradient id="steppedAreaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-         <stop offset="0%" stop-color="#0284c7" stop-opacity="0.30"/>
-         <stop offset="60%" stop-color="#0284c7" stop-opacity="0.08"/>
+         <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.35"/>
+         <stop offset="35%" stop-color="#0284c7" stop-opacity="0.18"/>
+         <stop offset="70%" stop-color="#0284c7" stop-opacity="0.06"/>
          <stop offset="100%" stop-color="#0284c7" stop-opacity="0.00"/>
         </linearGradient>
         <linearGradient id="steppedStrokeGrad" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -126,11 +127,34 @@
         <text x="40" y="54" text-anchor="end" class="svg-axis-txt apex-axis-txt">Apex &middot; Level 5</text>
        </g>
 
-       <!-- Stepped Shaded Area -->
-       <path class="stepped-fill-area" d="M 80 320 L 80 290 C 180 275, 250 233, 330 220 C 420 205, 500 163, 580 150 C 655 137, 715 111, 780 95 C 820 84, 850 45, 880 45 L 880 320 Z" fill="url(#steppedAreaGrad)"/>
+       <!-- Vertical Milestone Drop Stems -->
+       <g class="graph-stems" opacity="0.4">
+        <line x1="80" y1="290" x2="80" y2="300" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <line x1="330" y1="220" x2="330" y2="300" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <line x1="580" y1="150" x2="580" y2="300" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <line x1="780" y1="95" x2="780" y2="300" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <line x1="880" y1="45" x2="880" y2="300" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3"/>
+       </g>
 
-       <!-- Stepped Trajectory Line (Continuous upward growth curve from 1989 foundation to 2026 apex) -->
-       <path class="stepped-curve-stroke" d="M 80 290 C 180 275, 250 233, 330 220 C 420 205, 500 163, 580 150 C 655 137, 715 111, 780 95 C 820 84, 850 45, 880 45" fill="none" stroke="url(#steppedStrokeGrad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+       <!-- Dynamic Zigzag Shaded Area -->
+       <path class="stepped-fill-area" d="M 80 320 L 80 290 L 155 248 L 220 270 L 330 220 L 415 172 L 485 198 L 580 150 L 650 114 L 715 134 L 780 95 L 820 106 L 880 45 L 880 320 Z" fill="url(#steppedAreaGrad)"/>
+
+       <!-- Ambient Neon Glow Zigzag Stroke -->
+       <path class="zigzag-glow-stroke" d="M 80 290 L 155 248 L 220 270 L 330 220 L 415 172 L 485 198 L 580 150 L 650 114 L 715 134 L 780 95 L 820 106 L 880 45" fill="none" stroke="url(#steppedStrokeGrad)" stroke-width="6" opacity="0.32" filter="url(#glowFilter)" stroke-linecap="round" stroke-linejoin="round"/>
+
+       <!-- Primary Crisp Zigzag Trajectory Line -->
+       <path class="stepped-curve-stroke" d="M 80 290 L 155 248 L 220 270 L 330 220 L 415 172 L 485 198 L 580 150 L 650 114 L 715 134 L 780 95 L 820 106 L 880 45" fill="none" stroke="url(#steppedStrokeGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+       <!-- Intermediate Zigzag Accent Markers -->
+       <g class="zigzag-accents">
+        <circle cx="155" cy="248" r="3.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5"/>
+        <circle cx="220" cy="270" r="2.5" fill="#0284c7" opacity="0.85"/>
+        <circle cx="415" cy="172" r="3.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5"/>
+        <circle cx="485" cy="198" r="2.5" fill="#0284c7" opacity="0.85"/>
+        <circle cx="650" cy="114" r="3.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5"/>
+        <circle cx="715" cy="134" r="2.5" fill="#0284c7" opacity="0.85"/>
+        <circle cx="820" cy="106" r="2.5" fill="#0284c7" opacity="0.85"/>
+       </g>
 
        <!-- Operational Plateau Annotations (Flat Periods) -->
        <g class="graph-plateaus">
@@ -647,7 +671,7 @@
  </div>
 </footer>
 
-<script src="main.js?v=102"></script>
+<script src="main.js?v=103"></script>
 <!-- FLOATING WHATSAPP CHAT BUTTON (+91 97275 64411) -->
 <a href="https://wa.me/919727564411" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" aria-label="Chat with Sahjanand on WhatsApp (+91 97275 64411)" title="Chat on WhatsApp (+91 97275 64411)">
  <span class="wa-pulse" aria-hidden="true"></span>
