@@ -5798,12 +5798,17 @@ footer.site-footer {
    DIVISION MEDIA SHOWCASE (FACILITY VIDEO & PHOTOS IN PRODUCT HEADERS)
    ========================================================================== */
 .division-media-showcase {
-  margin-top: 20px;
-  padding: 26px 32px;
+  margin-top: 22px;
+  padding-top: 20px;
   border-top: 1px solid #E2E8F0;
-  background: #F8FAFC;
-  border-radius: 16px;
-  border: 1px solid #E2E8F0;
+  background: transparent;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 6px;
 }
 
 .media-showcase-head {
@@ -5813,8 +5818,8 @@ footer.site-footer {
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px dashed #CBD5E1;
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .media-title-group {
@@ -5961,7 +5966,9 @@ footer.site-footer {
 
 @media (max-width: 768px) {
   .division-media-showcase {
-    padding: 18px 14px;
+    padding-top: 16px;
+    padding-left: 0;
+    padding-right: 0;
   }
   .cinema-director-bar {
     padding: 9px 14px;
