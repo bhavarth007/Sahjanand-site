@@ -1183,5 +1183,36 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   initProductsHeroCarousel();
+
+  // 14. Weaving Facility Video Continuous Autoplay
+  function initWeavingVideoAutoplay() {
+    var video = document.getElementById('weaving-plant-video');
+    if (!video) return;
+
+    video.muted = true;
+    video.playsInline = true;
+    video.loop = true;
+
+    var startPlayback = function () {
+      var promise = video.play();
+      if (promise !== undefined) {
+        promise.catch(function () {
+          var userStart = function () {
+            video.play();
+            window.removeEventListener('scroll', userStart);
+            window.removeEventListener('click', userStart);
+            window.removeEventListener('touchstart', userStart);
+          };
+          window.addEventListener('scroll', userStart, { passive: true, once: true });
+          window.addEventListener('click', userStart, { passive: true, once: true });
+          window.addEventListener('touchstart', userStart, { passive: true, once: true });
+        });
+      }
+    };
+
+    startPlayback();
+  }
+
+  initWeavingVideoAutoplay();
 });
 
