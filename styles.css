@@ -5798,8 +5798,8 @@ footer.site-footer {
    DIVISION MEDIA SHOWCASE (FACILITY VIDEO & PHOTOS IN PRODUCT HEADERS)
    ========================================================================== */
 .division-media-showcase {
-  margin-top: 18px;
-  padding: 20px 22px;
+  margin-top: 20px;
+  padding: 26px 32px;
   border-top: 1px solid #E2E8F0;
   background: #F8FAFC;
   border-radius: 16px;
@@ -5861,30 +5861,48 @@ footer.site-footer {
   border-radius: 6px;
 }
 
-/* Full-Width Movie Theatre Video Frame */
+/* Classic Director's Cinema Screening Video Frame */
 .media-cinema-theatre {
   width: 100%;
-  max-width: 980px;
+  max-width: 900px;
   margin: 0 auto;
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
-  background: #0B1120;
+  background: #020617;
   border: 1px solid rgba(2, 132, 199, 0.35);
-  box-shadow: 0 16px 45px rgba(15, 23, 42, 0.16), 0 0 35px rgba(2, 132, 199, 0.12);
+  box-shadow: 0 18px 45px -8px rgba(15, 23, 42, 0.28), 0 0 30px rgba(2, 132, 199, 0.15);
   position: relative;
-  transition: box-shadow 0.35s ease, transform 0.35s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  animation: directorCinemaGlow 7s ease-in-out infinite alternate;
+}
+
+@keyframes directorCinemaGlow {
+  0% {
+    box-shadow: 0 18px 45px -8px rgba(15, 23, 42, 0.28), 0 0 25px rgba(2, 132, 199, 0.14);
+    border-color: rgba(2, 132, 199, 0.3);
+  }
+  50% {
+    box-shadow: 0 22px 55px -6px rgba(15, 23, 42, 0.35), 0 0 42px rgba(14, 165, 233, 0.26);
+    border-color: rgba(14, 165, 233, 0.52);
+  }
+  100% {
+    box-shadow: 0 18px 45px -8px rgba(15, 23, 42, 0.28), 0 0 25px rgba(2, 132, 199, 0.14);
+    border-color: rgba(2, 132, 199, 0.3);
+  }
 }
 
 .media-cinema-theatre:hover {
-  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.24), 0 0 45px rgba(2, 132, 199, 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 24px 60px -6px rgba(15, 23, 42, 0.4), 0 0 50px rgba(2, 132, 199, 0.3);
 }
 
 .media-video-wrapper {
   position: relative;
-  background: #070F1E;
+  background: #020617;
   aspect-ratio: 16 / 9;
   width: 100%;
   overflow: hidden;
+  display: block;
 }
 
 .facility-video-player {
@@ -5896,39 +5914,32 @@ footer.site-footer {
   user-select: none;
 }
 
-.video-cinematic-pill {
-  position: absolute;
-  z-index: 3;
+/* Director's Studio Monitor Status Strip (Positioned Below Video Footage) */
+.cinema-director-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: #070D18;
+  padding: 11px 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.director-status-tag {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  background: rgba(15, 23, 42, 0.82);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: #FFFFFF;
-  font-size: 0.68rem;
+  gap: 8px;
+  font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
+  color: #E2E8F0;
   text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 9999px;
-  pointer-events: none;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
-.video-cinematic-pill.top-left {
-  top: 14px;
-  left: 14px;
-}
-
-.video-cinematic-pill.top-right {
-  top: 14px;
-  right: 14px;
-}
-
-.live-pulse-dot {
-  width: 7px;
-  height: 7px;
+.director-rec-dot {
+  width: 8px;
+  height: 8px;
   background: #10B981;
   border-radius: 50%;
   box-shadow: 0 0 10px #10B981;
@@ -5941,54 +5952,20 @@ footer.site-footer {
   100% { transform: scale(0.95); opacity: 0.8; }
 }
 
-.video-cinema-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 44px 22px 18px;
-  background: linear-gradient(180deg, transparent 0%, rgba(11, 17, 32, 0.72) 45%, rgba(11, 17, 32, 0.95) 100%);
-  pointer-events: none;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.cinema-overlay-badge {
-  display: inline-block;
-  font-size: 0.66rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #38BDF8;
-}
-
-.cinema-overlay-title {
-  color: #FFFFFF;
-  font-size: 1.02rem;
-  font-weight: 800;
-  margin: 0;
-  line-height: 1.35;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-.cinema-overlay-sub {
+.director-specs {
+  font-size: 0.73rem;
   color: #94A3B8;
-  font-size: 0.82rem;
-  margin: 0;
-  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
 
-@media (max-width: 640px) {
-  .video-cinematic-pill.top-right {
-    display: none;
+@media (max-width: 768px) {
+  .division-media-showcase {
+    padding: 18px 14px;
   }
-  .cinema-overlay-title {
-    font-size: 0.88rem;
-  }
-  .cinema-overlay-sub {
-    font-size: 0.75rem;
+  .cinema-director-bar {
+    padding: 9px 14px;
+    font-size: 0.68rem;
   }
 }
 
