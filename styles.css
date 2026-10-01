@@ -4,7 +4,7 @@
    Fully Responsive for Mobile, Tablet, Laptop, and 4K Displays
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+/* Fonts loaded non-blocking in HTML <head> via <link> */
 
 :root {
   /* Core Corporate Architecture */
