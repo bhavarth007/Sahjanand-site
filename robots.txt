@@ -1,0 +1,14 @@
+# ==============================================================================
+# Robots.txt — Sahjanand Enterprise (https://sahjanandpolyweaves.com)
+# ==============================================================================
+
+User-agent: *
+Allow: /
+
+# Disallow internal assets, source directories, and git metadata
+Disallow: /videos/source/
+Disallow: /.git/
+Disallow: /.well-known/
+
+# Sitemap (Update upon final custom domain migration)
+# Sitemap: https://sahjanandpolyweaves.com/sitemap.xml

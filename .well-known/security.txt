@@ -1,0 +1,7 @@
+Contact: mailto:sahjanandpolyweavespvtltd18@gmail.com
+Contact: tel:+919727564411
+Preferred-Languages: en, gu, hi
+Canonical: https://bhavarth007.github.io/Sahjanand-site/.well-known/security.txt
+Policy: https://bhavarth007.github.io/Sahjanand-site/
+Expires: 2027-12-31T23:59:59.000Z
+Acknowledgments: https://bhavarth007.github.io/Sahjanand-site/

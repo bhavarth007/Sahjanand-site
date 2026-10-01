@@ -12,7 +12,12 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<link rel="stylesheet" href="styles.css?v=120">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://formsubmit.co;">
+<link rel="stylesheet" href="styles.css?v=121">
 </head>
 <body>
 
@@ -82,20 +87,22 @@
       <input type="hidden" name="_subject" value="New Website Enquiry - Sahjanand Enterprise">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
+       <!-- Honeypot anti-spam trap for automated bots (invisible to legitimate users) -->
+       <input type="text" name="_honey" style="display:none !important;" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form-grid">
        <div class="field">
         <label for="name">Full Name *</label>
-        <input type="text" id="name" name="name" placeholder="Your name" required>
+        <input type="text" id="name" name="name" placeholder="Your name" maxlength="100" required>
        </div>
 
        <div class="field">
         <label for="email">Email Address *</label>
-        <input type="email" id="email" name="email" placeholder="name@company.com" required>
+        <input type="email" id="email" name="email" placeholder="name@company.com" maxlength="100" required>
        </div>
 
        <div class="field">
         <label for="phone">Phone / Mobile</label>
-        <input type="tel" id="phone" name="phone" placeholder="+91 98000 00000">
+        <input type="tel" id="phone" name="phone" placeholder="+91 98000 00000" maxlength="25">
        </div>
 
        <div class="field">
@@ -199,7 +206,7 @@
 
        <div class="field full">
         <label for="message">Detailed Message *</label>
-        <textarea id="message" name="message" placeholder="Provide details regarding your requirement, specifications, or consignment timeline..." required></textarea>
+        <textarea id="message" name="message" placeholder="Provide details regarding your requirement, specifications, or consignment timeline..." maxlength="3000" required></textarea>
        </div>
       </div>
 
@@ -375,7 +382,7 @@
  </div>
 </footer>
 
-<script src="main.js?v=120"></script>
+<script src="main.js?v=121"></script>
 <!-- FLOATING WHATSAPP CHAT BUTTON (+91 97275 64411) -->
 <a href="https://wa.me/919727564411" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" aria-label="Chat with Sahjanand on WhatsApp (+91 97275 64411)" title="Chat on WhatsApp (+91 97275 64411)">
  <span class="wa-pulse" aria-hidden="true"></span>

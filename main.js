@@ -336,9 +336,28 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
+    function escapeHtml(str) {
+      if (typeof str !== 'string') return '';
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    var lastSubmissionTimestamp = 0;
     var status = form.querySelector('.form-status');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+
+      var now = Date.now();
+      if (now - lastSubmissionTimestamp < 15000) {
+        status.textContent = 'Please wait a moment before sending another enquiry.';
+        status.className = 'form-status error';
+        return;
+      }
+
       var name = form.querySelector('#name') ? form.querySelector('#name').value.trim() : '';
       var email = form.querySelector('#email') ? form.querySelector('#email').value.trim() : '';
       var phone = form.querySelector('#phone') ? form.querySelector('#phone').value.trim() : '';
@@ -351,6 +370,12 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
+      if (name.length > 100 || email.length > 100 || phone.length > 25 || message.length > 3000) {
+        status.textContent = 'One or more fields exceed allowable length limits.';
+        status.className = 'form-status error';
+        return;
+      }
+
       var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         status.textContent = 'Please enter a valid email address.';
@@ -358,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      if (phone && !/^[0-9+\s\-().]{7,20}$/.test(phone)) {
+      if (phone && !/^[0-9+\s\-().]{7,25}$/.test(phone)) {
         status.textContent = 'Please enter a valid phone number or leave blank.';
         status.className = 'form-status error';
         return;
@@ -489,6 +514,9 @@ document.addEventListener('DOMContentLoaded', function () {
         return res.json();
       })
       .then(function (data) {
+        var safeName = escapeHtml(name);
+        lastSubmissionTimestamp = Date.now();
+
         if (data.success === 'true' || data.success === true) {
           // Launch celebratory confetti only on successful delivery
           launchCelebration();
@@ -503,7 +531,7 @@ document.addEventListener('DOMContentLoaded', function () {
               '</div>' +
               '<div>' +
                 '<h4 class="status-title">Enquiry Sent Successfully!</h4>' +
-                '<p class="status-desc">Thank you, <strong>' + name + '</strong>! Your requirements have been submitted to our corporate team. We will review your inquiry and respond within one business day.</p>' +
+                '<p class="status-desc">Thank you, <strong>' + safeName + '</strong>! Your requirements have been submitted to our corporate team. We will review your inquiry and respond within one business day.</p>' +
               '</div>' +
             '</div>' +
             '<div class="status-actions">' +
@@ -523,7 +551,7 @@ document.addEventListener('DOMContentLoaded', function () {
               '</div>' +
               '<div>' +
                 '<h4 class="status-title">Message Submitted!</h4>' +
-                '<p class="status-desc">Thank you, <strong>' + name + '</strong>! Your message has been received by our corporate team. We will review your inquiry shortly.</p>' +
+                '<p class="status-desc">Thank you, <strong>' + safeName + '</strong>! Your message has been received by our corporate team. We will review your inquiry shortly.</p>' +
               '</div>' +
             '</div>' +
           '</div>';
@@ -533,15 +561,14 @@ document.addEventListener('DOMContentLoaded', function () {
             '<div class="status-header">' +
               '<div>' +
                 '<h4 class="status-title">Enquiry Received!</h4>' +
-                '<p class="status-desc">Thank you, <strong>' + name + '</strong>! Your enquiry has been received. Our team will contact you soon.</p>' +
+                '<p class="status-desc">Thank you, <strong>' + safeName + '</strong>! Your enquiry has been received. Our team will contact you soon.</p>' +
               '</div>' +
             '</div>' +
           '</div>';
           status.className = 'form-status';
         }
       })
-      .catch(function (err) {
-        console.error('Form submission error:', err);
+      .catch(function () {
         var mailtoSubject = encodeURIComponent('Product Enquiry: ' + subject + ' - ' + name);
         var mailtoBody = encodeURIComponent(
           'Dear Sahjanand Team,\n\n' +
@@ -552,7 +579,7 @@ document.addEventListener('DOMContentLoaded', function () {
           'Message:\n' + message
         );
         var mailtoUrl = 'mailto:sahjanandpolyweavespvtltd18@gmail.com?subject=' + mailtoSubject + '&body=' + mailtoBody;
-        status.innerHTML = 'Unable to send automatically via background server. <a href="' + mailtoUrl + '" style="color:#0284C7; font-weight:700; text-decoration:underline;">Click here to send via email app</a> or <a href="https://wa.me/919727564411" target="_blank" style="color:#0284C7; font-weight:700; text-decoration:underline;">message on WhatsApp</a>.';
+        status.innerHTML = 'Unable to send automatically via background server. <a href="' + mailtoUrl + '" style="color:#0284C7; font-weight:700; text-decoration:underline;">Click here to send via email app</a> or <a href="https://wa.me/919727564411" target="_blank" rel="noopener noreferrer" style="color:#0284C7; font-weight:700; text-decoration:underline;">message on WhatsApp</a>.';
         status.className = 'form-status error';
       })
       .finally(function () {
