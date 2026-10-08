@@ -6008,6 +6008,15 @@ footer.site-footer {
   100% { transform: scaleX(1); }
 }
 
+.yarn-timeline-bar {
+  animation: cinemaScrubYarn 6.5s linear infinite;
+}
+
+@keyframes cinemaScrubYarn {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
 /* Executive Status Strip (Positioned Below Video Footage) */
 .cinema-director-bar {
   display: flex;
